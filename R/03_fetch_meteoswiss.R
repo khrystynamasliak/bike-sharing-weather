@@ -182,15 +182,75 @@ find_hourly_assets <- function(abbr) {
   hrefs[order(prio)]
 }
 
+# Parse the MeteoSwiss timestamp column.
+#
+# The documented format is dd.mm.yyyy HH:MM, but OGD exports have used several
+# over time. Try each explicitly, keep whichever parses the most rows, and then
+# VERIFY that time-of-day actually varies - a format string that consumes only
+# the date silently collapses every hour of a day onto midnight, which looks
+# fine until the join returns nothing.
+TIME_FORMATS <- c(
+  "%d.%m.%Y %H:%M",      # documented MeteoSwiss format
+  "%Y-%m-%d %H:%M:%S",
+  "%Y-%m-%dT%H:%M:%S",
+  "%Y-%m-%d %H:%M",
+  "%Y%m%d%H%M",          # compact
+  "%Y%m%d%H",
+  "%d.%m.%Y %H:%M:%S",
+  "%d/%m/%Y %H:%M",
+  # Date-only formats last: they parse, but score low because they carry no
+  # hour, so they are only chosen when nothing better matches.
+  "%d.%m.%Y",
+  "%Y-%m-%d"
+)
+
+parse_timestamps <- function(x) {
+  x <- trimws(as.character(x))
+  cat("  timestamp samples: ", paste(utils::head(x, 3), collapse = " | "), "\n", sep = "")
+
+  best <- NULL; best_fmt <- NA; best_score <- -1
+  for (fmt in TIME_FORMATS) {
+    ts <- suppressWarnings(as.POSIXct(x, format = fmt, tz = "UTC"))
+    ok <- mean(!is.na(ts))
+    if (ok < 0.5) next
+    # A format that drops the time gives one distinct value per day.
+    hours_seen <- length(unique(format(ts[!is.na(ts)], "%H")))
+    score <- ok + (hours_seen > 1) * 10        # strongly prefer formats that keep the hour
+    if (score > best_score) { best <- ts; best_fmt <- fmt; best_score <- score }
+  }
+
+  if (is.null(best)) {                          # last resort: let R guess
+    best <- tryCatch(suppressWarnings(as.POSIXct(x, tz = "UTC")),
+                     error = function(e) rep(as.POSIXct(NA, tz = "UTC"), length(x)))
+    best_fmt <- "auto"
+  }
+  if (all(is.na(best))) {
+    stop("Could not parse any timestamp. Samples: ",
+         paste(utils::head(x, 3), collapse = " | "))
+  }
+
+  hours_seen <- length(unique(format(best[!is.na(best)], "%H")))
+  cat("  parsed with format: ", best_fmt,
+      "  (", round(100 * mean(!is.na(best))), "% of rows, ",
+      hours_seen, " distinct hours-of-day)\n", sep = "")
+
+  if (hours_seen <= 1) {
+    warning("Timestamps carry no time-of-day - every reading collapsed to one ",
+            "hour per day. The join to bike data will fail. Check the raw ",
+            "timestamp samples printed above.", call. = FALSE)
+  }
+  best
+}
+
 tidy_weather <- function(df) {
   time_col <- find_col(df, "reference_timestamp")
   if (is.null(time_col)) time_col <- find_col(df, "time")
   if (is.null(time_col)) time_col <- find_col(df, "date")
   if (is.null(time_col)) stop("No timestamp column. Columns: ",
                               paste(names(df), collapse = ", "))
+  cat("  timestamp column:  ", time_col, "\n", sep = "")
 
-  ts <- as.POSIXct(df[[time_col]], format = "%d.%m.%Y %H:%M", tz = "UTC")
-  if (mean(is.na(ts)) > 0.5) ts <- as.POSIXct(df[[time_col]], tz = "UTC")
+  ts <- parse_timestamps(df[[time_col]])
 
   out <- data.frame(hour = ts, stringsAsFactors = FALSE)
   station_col <- find_col(df, "station", "abbr")
@@ -208,7 +268,12 @@ tidy_weather <- function(df) {
 
   out <- out[!is.na(out$hour), ]
   out <- out[order(out$hour), ]
-  cat(sprintf("  parsed %s hourly rows (%s to %s), %d known parameters recognised\n",
+  # Snap to the exact hour so the join key matches the bike side.
+  out$hour <- as.POSIXct(round(as.numeric(out$hour) / 3600) * 3600,
+                         origin = "1970-01-01", tz = "UTC")
+  out <- out[!duplicated(out$hour), ]
+
+  cat(sprintf("  %s hourly rows (%s to %s), %d known parameters recognised\n",
               format(nrow(out), big.mark = ","), min(out$hour), max(out$hour), renamed))
   out
 }
