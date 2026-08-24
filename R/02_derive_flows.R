@@ -137,30 +137,42 @@ floor_hour <- function(x) {
 }
 
 derive_hourly <- function(status, events, stations) {
-  events$hour <- floor_hour(events$polled_at_utc)
   status$hour <- floor_hour(status$polled_at_utc)
 
-  flow <- aggregate(cbind(departures, arrivals, likely_rebalancing) ~ station_id + hour,
-                    data = events, FUN = sum)
-  names(flow)[names(flow) == "likely_rebalancing"] <- "rebalancing_events"
-
-  n_ev <- aggregate(delta ~ station_id + hour, data = events, FUN = length)
-  names(n_ev)[3] <- "events"
-  flow <- merge(flow, n_ev, by = c("station_id", "hour"), all.x = TRUE)
-
-  flow$net_flow <- flow$arrivals - flow$departures
-  flow$turnover <- flow$arrivals + flow$departures
-
+  # Occupancy comes from the stock series and always exists.
   occ <- aggregate(num_bikes_available ~ station_id + hour, data = status,
                    FUN = function(v) c(mean = mean(v), min = min(v), max = max(v)))
   occ <- do.call(data.frame, occ)
   names(occ) <- c("station_id", "hour", "mean_bikes", "min_bikes", "max_bikes")
 
+  # Flows may legitimately be empty: a short collection window, or a quiet
+  # period where no station changed between polls. Build a zero-row frame with
+  # the right columns rather than letting aggregate() fail on no rows.
+  flow_cols <- c("station_id", "hour", "departures", "arrivals",
+                 "rebalancing_events", "events")
+  if (nrow(events) == 0) {
+    cat("NOTE: no change events in this window - flows will all be zero.\n",
+        "     With a real feed this means the window was too short or too quiet.\n", sep = "")
+    flow <- setNames(data.frame(character(0), as.POSIXct(character(0), tz = "UTC"),
+                                numeric(0), numeric(0), numeric(0), numeric(0),
+                                stringsAsFactors = FALSE), flow_cols)
+  } else {
+    events$hour <- floor_hour(events$polled_at_utc)
+    flow <- aggregate(cbind(departures, arrivals, likely_rebalancing) ~ station_id + hour,
+                      data = events, FUN = sum)
+    names(flow)[names(flow) == "likely_rebalancing"] <- "rebalancing_events"
+
+    n_ev <- aggregate(delta ~ station_id + hour, data = events, FUN = length)
+    names(n_ev)[3] <- "events"
+    flow <- merge(flow, n_ev, by = c("station_id", "hour"), all.x = TRUE)
+  }
+
   out <- merge(occ, flow, by = c("station_id", "hour"), all.x = TRUE)
-  for (v in c("departures", "arrivals", "events", "rebalancing_events",
-              "net_flow", "turnover")) {
+  for (v in c("departures", "arrivals", "events", "rebalancing_events")) {
     out[[v]][is.na(out[[v]])] <- 0
   }
+  out$net_flow <- out$arrivals - out$departures
+  out$turnover <- out$arrivals + out$departures
 
   keep <- intersect(c("station_id", "name", "lat", "lon", "capacity", "post_code"),
                     names(stations))
