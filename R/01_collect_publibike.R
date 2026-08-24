@@ -41,7 +41,10 @@ suppressPackageStartupMessages({
   library(jsonlite)
 })
 
-DEFAULT_FEED <- "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
+# PubliBike merged with Velospot; the old api.publibike.ch feed still responds
+# but returns an empty station list. The live stations are in the Velospot feed.
+DEFAULT_FEED <- "https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs"
+LEGACY_FEED  <- "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
 OUT_DIR      <- "data"
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
@@ -85,6 +88,20 @@ get_json <- function(url) jsonlite::fromJSON(url, simplifyVector = FALSE)
 
 # Pull one field from a list of records, coercing to an atomic vector and
 # substituting NA where the field is missing, empty, or itself a list.
+#
+# `field` may be several candidate names, tried in order. This matters because
+# GBFS 3.0 renamed things: num_bikes_available became num_vehicles_available,
+# and free-text names became arrays of {text, language} objects.
+first_scalar <- function(v) {
+  if (is.null(v)) return(NULL)
+  # GBFS 3.0 localised string: [{"text":"Bern Bahnhof","language":"de"}]
+  if (is.list(v) && length(v) > 0 && is.list(v[[1]]) && !is.null(v[[1]][["text"]])) {
+    return(v[[1]][["text"]])
+  }
+  if (is.list(v) || length(v) != 1) return(NULL)
+  v
+}
+
 pluck <- function(records, field, type = c("character", "numeric", "integer")) {
   type <- match.arg(type)
   empty <- switch(type, character = NA_character_, numeric = NA_real_, integer = NA_integer_)
@@ -92,8 +109,12 @@ pluck <- function(records, field, type = c("character", "numeric", "integer")) {
     return(switch(type, character = character(0), numeric = numeric(0), integer = integer(0)))
   }
   out <- vapply(records, function(r) {
-    v <- r[[field]]
-    if (is.null(v) || length(v) != 1 || is.list(v)) return(empty)
+    v <- NULL
+    for (f in field) {
+      v <- first_scalar(r[[f]])
+      if (!is.null(v)) break
+    }
+    if (is.null(v)) return(empty)
     switch(type,
            character = as.character(v),
            numeric   = suppressWarnings(as.numeric(v)),
@@ -253,7 +274,9 @@ inspect_feed <- function(feed_url) {
 
 matches_city <- function(st, city) {
   if (is.null(city) || !nzchar(city)) return(rep(TRUE, length(st)))
-  hay <- tolower(paste(pluck(st, "name"), pluck(st, "address"), pluck(st, "post_code")))
+  hay <- tolower(paste(pluck(st, c("name", "station_name")),
+                       pluck(st, c("address", "cross_street")),
+                       pluck(st, c("post_code", "postal_code"))))
   grepl(tolower(city), hay, fixed = TRUE)
 }
 
@@ -274,13 +297,13 @@ write_station_information <- function(endpoints, outdir, city, tag = NULL) {
 
   out <- data.frame(
     fetched_at_utc = utc_now(),
-    station_id     = pluck(st, "station_id"),
-    name           = pluck(st, "name"),
+    station_id     = pluck(st, c("station_id", "id")),
+    name           = pluck(st, c("name", "station_name")),
     lat            = pluck(st, "lat", "numeric"),
     lon            = pluck(st, "lon", "numeric"),
-    capacity       = pluck(st, "capacity", "integer"),
-    address        = pluck(st, "address"),
-    post_code      = pluck(st, "post_code"),
+    capacity       = pluck(st, c("capacity", "num_docks"), "integer"),
+    address        = pluck(st, c("address", "cross_street")),
+    post_code      = pluck(st, c("post_code", "postal_code")),
     stringsAsFactors = FALSE
   )
 
@@ -300,7 +323,7 @@ poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
     stop("station_status returned no records - see the structure dumped above.")
   }
 
-  sid <- pluck(st, "station_id")
+  sid <- pluck(st, c("station_id", "id"))
   if (!is.null(keep_ids) && length(keep_ids)) {
     sel <- sid %in% keep_ids
     st  <- st[sel]
@@ -310,11 +333,11 @@ poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
 
   out <- data.frame(
     polled_at_utc       = utc_now(),
-    last_reported       = pluck(st, "last_reported", "numeric"),
+    last_reported       = pluck(st, c("last_reported", "last_updated")),
     station_id          = sid,
-    num_bikes_available = pluck(st, "num_bikes_available", "integer"),
-    num_docks_available = pluck(st, "num_docks_available", "integer"),
-    num_bikes_disabled  = pluck(st, "num_bikes_disabled", "integer"),
+    num_bikes_available = pluck(st, c("num_bikes_available", "num_vehicles_available"), "integer"),
+    num_docks_available = pluck(st, c("num_docks_available", "num_vehicle_docks_available"), "integer"),
+    num_bikes_disabled  = pluck(st, c("num_bikes_disabled", "num_vehicles_disabled"), "integer"),
     is_installed        = pluck(st, "is_installed", "integer"),
     is_renting          = pluck(st, "is_renting", "integer"),
     is_returning        = pluck(st, "is_returning", "integer"),
