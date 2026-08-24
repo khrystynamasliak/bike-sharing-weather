@@ -38,13 +38,26 @@ on:
   workflow_dispatch:
     inputs:
       city:
-        description: 'City filter (blank = whole network)'
+        description: 'City filter (leave BLANK for the whole country)'
         required: false
-        default: 'Bern'
+        default: ''
       interval:
         description: 'Seconds between polls'
         required: false
         default: '60'
+      duration:
+        description: 'Minutes to collect. Use 2 for a quick test, 320 for a real run.'
+        required: false
+        default: '320'
+      feed:
+        description: 'GBFS feed. Velospot is the live PubliBike network since the merger.'
+        required: false
+        default: 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs'
+        type: choice
+        options:
+          - 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs'
+          - 'https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json'
+          - 'https://api.publibike.ch/v1/gbfs/v2/gbfs.json'
   schedule:
     # Watchdog only. Restarts the chain if a run failed and never dispatched
     # its successor. Deliberately at :17 rather than :00, since delays are
@@ -80,14 +93,17 @@ jobs:
         with:
           packages: jsonlite
 
-      - name: Collect for 5h30m
+      - name: Collect
         env:
-          CITY: ${{ github.event.inputs.city || 'Bern' }}
+          CITY: ${{ github.event.inputs.city || '' }}
           INTERVAL: ${{ github.event.inputs.interval || '60' }}
+          DURATION: ${{ github.event.inputs.duration || '320' }}
+          FEED: ${{ github.event.inputs.feed || 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs' }}
         run: |
           TAG=$(date -u +%Y%m%dT%H%M%SZ)
-          echo "Run tag: $TAG"
-          ARGS="--interval $INTERVAL --duration 320 --tag $TAG --outdir data"
+          echo "Run tag: $TAG  city='$CITY'  interval=${INTERVAL}s  duration=${DURATION}min"
+          echo "Feed: $FEED"
+          ARGS="--interval $INTERVAL --duration $DURATION --tag $TAG --outdir data --feed $FEED"
           if [ -n "$CITY" ]; then ARGS="$ARGS --city $CITY"; fi
           Rscript R/01_collect_publibike.R $ARGS
 
@@ -121,6 +137,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.COLLECTOR_PAT }}
         run: |
+          DURATION="${{ github.event.inputs.duration || '320' }}"
+          if [ "$DURATION" -lt 60 ]; then
+            echo "Short test run (${DURATION} min) - not chaining. Re-run with"
+            echo "duration 320 to start continuous collection."
+            exit 0
+          fi
           if [ -z "$GH_TOKEN" ]; then
             echo "::warning::COLLECTOR_PAT is not set - the chain stops here."
             echo "Collection will only resume at the next 6-hourly watchdog,"
@@ -130,6 +152,8 @@ jobs:
           gh workflow run "${{ github.workflow }}" \
             --repo "${{ github.repository }}" \
             --ref "${{ github.ref_name }}" \
-            -f city="${{ github.event.inputs.city || 'Bern' }}" \
-            -f interval="${{ github.event.inputs.interval || '60' }}"
+            -f city="${{ github.event.inputs.city || '' }}" \
+            -f interval="${{ github.event.inputs.interval || '60' }}" \
+            -f duration="320" \
+            -f feed="${{ github.event.inputs.feed || 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs' }}"
           echo "Next run dispatched."
