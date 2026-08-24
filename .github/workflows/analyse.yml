@@ -1,0 +1,126 @@
+name: Analyse collected data
+
+# ---------------------------------------------------------------------------
+# Runs the whole pipeline on whatever has been collected so far:
+#   02_derive_flows      - differences the stock series into flows
+#   03_fetch_meteoswiss  - downloads hourly weather for the nearest station
+#   04_join_and_analyse  - joins the two sources and reports the relationship
+#
+# Also reports how often the GBFS feed actually changes, which determines
+# whether flow inference is viable at all.
+#
+# Run it from Actions > "Analyse collected data" > Run workflow.
+# Results appear in the job log AND are committed to derived/.
+# ---------------------------------------------------------------------------
+
+on:
+  workflow_dispatch:
+    inputs:
+      shift_weather:
+        description: 'Shift weather forward by N hours (MeteoSwiss hours look backward)'
+        required: false
+        default: '0'
+      city:
+        description: 'Optional: restrict analysis to stations matching this string'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: jsonlite
+
+      # How often does the feed actually change? If values are static across
+      # consecutive polls, differencing cannot recover flows and the sampling
+      # interval needs rethinking. This runs first because it determines
+      # whether the rest is meaningful.
+      - name: Measure the feed refresh rate
+        run: |
+          cat > /tmp/refresh.R <<'RSCRIPT'
+          files <- list.files("data/station_status", pattern="\\.csv\\.gz$", full.names=TRUE)
+          if (length(files) == 0) stop("No collected data yet.")
+          df <- do.call(rbind, lapply(files, function(f) read.csv(gzfile(f), stringsAsFactors=FALSE)))
+          df$t <- as.POSIXct(df$polled_at_utc, format="%Y-%m-%dT%H:%M:%S", tz="UTC")
+          df <- df[order(df$station_id, df$t), ]
+
+          polls <- sort(unique(df$t))
+          cat("Polls:", length(polls), " from", format(min(polls)), "to", format(max(polls)), "\n")
+          if (length(polls) < 2) { cat("Need at least 2 polls.\n"); quit(status=0) }
+          gaps <- as.numeric(diff(polls), units="secs")
+          cat("Median gap between polls:", round(median(gaps)), "seconds\n\n")
+
+          # fraction of consecutive readings where the value moved
+          chg <- ave(df$num_bikes_available, df$station_id,
+                     FUN=function(v) c(NA, diff(v) != 0))
+          cat("Consecutive readings compared:", sum(!is.na(chg)), "\n")
+          cat("...of which the bike count changed:", sum(chg, na.rm=TRUE),
+              sprintf(" (%.2f%%)\n", 100*mean(chg, na.rm=TRUE)))
+
+          # per-poll: did ANY station move?
+          moved <- tapply(chg, df$t, function(x) sum(x, na.rm=TRUE))
+          moved <- moved[-1]
+          cat("\nPolls where at least one station moved:", sum(moved > 0), "of", length(moved),
+              sprintf(" (%.0f%%)\n", 100*mean(moved > 0)))
+          cat("Median stations moving per poll:", median(moved), "\n\n")
+
+          if (mean(moved > 0) < 0.2) {
+            cat("WARNING: the feed rarely changes between polls. Either it is cached\n")
+            cat("or it refreshes slowly. Estimate the true refresh interval from the\n")
+            cat("figures above and consider polling less often - or, if the interval\n")
+            cat("is hours rather than minutes, flow inference is not viable and the\n")
+            cat("project should pivot to occupancy-level analysis.\n")
+          } else {
+            cat("Feed is updating at a usable rate. Flow inference is viable.\n")
+          }
+          RSCRIPT
+          Rscript /tmp/refresh.R
+
+      - name: Derive flows
+        run: Rscript R/02_derive_flows.R --data data --out derived
+
+      - name: Fetch MeteoSwiss weather
+        run: |
+          echo "--- nearest weather stations ---"
+          Rscript R/03_fetch_meteoswiss.R --stations derived/stations.csv --list || true
+          echo "--- downloading ---"
+          Rscript R/03_fetch_meteoswiss.R --stations derived/stations.csv --out derived
+
+      - name: Join and analyse
+        run: |
+          Rscript R/04_join_and_analyse.R --derived derived \
+            --shift-weather "${{ github.event.inputs.shift_weather || '0' }}"
+
+      - name: Summarise outputs
+        if: always()
+        run: |
+          echo "--- derived files ---"
+          ls -la derived/ 2>/dev/null || echo "none"
+
+      - name: Commit derived tables
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f derived/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "Nothing new to commit."
+          else
+            git commit -m "analysis: derived tables $(date -u +%Y-%m-%dT%H:%MZ)"
+            git pull --rebase --autostash origin ${{ github.ref_name }} || true
+            git push
+          fi
