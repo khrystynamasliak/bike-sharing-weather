@@ -170,12 +170,60 @@ discover_feeds <- function(discovery_url) {
 }
 
 # Locate the station array wherever it sits in the response.
+#
+# The GBFS spec says data.stations, but operators nest things differently in
+# practice (under a language key, under a network key, as a named object rather
+# than an array). Rather than guessing paths, walk the parsed structure and find
+# any list of records that carries a station_id. That works whatever the shape.
+looks_like_station <- function(x) {
+  is.list(x) && !is.null(names(x)) &&
+    any(c("station_id", "stationId", "id") %in% names(x))
+}
+
+find_station_array <- function(node, depth = 0) {
+  if (depth > 6 || !is.list(node)) return(NULL)
+
+  # An unnamed list whose elements look like station records.
+  if (is.null(names(node)) && length(node) > 0) {
+    hits <- vapply(node, looks_like_station, logical(1))
+    if (all(hits)) return(node)
+  }
+
+  # A named object whose *values* look like station records (id-keyed map).
+  if (!is.null(names(node)) && length(node) > 0 && !looks_like_station(node)) {
+    hits <- vapply(node, looks_like_station, logical(1))
+    if (length(hits) > 1 && all(hits)) return(unname(node))
+  }
+
+  # A single record on its own.
+  if (looks_like_station(node) && !is.null(node[["station_id"]])) return(list(node))
+
+  # Recurse, preferring the largest array found.
+  best <- NULL
+  for (child in node) {
+    got <- find_station_array(child, depth + 1)
+    if (!is.null(got) && (is.null(best) || length(got) > length(best))) best <- got
+  }
+  best
+}
+
 extract_stations <- function(doc) {
-  st <- doc$data$stations
-  if (is.null(st)) st <- doc$stations
-  if (is.null(st) || !is.list(st)) return(list())
-  if (!is.null(names(st))) st <- list(st)   # a single record rather than an array
-  st
+  st <- doc$data$stations                       # the spec-compliant path first
+  if (!is.null(st) && is.list(st) && length(st) > 0) {
+    if (!is.null(names(st)) && looks_like_station(st)) return(list(st))
+    if (!is.null(names(st))) return(unname(st))
+    return(st)
+  }
+  found <- find_station_array(doc)
+  if (is.null(found)) list() else found
+}
+
+# Print enough of the response to diagnose an unexpected shape, without dumping
+# megabytes into the Actions log.
+dump_shape <- function(doc, label) {
+  cat("\n---- raw structure of ", label, " ----\n", sep = "")
+  utils::str(doc, max.level = 4, list.len = 12, give.attr = FALSE, nchar.max = 120)
+  cat("---- end structure ----\n\n")
 }
 
 # ---- diagnostics -----------------------------------------------------------
@@ -213,8 +261,8 @@ write_station_information <- function(endpoints, outdir, city, tag = NULL) {
   doc <- get_json(endpoints[["station_information"]])
   st  <- extract_stations(doc)
   if (length(st) == 0) {
-    stop("station_information returned no records. Run with --inspect to dump ",
-         "the raw structure.")
+    dump_shape(doc, "station_information")
+    stop("station_information returned no records - see the structure dumped above.")
   }
   log_msg("station_information: ", length(st), " records returned by the feed")
 
@@ -247,7 +295,10 @@ write_station_information <- function(endpoints, outdir, city, tag = NULL) {
 poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
   doc <- get_json(endpoints[["station_status"]])
   st  <- extract_stations(doc)
-  if (length(st) == 0) stop("station_status returned no records.")
+  if (length(st) == 0) {
+    dump_shape(doc, "station_status")
+    stop("station_status returned no records - see the structure dumped above.")
+  }
 
   sid <- pluck(st, "station_id")
   if (!is.null(keep_ids) && length(keep_ids)) {
