@@ -242,24 +242,82 @@ parse_timestamps <- function(x) {
   best
 }
 
+# Every column that could plausibly hold a timestamp, best candidates first.
+candidate_time_cols <- function(df) {
+  pats <- list(c("reference_timestamp"), c("timestamp"), c("datetime"),
+               c("date", "time"), c("time"), c("date"))
+  found <- character(0)
+  for (p in pats) {
+    hit <- find_col(df, p)
+    if (!is.null(hit) && !(hit %in% found)) found <- c(found, hit)
+  }
+  found
+}
+
+# Score a parsed vector: fraction parsed, plus a large bonus if it actually
+# carries a time of day. A date-only column parses "successfully" while
+# silently destroying the join, so the bonus has to dominate.
+score_parse <- function(ts) {
+  ok <- mean(!is.na(ts))
+  if (ok == 0) return(-1)
+  hods <- length(unique(format(ts[!is.na(ts)], "%H")))
+  ok + (hods > 1) * 10
+}
+
 tidy_weather <- function(df) {
-  time_col <- find_col(df, "reference_timestamp")
-  if (is.null(time_col)) time_col <- find_col(df, "time")
-  if (is.null(time_col)) time_col <- find_col(df, "date")
-  if (is.null(time_col)) stop("No timestamp column. Columns: ",
-                              paste(names(df), collapse = ", "))
-  cat("  timestamp column:  ", time_col, "\n", sep = "")
+  cols <- candidate_time_cols(df)
+  if (length(cols) == 0) {
+    stop("No timestamp-like column found. Columns present: ",
+         paste(names(df), collapse = ", "))
+  }
+  cat("  candidate time columns: ", paste(cols, collapse = ", "), "\n", sep = "")
 
-  ts <- parse_timestamps(df[[time_col]])
+  best <- NULL; best_col <- NA; best_fmt <- NA; best_score <- -1
+  for (col in cols) {
+    x <- trimws(as.character(df[[col]]))
+    cat("  trying '", col, "' - samples: ",
+        paste(utils::head(x, 2), collapse = " | "), "\n", sep = "")
+    for (fmt in TIME_FORMATS) {
+      ts <- suppressWarnings(as.POSIXct(x, format = fmt, tz = "UTC"))
+      sc <- score_parse(ts)
+      if (sc > best_score) { best <- ts; best_col <- col; best_fmt <- fmt; best_score <- sc }
+    }
+  }
 
-  out <- data.frame(hour = ts, stringsAsFactors = FALSE)
+  # If no explicit format worked, let R guess on the best-looking column.
+  if (best_score < 0) {
+    x <- trimws(as.character(df[[cols[1]]]))
+    best <- tryCatch(suppressWarnings(as.POSIXct(x, tz = "UTC")),
+                     error = function(e) rep(as.POSIXct(NA, tz = "UTC"), length(x)))
+    best_col <- cols[1]; best_fmt <- "auto"
+    if (all(is.na(best))) {
+      stop("Could not parse any timestamp. Samples from '", cols[1], "': ",
+           paste(utils::head(x, 3), collapse = " | "))
+    }
+  }
+
+  hods <- length(unique(format(best[!is.na(best)], "%H")))
+  cat("  CHOSEN: column '", best_col, "' with format '", best_fmt, "' - ",
+      round(100 * mean(!is.na(best))), "% parsed, ", hods,
+      " distinct hours-of-day\n", sep = "")
+
+  if (hods <= 1) {
+    cat("\n  *** WARNING ***\n")
+    cat("  The timestamps carry no time of day, so every reading collapses onto\n")
+    cat("  midnight and the join to bike data will find nothing. The column\n")
+    cat("  samples printed above show what MeteoSwiss actually sent - if they do\n")
+    cat("  contain a time, the format list in TIME_FORMATS needs the matching\n")
+    cat("  pattern adding.\n\n")
+  }
+
+  out <- data.frame(hour = best, stringsAsFactors = FALSE)
   station_col <- find_col(df, "station", "abbr")
   if (!is.null(station_col)) out$weather_station_abbr <- df[[station_col]]
 
   renamed <- 0
   for (nm in names(df)) {
     key <- tolower(trimws(nm))
-    if (identical(nm, time_col) || identical(nm, station_col)) next
+    if (identical(nm, best_col) || identical(nm, station_col)) next
     target <- if (key %in% names(PARAM_NAMES)) {
       renamed <- renamed + 1; PARAM_NAMES[[key]]
     } else key
@@ -268,7 +326,8 @@ tidy_weather <- function(df) {
 
   out <- out[!is.na(out$hour), ]
   out <- out[order(out$hour), ]
-  # Snap to the exact hour so the join key matches the bike side.
+  # Snap to the exact hour so the key matches the bike side, and drop any
+  # duplicates introduced by overlapping 'now' and 'recent' files.
   out$hour <- as.POSIXct(round(as.numeric(out$hour) / 3600) * 3600,
                          origin = "1970-01-01", tz = "UTC")
   out <- out[!duplicated(out$hour), ]
