@@ -1,6 +1,0 @@
-# Raw collected data IS committed (that's the point of the CI collector),
-# but derived tables are regenerated from it, so keep them out of git.
-derived/
-*.Rhistory
-.Rproj.user/
-.RData
