@@ -50,13 +50,32 @@ check_overlap <- function(flow, weather) {
   ov <- intersect(as.numeric(fh), as.numeric(wh))
   cat(sprintf("\nDistinct hours - bike: %d, weather: %d, overlap: %d\n",
               length(fh), length(wh), length(ov)))
+
   if (length(ov) == 0) {
-    stop("\nNo overlapping hours. Common causes:\n",
-         "  * the weather file is the historical archive, which ends before your\n",
-         "    collection started - re-run 03_fetch_meteoswiss.R without --historical\n",
-         "  * a timezone mismatch - both sources should be UTC\n",
-         "  * MeteoSwiss 'now' files lag by an hour or two; wait and re-fetch")
+    cat("\n--- diagnosing the zero overlap ---\n")
+    cat("bike hours:    ", paste(format(utils::head(sort(fh), 3)), collapse = ", "),
+        if (length(fh) > 3) " ..." else "", "\n", sep = "")
+    cat("weather hours: ", paste(format(utils::head(sort(wh), 3)), collapse = ", "),
+        if (length(wh) > 3) " ..." else "", "\n", sep = "")
+
+    w_hods <- length(unique(format(wh, "%H")))
+    if (w_hods <= 1) {
+      cat("\nCAUSE: the weather timestamps carry no time-of-day - every reading\n")
+      cat("sits at midnight. Re-run 03_fetch_meteoswiss.R and check the\n")
+      cat("'parsed with format' line it now prints.\n")
+    } else if (max(wh) < min(fh)) {
+      cat("\nCAUSE: the weather series ends before your collection began.\n")
+      cat("MeteoSwiss 'now' files lag a little; wait an hour and re-fetch.\n")
+    } else if (length(fh) <= 2) {
+      cat("\nCAUSE: you have only ", length(fh), " hour(s) of bike data, which does not\n", sep = "")
+      cat("yet coincide with a published weather hour. This resolves itself once\n")
+      cat("collection has run for a few hours - it is not a bug.\n")
+    } else {
+      cat("\nCAUSE: unclear. Check both sources are UTC, and try --shift-weather 1.\n")
+    }
+    stop("No overlapping hours - see the diagnosis above.")
   }
+
   if (length(ov) < length(fh) * 0.8) {
     cat(sprintf("WARNING: only %.0f%% of bike hours have weather. ",
                 100 * length(ov) / length(fh)),
