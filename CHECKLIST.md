@@ -7,13 +7,16 @@
 
 ## Read this first — where things stand
 
-Collection has **not started yet**. The two runs on 24 August were both
-`duration 2` test runs, and a run under 60 minutes deliberately does not chain
-to a successor, so each one collected two polls and stopped. That is the
-workflow behaving as designed; it just was not the run you wanted.
+**Collection is running and has been since 24 August, 19:01 UTC.** Three runs so
+far, all started by the 6-hourly schedule. You have roughly 13.5 hours of the
+whole Swiss network, and a run is in progress now.
 
-Three things were also found and fixed while checking the pipeline, and they
-matter for what you write up:
+The raw files look enormous (13 MB, 1.03M rows) because the old collector wrote
+one row per poll while the feed only publishes every ~15 minutes: **93.5% of
+those rows are the same snapshot re-recorded.** After de-duplication there are
+41 genuine snapshots. `02_derive_flows.R` does that automatically.
+
+Four things were found and fixed, and they matter for what you write up:
 
 - The feed publishes **far less often than its `ttl: 60` claims, and
   irregularly** — 38 minutes of polling yielded three distinct snapshots, with a
@@ -24,6 +27,9 @@ matter for what you write up:
   keyed on identity, so out-of-order arrivals are kept rather than thrown away.
 - Every `bikes_type_*` column was **silently all zeros** — a regex bug meant the
   e-bike/classic split never worked. It does now, which makes Q3 answerable.
+- The data already collected carries the replica artifact (3.9% of polls
+  returned to a state already seen). It is **recovered automatically** — no need
+  to discard it or recollect.
 
 `docs/DATA_QUALITY.md` has the measurements behind all three.
 
@@ -41,14 +47,12 @@ matter for what you write up:
       Settings → Actions → General → Workflow permissions →
       **Read and write permissions** → Save.
 
-- [ ] **Create the chaining token** (skip if `COLLECTOR_PAT` already exists).
-      Settings (your account) → Developer settings → Personal access tokens →
-      Fine-grained tokens → Generate new token.
-      - Repository access: only this repo
-      - Permissions: **Actions: Read and write**, **Contents: Read and write**
-      - Expiry: 30 days is fine
-      Save it as a repository secret named `COLLECTOR_PAT`
-      (Settings → Secrets and variables → Actions).
+- [ ] ~~Create the chaining token~~ **No longer needed.** You never set
+      `COLLECTOR_PAT`, which is why the chaining step did nothing and every run
+      came from the schedule — leaving a 93-minute gap between the first two
+      runs. The schedule now fires every 5 hours instead of 6, so a successor is
+      always queued before the current 5h20m run ends and the concurrency group
+      starts it on handover. No secret, nothing to expire.
 
 - [ ] **Test the feed locally first** (catches a dead URL before you wait hours):
       ```bash
@@ -59,15 +63,24 @@ matter for what you write up:
       Expect `Scope: 272 of 1663 stations within 5 km of Bern`.
       If it fails, fix it before starting the workflow. Do not skip.
 
-- [ ] **Delete the local test data** so it does not confuse the real run:
-      `rm -rf data/station_status data/station_information data/poll_log`
+- [ ] **Do NOT delete `data/`.** It holds 13.5 hours of real collection,
+      including every one of the 272 Bern stations. If you ran the local test
+      above, remove only what it wrote: `git checkout -- data/ && git clean -fd data/`
 
-- [ ] **Start collection.**
+- [ ] **Switch the run to Bern.**
       Actions tab → "Collect PubliBike data" → Run workflow →
       city `Bern`, radius `5`, interval `30`, **duration `320`**, probe `false`.
 
+      It will sit as *pending* until the run currently in progress finishes —
+      that is the concurrency group doing its job, not a fault.
+
       ⚠️ **Duration must be 320.** Anything under 60 is treated as a test and
-      will not chain — that is what stopped collection yesterday.
+      does not chain.
+
+      Nothing is lost by switching: all 272 Bern stations are already in the
+      collected history, and `02_derive_flows.R` keeps their past rows while
+      dropping the other cities. Pass `--all-stations` if you ever want the
+      nationwide view back.
 
 - [ ] **Confirm it is running and chaining.** Within 2 minutes a run should
       appear. Open it and check:

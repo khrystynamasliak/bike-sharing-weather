@@ -30,12 +30,14 @@ name: Collect PubliBike data
 #  2. Settings > Actions > General > Workflow permissions:
 #     select "Read and write permissions" so the job can commit data back.
 #
-#  3. Create a fine-grained Personal Access Token with "Actions: read and
-#     write" and "Contents: read and write" on this repo, and save it as a
-#     repository secret named COLLECTOR_PAT.
-#     This is needed because a workflow_dispatch triggered by the default
-#     GITHUB_TOKEN does NOT start a new workflow run - GitHub blocks that to
-#     prevent runaway recursion. Without the PAT the chain stops after one run.
+#  3. OPTIONAL: a fine-grained Personal Access Token with "Actions: read and
+#     write" and "Contents: read and write" on this repo, saved as a repository
+#     secret named COLLECTOR_PAT.
+#     A workflow_dispatch triggered by the default GITHUB_TOKEN does NOT start a
+#     new run - GitHub blocks that to prevent runaway recursion - so without the
+#     PAT the explicit chaining step below does nothing. That is now only a
+#     latency optimisation: the 5-hourly schedule already queues a successor
+#     before each run ends, so collection is continuous either way.
 #
 # TO START: go to Actions > "Collect PubliBike data" > Run workflow.
 #           Leave duration at 320. A duration under 60 is treated as a TEST and
@@ -89,10 +91,20 @@ on:
           - 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs'
           - 'https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json'
   schedule:
-    # Watchdog only. Restarts the chain if a run failed and never dispatched
-    # its successor. Deliberately at :17 rather than :00, since delays are
-    # worst at the top of the hour.
-    - cron: '17 */6 * * *'
+    # This is the PRIMARY mechanism, not a fallback.
+    #
+    # Runs last 5h20m and this fires every 5 hours, so a successor is always
+    # queued before the current run ends. The concurrency group below holds it
+    # pending, then starts it the moment the predecessor exits - a seamless
+    # handover with no token, no secret and nothing to expire.
+    #
+    # The previous '*/6' left a gap every cycle, because a 6-hourly trigger
+    # cannot cover a 5h20m run once GitHub's scheduling delay is added. The
+    # 24-25 Aug runs lost 93 minutes that way.
+    #
+    # :17 rather than :00 because scheduling delays are worst at the top of the
+    # hour. Explicit hours rather than */5, which would jump 20:00 -> 00:00.
+    - cron: '17 0,5,10,15,20 * * *'
 
 # Never run two collectors at once - they would poll the same feed twice and
 # double-count. A new run waits rather than overlapping.
@@ -206,10 +218,10 @@ jobs:
             exit 0
           fi
           if [ -z "$GH_TOKEN" ]; then
-            echo "::warning::COLLECTOR_PAT is not set - the chain stops here."
-            echo "Collection will only resume at the next 6-hourly watchdog,"
-            echo "which may be delayed. See the setup notes at the top of this file."
-            echo "CHAINED=no (COLLECTOR_PAT missing)" >> $GITHUB_ENV
+            echo "COLLECTOR_PAT is not set, so this run cannot dispatch its own"
+            echo "successor. That is fine: the 5-hourly schedule has already"
+            echo "queued one, and the concurrency group starts it as this exits."
+            echo "CHAINED=no (no PAT; the 5-hourly schedule covers the handover)" >> $GITHUB_ENV
             exit 0
           fi
           gh workflow run "${{ github.workflow }}" \
