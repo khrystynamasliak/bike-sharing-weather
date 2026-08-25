@@ -79,6 +79,7 @@ than "there is a gap and we do not know why".
 | `R/02_derive_flows.R` | Differences occupancy into flows; joins the station dimension |
 | `R/03_fetch_meteoswiss.R` | Finds nearest weather station, downloads hourly data |
 | `R/04_join_and_analyse.R` | Merges on the hour, reports the weather–demand relationship |
+| `R/05_explore.R` | Exploratory analysis and the figures for the writeup |
 
 Dependencies: `jsonlite`, and the `curl` binary (present on macOS, Linux and
 GitHub runners). Everything else is base R.
@@ -93,7 +94,12 @@ Rscript R/01_collect_publibike.R --once --city Bern           # validate
 Rscript R/02_derive_flows.R --data data --out derived
 Rscript R/03_fetch_meteoswiss.R --stations derived/stations.csv --out derived
 Rscript R/04_join_and_analyse.R --derived derived
+Rscript R/05_explore.R --derived derived --out figures
 ```
+
+`05_explore.R` is the one to run while writing up. It prints the numbers a
+methods section needs — sample sizes, coverage, the wet/dry split — refuses to
+fit a model on too few hours, and writes five figures to `figures/`.
 
 Collection itself runs on GitHub Actions — see `docs/GITHUB_SETUP.md`.
 

@@ -392,6 +392,7 @@ main <- function() {
   write.csv(weather, file.path(opts$out, "weather_stations.csv"), row.names = FALSE)
 
   abbr <- opts$abbr
+  ranked <- NULL
   if (!is.null(opts$stations)) {
     bikes <- read.csv(opts$stations, stringsAsFactors = FALSE)
     clat <- mean(as.numeric(bikes$lat), na.rm = TRUE)
@@ -435,20 +436,67 @@ main <- function() {
     }
   }
 
-  cat("\nFetching hourly data for", abbr, "\n")
-  hrefs <- find_hourly_assets(abbr)
-  parts <- list()
-  for (h in hrefs) {
-    nm <- basename(h)
-    if (!opts$historical && grepl("historical", tolower(nm))) next
-    cat("  downloading", nm, "\n")
-    parts[[length(parts) + 1]] <- read_ms_csv(h)
-  }
-  if (length(parts) == 0) stop("Nothing downloaded.")
+  # Being NEAREST does not mean being USABLE.
+  #
+  # Bantiger sits 7 km from the centre of Bern and is listed as an "automatic
+  # weather station", but it publishes only radiation and sunshine - no
+  # temperature, no precipitation. Selected blindly it yields a weather table
+  # with empty columns, and 04 then joins successfully against nothing at all.
+  # So: fetch, check the parameters the analysis actually needs are populated,
+  # and if they are not, move down the list of nearest stations.
+  REQUIRED <- c("temp_c", "precip_mm")
 
-  common <- Reduce(intersect, lapply(parts, names))
-  raw <- do.call(rbind, lapply(parts, function(p) p[, common, drop = FALSE]))
-  tidy <- tidy_weather(raw)
+  fetch_one <- function(a) {
+    cat("\nFetching hourly data for", a, "\n")
+    hrefs <- tryCatch(find_hourly_assets(a), error = function(e) {
+      cat("  no hourly assets:", conditionMessage(e), "\n"); NULL })
+    if (is.null(hrefs)) return(NULL)
+    parts <- list()
+    for (h in hrefs) {
+      nm <- basename(h)
+      if (!opts$historical && grepl("historical", tolower(nm))) next
+      cat("  downloading", nm, "\n")
+      parts[[length(parts) + 1]] <- read_ms_csv(h)
+    }
+    if (length(parts) == 0) return(NULL)
+    common <- Reduce(intersect, lapply(parts, names))
+    raw <- do.call(rbind, lapply(parts, function(p) p[, common, drop = FALSE]))
+    tidy_weather(raw)
+  }
+
+  usable <- function(d) {
+    if (is.null(d)) return(FALSE)
+    have <- vapply(REQUIRED, function(v) v %in% names(d) && any(!is.na(d[[v]])),
+                   logical(1))
+    if (all(have)) return(TRUE)
+    cat("  UNUSABLE: no data for ", paste(REQUIRED[!have], collapse = ", "),
+        ". This station does not measure them.\n", sep = "")
+    FALSE
+  }
+
+  tidy <- fetch_one(abbr)
+
+  # Only walk the list when the station was chosen automatically. An explicit
+  # --station-abbr is an instruction, so it fails loudly instead.
+  if (!usable(tidy)) {
+    if (!is.null(opts$abbr) || is.null(ranked)) {
+      stop("Station '", abbr, "' publishes no ",
+           paste(REQUIRED, collapse = "/"), ". Choose another with --station-abbr, ",
+           "or run --list to see what is nearby.")
+    }
+    for (i in seq_len(min(6, nrow(ranked)))) {
+      cand <- ranked$weather_station_abbr[i]
+      if (identical(cand, abbr)) next
+      cat("\n-> falling back to the next nearest station: ", cand,
+          sprintf(" (%.1f km)\n", ranked$distance_km[i]), sep = "")
+      tidy <- fetch_one(cand)
+      if (usable(tidy)) { abbr <- cand; break }
+    }
+    if (!usable(tidy)) {
+      stop("None of the nearest stations publish ", paste(REQUIRED, collapse = "/"), ".")
+    }
+    cat("\nUsing ", abbr, " instead.\n", sep = "")
+  }
 
   path <- file.path(opts$out, "weather_hourly.csv")
   write.csv(tidy, path, row.names = FALSE)

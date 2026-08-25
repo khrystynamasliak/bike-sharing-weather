@@ -189,6 +189,52 @@ only because the proposal said so: it is among the two healthiest in the feed
 and the largest of those. Basel looks attractive on station count and is
 essentially dead in this feed.
 
+## 5b. How far does one weather station's reading travel?
+
+The single-station join is the project's biggest methodological bet, so it was
+measured rather than assumed. Four MeteoSwiss stations, same 19 hours as the
+first collection window, all compared against **BER** (Zollikofen, 4.9 km from
+the centre of Bern):
+
+| Station | Distance | Elevation | Mean abs. temp difference | Total rain | Wet/dry hours agreeing |
+|---|---|---|---|---|---|
+| **BER** | 4.9 km | 553 m | — | 23.2 mm | — |
+| MUB (Mühleberg) | 13.1 km | 480 m | 0.60 °C (r = 0.985) | 18.6 mm | 89% |
+| SPF (Schüpfheim) | 42.9 km | 744 m | 1.14 °C (r = 0.958) | **7.4 mm** | **74%** |
+| BAN (Bantiger) | 7.0 km | 942 m | *publishes neither* | — | — |
+
+**Temperature travels; rain does not.** At 13 km the temperature series is
+effectively interchangeable — 0.6 °C apart, correlated at 0.985. Rainfall over
+the same hours is already 20% lower. At 43 km the station reports **less than a
+third of the rain** and disagrees about whether it was raining at all in a
+quarter of the hours.
+
+The wettest hour makes it concrete: BER recorded 10.2 mm, Mühleberg 8.2 mm,
+Schüpfheim 2.8 mm — one weather event, three quite different stories.
+
+**Consequence.** A compact city network against a weather station a few
+kilometres away is defensible, and is what the pipeline now does. The same
+method applied to the full Swiss feed — whose centroid falls 43 km from Bern,
+next to Schüpfheim — would have attached roughly a third of the true rainfall to
+Bern's traffic. The scoping decision is not tidiness; it is the difference
+between measuring the weather and measuring a different valley.
+
+Residual error to report in the limitations: even at 5 km, precipitation is
+point-measured and the network spans 5 km in every direction, so hourly rain is
+an approximation for most stations in the network.
+
+### Nearest is not the same as usable
+
+Bantiger is 7 km from the centre and listed as an automatic weather station, but
+it publishes **only radiation and sunshine** — no temperature, no precipitation.
+Chosen blindly it produces a weather table whose analysis columns are entirely
+empty, and `04_join_and_analyse.R` then joins successfully against nothing.
+
+`03_fetch_meteoswiss.R` now checks that `temp_c` and `precip_mm` are actually
+populated. If the station was auto-selected it walks down the list of nearest
+stations until one qualifies; if it was named explicitly with `--station-abbr`
+it stops with an error rather than silently returning empty columns.
+
 ## 6. Fields the spec promises and this feed does not deliver
 
 `num_docks_available` and `num_bikes_disabled` are absent from every record.

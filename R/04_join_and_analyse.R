@@ -144,6 +144,30 @@ build_network_hourly <- function(flow, weather) {
   names(net)[names(net) %in% c("departures", "arrivals", "turnover")] <-
     paste0("total_", c("departures", "arrivals", "turnover"))
 
+  # Carry the per-vehicle-type flows up to the network level too.
+  #
+  # Without these, Q3 - are e-bike users less weather-sensitive than classic-bike
+  # users? - cannot be asked of this table at all: the split exists in
+  # hourly_flow.csv and stopped here. They are summed, not averaged, for the same
+  # reason the totals are.
+  #
+  # Note they will NOT sum to total_turnover. A swap - one e-bike out, one
+  # mechanical in - moves both type series while barely moving the total.
+  type_cols <- grep("^(departures|arrivals|turnover)_", names(flow), value = TRUE)
+  for (v in type_cols) net <- merge(net, agg(v), by = "hour")
+
+  # How much of the network was moving at all. A useful denominator, and the
+  # thing to check before comparing an early sparse hour with a later dense one.
+  act <- aggregate(as.integer(flow$turnover > 0), by = list(hour = flow$hour), FUN = sum)
+  names(act)[2] <- "stations_moving"
+  net <- merge(net, act, by = "hour")
+  if ("observations" %in% names(flow)) {
+    ob <- aggregate(flow$observations, by = list(hour = flow$hour),
+                    FUN = function(x) round(mean(x, na.rm = TRUE), 2))
+    names(ob)[2] <- "mean_observations"
+    net <- merge(net, ob, by = "hour")
+  }
+
   emp <- aggregate(as.integer(flow$is_empty), by = list(hour = flow$hour), FUN = sum)
   names(emp)[2] <- "stations_empty"
   # Nominal capacity, not physical docks - see the note in 02_derive_flows.R.
