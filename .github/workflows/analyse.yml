@@ -18,6 +18,20 @@ name: Analyse collected data
 # ---------------------------------------------------------------------------
 
 on:
+  # SELF-EXPIRING SCHEDULE - 26, 27 and 28 August 2026 only.
+  #
+  # Restricting day-of-month and month means this stops firing on its own after
+  # the 28th; there is nothing to remember to switch off. From the 29th the
+  # workflow is manual again, which is what you want for the final run before a
+  # deadline - deliberate, not automatic.
+  #
+  # 05:40 UTC is 07:40 local, so a fresh derived/ is waiting each morning. The
+  # minute deliberately avoids :17, when the collector's own schedule fires.
+  #
+  # To extend: add days to the list. To stop early: delete the schedule block.
+  schedule:
+    - cron: '40 5 26,27,28 8 *'
+
   workflow_dispatch:
     inputs:
       shift_weather:
@@ -31,6 +45,13 @@ on:
 
 permissions:
   contents: write
+
+# Two analyses rewriting derived/ at once would race each other to the branch
+# tip. The collector has its own separate group, so a scheduled analysis can
+# still run while collection is in progress - it only reads data/.
+concurrency:
+  group: publibike-analyse
+  cancel-in-progress: false
 
 jobs:
   analyse:
@@ -88,7 +109,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f derived/ 2>/dev/null || true
+          # No -f: derived/ is tracked normally, and .gitignore excludes
+          # flow_with_weather.csv, which is 10 MB of pure redundancy.
+          git add derived/
           if git diff --staged --quiet; then
             echo "Nothing new to commit."
             exit 0
