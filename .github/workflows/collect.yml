@@ -8,10 +8,18 @@ name: Collect PubliBike data
 # monitor it have measured */5 jobs firing around 5% of their slots. That would
 # destroy the sampling structure this project depends on.
 #
-# Instead this runs ONE LONG JOB that polls internally every minute for 5h30m,
-# then commits its data and dispatches the next run. GitHub-hosted jobs are
-# killed at 6 hours, so we exit before that. A cron entry every 6 hours acts
-# only as a watchdog in case the chain breaks.
+# Instead this runs ONE LONG JOB that polls internally for 5h20m, then commits
+# its data and dispatches the next run. GitHub-hosted jobs are killed at 6
+# hours, so we exit before that. A cron entry every 6 hours acts only as a
+# watchdog in case the chain breaks.
+#
+# ON THE POLL INTERVAL
+# The feed advertises ttl=60 but only publishes a new snapshot every ~15
+# minutes. The collector polls with conditional GET, so an unchanged poll is a
+# 304 with an empty body and costs nothing; it writes a row only when the feed
+# actually advances. Polling at 30s therefore buys promptness, not volume:
+# roughly 96 snapshots a day, about 320 KB gzipped for the Bern network.
+# Run with probe=true to re-measure the publication interval before trusting it.
 #
 # SETUP (three things, all required):
 #
@@ -30,6 +38,9 @@ name: Collect PubliBike data
 #     prevent runaway recursion. Without the PAT the chain stops after one run.
 #
 # TO START: go to Actions > "Collect PubliBike data" > Run workflow.
+#           Leave duration at 320. A duration under 60 is treated as a TEST and
+#           deliberately does NOT chain - so a test run collects a couple of
+#           snapshots and stops. Watch the job summary; it says which happened.
 # TO STOP:  Actions > the workflow > "..." > Disable workflow.
 #           Do this when you have enough data. It will otherwise run forever.
 # ---------------------------------------------------------------------------
@@ -38,17 +49,37 @@ on:
   workflow_dispatch:
     inputs:
       city:
-        description: 'City filter (leave BLANK for the whole country)'
+        description: 'City to collect. Blank = the whole Swiss network (~1663 stations).'
         required: false
-        default: ''
+        default: 'Bern'
+        type: choice
+        options:
+          - 'Bern'
+          - 'Zurich'
+          - 'Basel'
+          - 'Fribourg'
+          - 'Biel'
+          - 'Lugano'
+          - 'Sion'
+          - ''
+      radius:
+        description: 'Kilometres around the city centre to include'
+        required: false
+        default: '5'
       interval:
-        description: 'Seconds between polls'
+        description: 'Seconds between polls (unchanged polls are free 304s)'
         required: false
-        default: '60'
+        default: '30'
       duration:
-        description: 'Minutes to collect. Use 2 for a quick test, 320 for a real run.'
+        description: 'Minutes to collect. 320 = a real run that chains. Under 60 = a TEST that stops.'
         required: false
         default: '320'
+      probe:
+        description: 'Measure the feed and write nothing. Use this to check the publication interval.'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
       feed:
         description: 'GBFS feed. Velospot is the live PubliBike network since the merger.'
         required: false
@@ -57,7 +88,6 @@ on:
         options:
           - 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs'
           - 'https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json'
-          - 'https://api.publibike.ch/v1/gbfs/v2/gbfs.json'
   schedule:
     # Watchdog only. Restarts the chain if a run failed and never dispatched
     # its successor. Deliberately at :17 rather than :00, since delays are
@@ -73,6 +103,14 @@ concurrency:
 permissions:
   contents: write
 
+env:
+  CITY:     ${{ github.event.inputs.city     || 'Bern' }}
+  RADIUS:   ${{ github.event.inputs.radius   || '5' }}
+  INTERVAL: ${{ github.event.inputs.interval || '30' }}
+  DURATION: ${{ github.event.inputs.duration || '320' }}
+  FEED:     ${{ github.event.inputs.feed     || 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs' }}
+  PROBE:    ${{ github.event.inputs.probe    || 'false' }}
+
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -81,6 +119,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          # Full history: the commit step rebases onto whatever the analyse
+          # workflow may have pushed meanwhile, which a shallow clone cannot do.
+          fetch-depth: 0
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -93,19 +135,27 @@ jobs:
         with:
           packages: jsonlite
 
-      - name: Collect
-        env:
-          CITY: ${{ github.event.inputs.city || '' }}
-          INTERVAL: ${{ github.event.inputs.interval || '60' }}
-          DURATION: ${{ github.event.inputs.duration || '320' }}
-          FEED: ${{ github.event.inputs.feed || 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs' }}
+      # Fail fast on a dead URL or a changed feed shape, before committing five
+      # hours to it. Costs about ten seconds.
+      - name: Preflight - can we read the feed?
+        run: Rscript R/01_collect_publibike.R --inspect --feed "$FEED"
+
+      - name: Probe the feed (no data written)
+        if: ${{ github.event.inputs.probe == 'true' }}
         run: |
+          Rscript R/01_collect_publibike.R --probe --probe-minutes 45 \
+            --interval "$INTERVAL" --feed "$FEED"
+
+      - name: Collect
+        if: ${{ github.event.inputs.probe != 'true' }}
+        run: |
+          set -o pipefail
           TAG=$(date -u +%Y%m%dT%H%M%SZ)
-          echo "Run tag: $TAG  city='$CITY'  interval=${INTERVAL}s  duration=${DURATION}min"
+          echo "Run tag: $TAG  city='$CITY' radius=${RADIUS}km  interval=${INTERVAL}s  duration=${DURATION}min"
           echo "Feed: $FEED"
           ARGS="--interval $INTERVAL --duration $DURATION --tag $TAG --outdir data --feed $FEED"
-          if [ -n "$CITY" ]; then ARGS="$ARGS --city $CITY"; fi
-          Rscript R/01_collect_publibike.R $ARGS
+          if [ -n "$CITY" ]; then ARGS="$ARGS --city $CITY --radius $RADIUS"; fi
+          Rscript R/01_collect_publibike.R $ARGS 2>&1 | tee /tmp/collect.log
 
       - name: Show what was collected
         if: always()
@@ -118,42 +168,86 @@ jobs:
       # Committing runs even if collection failed partway, so a crashed job
       # still saves whatever it managed to gather.
       - name: Commit data
-        if: always()
+        if: ${{ always() && github.event.inputs.probe != 'true' }}
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
           if git diff --staged --quiet; then
             echo "Nothing new to commit."
-          else
-            git commit -m "data: collection run $(date -u +%Y-%m-%dT%H:%MZ)"
-            # The repo may have moved on; rebase rather than fail.
-            git pull --rebase --autostash origin ${{ github.ref_name }} || true
-            git push
+            exit 0
           fi
+          git commit -m "data: collection run $(date -u +%Y-%m-%dT%H:%MZ)"
+          # Each run writes its own uniquely tagged files, so there is never a
+          # content conflict - only a race for the branch tip. Retry rather than
+          # lose the run: an uncommitted file is gone, the checkout is discarded.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "${{ github.ref_name }}" || true
+            git rebase "origin/${{ github.ref_name }}" || git rebase --abort || true
+            if git push origin HEAD:"${{ github.ref_name }}"; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying in 15s."
+            sleep 15
+          done
+          echo "::error::Could not push the collected data after 5 attempts."
+          exit 1
 
       - name: Dispatch the next run
-        if: always()
+        if: ${{ always() && github.event.inputs.probe != 'true' }}
         env:
           GH_TOKEN: ${{ secrets.COLLECTOR_PAT }}
         run: |
-          DURATION="${{ github.event.inputs.duration || '320' }}"
           if [ "$DURATION" -lt 60 ]; then
-            echo "Short test run (${DURATION} min) - not chaining. Re-run with"
-            echo "duration 320 to start continuous collection."
+            echo "::warning::duration=${DURATION} is a TEST run, so the chain was NOT started."
+            echo "Re-run with duration 320 to begin continuous collection."
+            echo "CHAINED=no (test run, duration ${DURATION} < 60)" >> $GITHUB_ENV
             exit 0
           fi
           if [ -z "$GH_TOKEN" ]; then
             echo "::warning::COLLECTOR_PAT is not set - the chain stops here."
             echo "Collection will only resume at the next 6-hourly watchdog,"
             echo "which may be delayed. See the setup notes at the top of this file."
+            echo "CHAINED=no (COLLECTOR_PAT missing)" >> $GITHUB_ENV
             exit 0
           fi
           gh workflow run "${{ github.workflow }}" \
             --repo "${{ github.repository }}" \
             --ref "${{ github.ref_name }}" \
-            -f city="${{ github.event.inputs.city || '' }}" \
-            -f interval="${{ github.event.inputs.interval || '60' }}" \
+            -f city="$CITY" \
+            -f radius="$RADIUS" \
+            -f interval="$INTERVAL" \
             -f duration="320" \
-            -f feed="${{ github.event.inputs.feed || 'https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs' }}"
+            -f probe="false" \
+            -f feed="$FEED"
           echo "Next run dispatched."
+          echo "CHAINED=yes" >> $GITHUB_ENV
+
+      # The single most useful thing on the run page: did this actually collect,
+      # and did it hand over to a successor?
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Collection run"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| City | \`${CITY:-whole network}\` (radius ${RADIUS} km) |"
+            echo "| Poll interval | ${INTERVAL}s |"
+            echo "| Duration | ${DURATION} min |"
+            echo "| Chained a successor | ${CHAINED:-n/a} |"
+            echo ""
+            if [ -f /tmp/collect.log ]; then
+              echo '### Run summary'
+              echo '```'
+              sed -n '/--- run summary ---/,$p' /tmp/collect.log
+              echo '```'
+            fi
+            echo "### Data on disk"
+            echo '```'
+            du -sh data/ 2>/dev/null || echo "no data/"
+            ls -1 data/station_status/ 2>/dev/null | tail -3 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

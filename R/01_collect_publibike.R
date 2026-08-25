@@ -2,7 +2,7 @@
 # ============================================================================
 # 01_collect_publibike.R
 #
-# Accumulate a station-status history from the PubliBike GBFS feed.
+# Accumulate a station-status history from the PubliBike / Velospot GBFS feed.
 #
 # GBFS is a real-time specification: it reports the state of the system now and
 # retains no history. PubliBike publishes no trip archive. This script polls the
@@ -10,12 +10,12 @@
 # historical dataset that does not otherwise exist.
 #
 # Usage:
-#   Rscript 01_collect_publibike.R --once              # validate setup, one snapshot
-#   Rscript 01_collect_publibike.R --interval 60       # run continuously
-#   Rscript 01_collect_publibike.R --interval 60 --city Bern
+#   Rscript 01_collect_publibike.R --probe                    # measure the feed, write nothing
+#   Rscript 01_collect_publibike.R --once --city Bern         # validate setup, one snapshot
+#   Rscript 01_collect_publibike.R --city Bern --interval 30  # run continuously
 #
 #   # bounded run, for CI: poll for 5h20m then exit cleanly
-#   Rscript 01_collect_publibike.R --interval 60 --duration 320 --tag $(date +%s)
+#   Rscript 01_collect_publibike.R --city Bern --duration 320 --tag $(date -u +%Y%m%dT%H%M%SZ)
 #
 #   # print the raw feed structure and exit (for debugging)
 #   Rscript 01_collect_publibike.R --inspect
@@ -23,6 +23,41 @@
 # --duration stops the loop after N minutes (GitHub Actions jobs are killed at
 # 6 hours, so exit before that and let the next run take over).
 # --tag appends a string to output filenames so each run writes its own file.
+#
+# ----------------------------------------------------------------------------
+# WHAT THIS FEED ACTUALLY DOES, AND WHY THE COLLECTOR IS SHAPED THIS WAY
+#
+# Measured against api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch on 25 Aug 2026:
+#
+#  1. It advertises `ttl: 60` but the published snapshot only advances every
+#     ~15 minutes, on the quarter hour. Polling every 60 s therefore fetches the
+#     same bytes 15 times over. The collector polls often but writes a row only
+#     when the feed's own `last_updated` moves forward, so the file contains one
+#     record per genuine publication rather than per poll.
+#
+#  2. It is served by several replicas whose caches are NOT in step. Consecutive
+#     requests can return snapshots going BACKWARDS in time (06:30 then 06:15).
+#     Differencing that series would invent a departure and a matching arrival
+#     out of nothing. MONOTONIC_GATE below drops any response not newer than the
+#     newest already seen, which removes the artefact entirely.
+#
+#  3. It supports conditional GET. Sending the last few ETags in If-None-Match
+#     turns an unchanged poll into a 304 with an empty body, so frequent polling
+#     costs almost no bandwidth. Multi-value If-None-Match is honoured, which
+#     matters because of (2): holding several ETags keeps every replica quiet.
+#
+#  4. Each station carries its own `last_reported`, at second resolution, which
+#     is when THAT STATION last changed. This is far better than the poll time:
+#     the 15-minute publication cadence limits how promptly a change is seen,
+#     not how precisely it can be timestamped. 02_derive_flows.R keys off it.
+#
+#  5. `num_docks_available` and `num_bikes_disabled` are absent. Every station
+#     is `is_virtual_station: true`, so `capacity` is a nominal allowance rather
+#     than a count of physical docks. Occupancy is measurable; dock saturation
+#     is not.
+#
+# Re-run with --probe to confirm these still hold before trusting them.
+# ----------------------------------------------------------------------------
 #
 # IMPLEMENTATION NOTE
 # All JSON is parsed with simplifyVector = FALSE, giving plain nested lists, and
@@ -42,33 +77,81 @@ suppressPackageStartupMessages({
 })
 
 # PubliBike merged with Velospot; the old api.publibike.ch feed still responds
-# but returns an empty station list. The live stations are in the Velospot feed.
+# but returns an empty station list (verified 25 Aug 2026). The live stations
+# are in the Velospot feed republished by MobiData BW.
 DEFAULT_FEED <- "https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs"
-LEGACY_FEED  <- "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
 OUT_DIR      <- "data"
+
+# Reject a response whose station count has collapsed relative to the best seen
+# so far. A truncated reply that is written as though complete looks exactly
+# like a network-wide outage in the derived data.
+MIN_COUNT_RATIO <- 0.5
+
+# Drop any snapshot not strictly newer than the newest already accepted. See
+# note (2) above.
+MONOTONIC_GATE <- TRUE
+
+# How many recent ETags to offer in If-None-Match. Needs to cover the number of
+# out-of-step replicas; 6 is comfortably above the 2 observed.
+ETAG_MEMORY <- 6
+
+# City centres, for --city. Scoping by distance from a point is reproducible and
+# defensible; substring-matching station names is not. "Bern" appears in
+# `Bernoullistrasse 30 - Basel` and `Berninaplatz - Zürich`, so the old
+# name-matching filter pulled in 325 stations from three different cities.
+CITY_CENTRES <- list(
+  "bern"              = c(46.9480, 7.4474),
+  "zurich"            = c(47.3769, 8.5417),
+  "zürich"            = c(47.3769, 8.5417),
+  "basel"             = c(47.5596, 7.5886),
+  "fribourg"          = c(46.8065, 7.1619),
+  "biel"              = c(47.1368, 7.2467),
+  "bienne"            = c(47.1368, 7.2467),
+  "lugano"            = c(46.0037, 8.9511),
+  "sion"              = c(46.2331, 7.3606),
+  "aarau"             = c(47.3925, 8.0442),
+  "martigny"          = c(46.1177, 7.0930),
+  "la chaux-de-fonds" = c(47.1000, 6.8250)
+)
+DEFAULT_RADIUS_KM <- 5
 
 `%||%` <- function(a, b) if (is.null(a)) b else a
 
 # ---- arguments -------------------------------------------------------------
 
 parse_args <- function(args) {
-  opts <- list(feed = DEFAULT_FEED, outdir = OUT_DIR, interval = 300,
-               once = FALSE, city = NULL, duration = NULL, tag = NULL,
-               inspect = FALSE)
+  opts <- list(feed = DEFAULT_FEED, outdir = OUT_DIR, interval = 30,
+               once = FALSE, city = NULL, centre = NULL, radius = NULL,
+               all = FALSE, duration = NULL, tag = NULL, inspect = FALSE,
+               probe = FALSE, probe_minutes = 20, station_refresh_hours = 6,
+               timeout = 45, retries = 3)
   i <- 1
   while (i <= length(args)) {
     a <- args[[i]]
-    if (a == "--once")            opts$once <- TRUE
-    else if (a == "--inspect")    opts$inspect <- TRUE
-    else if (a == "--feed")     { i <- i + 1; opts$feed <- args[[i]] }
-    else if (a == "--outdir")   { i <- i + 1; opts$outdir <- args[[i]] }
-    else if (a == "--interval") { i <- i + 1; opts$interval <- as.integer(args[[i]]) }
-    else if (a == "--city")     { i <- i + 1; opts$city <- args[[i]] }
-    else if (a == "--duration") { i <- i + 1; opts$duration <- as.numeric(args[[i]]) }
-    else if (a == "--tag")      { i <- i + 1; opts$tag <- gsub("[^A-Za-z0-9_-]", "", args[[i]]) }
+    if (a == "--once")             opts$once <- TRUE
+    else if (a == "--inspect")     opts$inspect <- TRUE
+    else if (a == "--probe")       opts$probe <- TRUE
+    else if (a == "--all")         opts$all <- TRUE
+    else if (a == "--feed")      { i <- i + 1; opts$feed <- args[[i]] }
+    else if (a == "--outdir")    { i <- i + 1; opts$outdir <- args[[i]] }
+    else if (a == "--interval")  { i <- i + 1; opts$interval <- as.numeric(args[[i]]) }
+    else if (a == "--city")      { i <- i + 1; opts$city <- args[[i]] }
+    else if (a == "--centre")    { i <- i + 1; opts$centre <- args[[i]] }
+    else if (a == "--center")    { i <- i + 1; opts$centre <- args[[i]] }
+    else if (a == "--radius")    { i <- i + 1; opts$radius <- as.numeric(args[[i]]) }
+    else if (a == "--duration")  { i <- i + 1; opts$duration <- as.numeric(args[[i]]) }
+    else if (a == "--probe-minutes") { i <- i + 1; opts$probe_minutes <- as.numeric(args[[i]]) }
+    else if (a == "--station-refresh-hours") { i <- i + 1; opts$station_refresh_hours <- as.numeric(args[[i]]) }
+    else if (a == "--timeout")   { i <- i + 1; opts$timeout <- as.numeric(args[[i]]) }
+    else if (a == "--tag")       { i <- i + 1; opts$tag <- gsub("[^A-Za-z0-9_-]", "", args[[i]]) }
     else stop("Unknown argument: ", a)
     i <- i + 1
   }
+
+  # An empty --city (the workflow passes '' for "whole network") means --all.
+  if (!is.null(opts$city) && !nzchar(trimws(opts$city))) opts$city <- NULL
+  if (is.null(opts$city) && is.null(opts$centre)) opts$all <- TRUE
+  if (is.null(opts$radius)) opts$radius <- DEFAULT_RADIUS_KM
   opts
 }
 
@@ -80,11 +163,105 @@ tagged <- function(stem, ext, tag) {
   if (is.null(tag) || !nzchar(tag)) paste0(stem, ext) else paste0(stem, "_", tag, ext)
 }
 
+# ---- time ------------------------------------------------------------------
+
+# GBFS 2.x timestamps are POSIX integers; 3.0 uses RFC3339 strings such as
+# "2026-08-25T06:30:05.000+00:00". R's %z wants "+0000", so the colon in the
+# offset is removed before parsing. Returns seconds since epoch.
+iso_to_epoch <- function(x) {
+  if (is.null(x)) return(NA_real_)
+  if (is.numeric(x)) return(as.numeric(x))
+  s <- trimws(as.character(x))
+  s[!nzchar(s)] <- NA_character_
+  s <- sub("\\.[0-9]+", "", s)                          # strip fractional seconds
+  s <- sub("([+-][0-9]{2}):([0-9]{2})$", "\\1\\2", s)    # +00:00 -> +0000
+  s <- sub("Z$", "+0000", s)
+  out <- suppressWarnings(as.numeric(as.POSIXct(s, format = "%Y-%m-%dT%H:%M:%S%z", tz = "UTC")))
+  bad <- is.na(out) & !is.na(s)
+  if (any(bad)) {
+    out[bad] <- suppressWarnings(as.numeric(
+      as.POSIXct(s[bad], format = "%Y-%m-%dT%H:%M:%S", tz = "UTC")))
+  }
+  # A bare number arriving as a string (GBFS 2.x served as JSON string).
+  bad <- is.na(out) & !is.na(s) & grepl("^[0-9]+$", s)
+  if (any(bad)) out[bad] <- as.numeric(s[bad])
+  out
+}
+
+epoch_to_iso <- function(e) {
+  ifelse(is.na(e), NA_character_,
+         format(as.POSIXct(e, origin = "1970-01-01", tz = "UTC"),
+                "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+}
+
+# ---- HTTP ------------------------------------------------------------------
+# The curl binary is used rather than base R's url() because this needs three
+# things base R will not give: a hard timeout, transparent gzip (27 KB on the
+# wire instead of 634 KB), and conditional GET. Falls back to download.file()
+# where curl is unavailable, losing only the 304 optimisation.
+
+CURL_BIN <- Sys.which("curl")
+
+etag_from_headers <- function(path) {
+  if (!file.exists(path)) return(NA_character_)
+  ln <- readLines(path, warn = FALSE)
+  ln <- grep("^etag:", ln, ignore.case = TRUE, value = TRUE)
+  if (!length(ln)) return(NA_character_)
+  trimws(sub("(?i)^etag:", "", ln[length(ln)], perl = TRUE))
+}
+
+# Returns list(status = integer, path = file or NA, etag = character or NA).
+# status 304 means "unchanged, nothing downloaded"; 0 means the request failed.
+http_get <- function(url, etags = character(0), timeout = 45, retries = 3) {
+  body <- tempfile(fileext = ".json")
+  hdr  <- tempfile(fileext = ".hdr")
+
+  if (!nzchar(CURL_BIN)) {
+    ok <- tryCatch({
+      utils::download.file(url, body, quiet = TRUE, mode = "wb",
+                           method = "libcurl")
+      TRUE
+    }, error = function(e) FALSE, warning = function(w) FALSE)
+    return(list(status = if (ok) 200L else 0L,
+                path = if (ok) body else NA_character_, etag = NA_character_))
+  }
+
+  args <- c("-sS", "--compressed",
+            "--max-time", format(timeout),
+            "--retry", format(retries), "--retry-delay", "2",
+            "--retry-connrefused",
+            "-D", shQuote(hdr), "-o", shQuote(body),
+            "-w", shQuote("%{http_code}"))
+  etags <- etags[!is.na(etags) & nzchar(etags)]
+  if (length(etags)) {
+    args <- c(args, "-H",
+              shQuote(paste0("If-None-Match: ", paste(etags, collapse = ", "))))
+  }
+  args <- c(args, shQuote(url))
+
+  code <- suppressWarnings(
+    tryCatch(system2(CURL_BIN, args, stdout = TRUE, stderr = ""),
+             error = function(e) character(0)))
+  status <- suppressWarnings(as.integer(tail(code, 1)))
+  if (length(status) == 0 || is.na(status)) status <- 0L
+
+  list(status = status,
+       path   = if (status == 200L && file.exists(body) && file.size(body) > 0) body else NA_character_,
+       etag   = etag_from_headers(hdr))
+}
+
+get_json <- function(url, timeout = 45, retries = 3) {
+  r <- http_get(url, timeout = timeout, retries = retries)
+  if (r$status != 200L || is.na(r$path)) {
+    stop("HTTP ", r$status, " fetching ", url)
+  }
+  on.exit(unlink(r$path), add = TRUE)
+  jsonlite::fromJSON(r$path, simplifyVector = FALSE)
+}
+
 # ---- list helpers ----------------------------------------------------------
 # These operate on plain nested lists, so they do not care whether the feed's
 # arrays are ragged, uniform, or empty.
-
-get_json <- function(url) jsonlite::fromJSON(url, simplifyVector = FALSE)
 
 # Pull one field from a list of records, coercing to an atomic vector and
 # substituting NA where the field is missing, empty, or itself a list.
@@ -142,19 +319,71 @@ encode_types <- function(records) {
   }, character(1))
 }
 
+# The rows are formatted by hand and written with useBytes = TRUE rather than
+# handed to write.table. Station names carry umlauts and accents
+# (Schanzenbrücke, Charrière) which jsonlite correctly flags as UTF-8; under a
+# non-UTF-8 locale - which is what a bare shell gives you, and sometimes a CI
+# runner - write.table re-encodes those to "<U+00FC>" escapes, silently
+# corrupting every name in the dimension table. Passing the bytes through
+# unchanged keeps the file UTF-8 whatever the locale happens to be.
+#
+# The output is byte-identical to write.table(sep=",", qmethod="double"):
+# quoted header and character fields, bare numerics, unquoted NA.
+csv_field <- function(x) {
+  if (is.character(x)) {
+    ifelse(is.na(x), "NA", paste0('"', gsub('"', '""', x, useBytes = TRUE), '"'))
+  } else if (is.logical(x)) {
+    ifelse(is.na(x), "NA", ifelse(x, "TRUE", "FALSE"))
+  } else {
+    ifelse(is.na(x), "NA", as.character(x))
+  }
+}
+
 append_csv <- function(path, df, gzipped = FALSE) {
   dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
   is_new <- !file.exists(path)
   con <- if (gzipped) gzfile(path, open = "at") else file(path, open = "at")
   on.exit(close(con))
-  utils::write.table(df, con, sep = ",", row.names = FALSE,
-                     col.names = is_new, qmethod = "double")
+  rows <- do.call(paste, c(lapply(df, csv_field), sep = ","))
+  if (is_new) rows <- c(paste0('"', names(df), '"', collapse = ","), rows)
+  writeLines(rows, con, useBytes = TRUE)
+}
+
+# ---- geography -------------------------------------------------------------
+
+haversine_km <- function(lat1, lon1, lat2, lon2) {
+  r <- 6371
+  p1 <- lat1 * pi / 180; p2 <- lat2 * pi / 180
+  dp <- (lat2 - lat1) * pi / 180
+  dl <- (lon2 - lon1) * pi / 180
+  a <- sin(dp / 2)^2 + cos(p1) * cos(p2) * sin(dl / 2)^2
+  2 * r * asin(pmin(1, sqrt(a)))
+}
+
+resolve_centre <- function(opts) {
+  if (opts$all) return(NULL)
+  if (!is.null(opts$centre)) {
+    parts <- suppressWarnings(as.numeric(strsplit(trimws(opts$centre), "[, ]+")[[1]]))
+    parts <- parts[!is.na(parts)]
+    if (length(parts) != 2) {
+      stop("--centre expects 'lat,lon', e.g. --centre 46.9480,7.4474")
+    }
+    return(list(lat = parts[1], lon = parts[2], label = opts$centre))
+  }
+  key <- tolower(trimws(opts$city))
+  if (!key %in% names(CITY_CENTRES)) {
+    stop("Unknown --city '", opts$city, "'. Known: ",
+         paste(sort(unique(names(CITY_CENTRES))), collapse = ", "),
+         ". Or give --centre lat,lon.")
+  }
+  c2 <- CITY_CENTRES[[key]]
+  list(lat = c2[1], lon = c2[2], label = opts$city)
 }
 
 # ---- feed discovery --------------------------------------------------------
 
-discover_feeds <- function(discovery_url) {
-  doc <- get_json(discovery_url)
+discover_feeds <- function(discovery_url, timeout = 45) {
+  doc <- get_json(discovery_url, timeout = timeout)
   d <- doc$data
 
   feeds <- NULL
@@ -249,14 +478,16 @@ dump_shape <- function(doc, label) {
 
 # ---- diagnostics -----------------------------------------------------------
 
-inspect_feed <- function(feed_url) {
+inspect_feed <- function(feed_url, timeout) {
   log_msg("Inspecting ", feed_url)
-  endpoints <- discover_feeds(feed_url)
+  endpoints <- discover_feeds(feed_url, timeout)
   for (nm in c("station_information", "station_status")) {
     cat("\n================ ", nm, " ================\n", sep = "")
     cat("URL: ", endpoints[[nm]], "\n", sep = "")
-    doc <- get_json(endpoints[[nm]])
+    doc <- get_json(endpoints[[nm]], timeout = timeout)
     cat("top-level keys: ", paste(names(doc), collapse = ", "), "\n", sep = "")
+    cat("last_updated:   ", as.character(doc$last_updated %||% "(none)"),
+        "   ttl: ", as.character(doc$ttl %||% "(none)"), "\n", sep = "")
     if (!is.null(doc$data)) {
       cat("data keys:      ", paste(names(doc$data), collapse = ", "), "\n", sep = "")
     }
@@ -270,30 +501,120 @@ inspect_feed <- function(feed_url) {
   cat("\nInspection complete.\n")
 }
 
-# ---- the two datasets ------------------------------------------------------
+# Measure how often the feed really publishes, and how much of the network is
+# reporting, without writing any data. Run this before committing days of
+# collection to a sampling interval.
+probe_feed <- function(endpoints, opts) {
+  cat("\n", strrep("=", 68), "\n", sep = "")
+  cat("FEED PROBE - ", opts$probe_minutes, " minutes at ", opts$interval,
+      "s, writing nothing\n", sep = "")
+  cat(strrep("=", 68), "\n", sep = "")
 
-matches_city <- function(st, city) {
-  if (is.null(city) || !nzchar(city)) return(rep(TRUE, length(st)))
-  hay <- tolower(paste(pluck(st, c("name", "station_name")),
-                       pluck(st, c("address", "cross_street")),
-                       pluck(st, c("post_code", "postal_code"))))
-  grepl(tolower(city), hay, fixed = TRUE)
+  url <- endpoints[["station_status"]]
+  etags <- character(0)
+  seen_lu <- numeric(0)
+  n_probe <- 0L; n_304 <- 0L; n_new <- 0L; n_stale <- 0L; n_err <- 0L
+  started <- Sys.time()
+  tick <- 0L
+
+  repeat {
+    r <- http_get(url, etags, opts$timeout, opts$retries)
+    n_probe <- n_probe + 1L
+    if (!is.na(r$etag)) etags <- head(unique(c(r$etag, etags)), ETAG_MEMORY)
+
+    if (r$status == 304L) {
+      n_304 <- n_304 + 1L
+    } else if (r$status == 200L && !is.na(r$path)) {
+      doc <- tryCatch(jsonlite::fromJSON(r$path, simplifyVector = FALSE),
+                      error = function(e) NULL)
+      unlink(r$path)
+      if (is.null(doc)) { n_err <- n_err + 1L } else {
+        lu <- iso_to_epoch(doc$last_updated)
+        if (length(seen_lu) && !is.na(lu) && lu <= max(seen_lu, na.rm = TRUE)) {
+          n_stale <- n_stale + 1L
+          log_msg("  replica served an OLDER snapshot: ", epoch_to_iso(lu),
+                  " (newest seen ", epoch_to_iso(max(seen_lu, na.rm = TRUE)), ")")
+        } else {
+          n_new <- n_new + 1L
+          seen_lu <- c(seen_lu, lu)
+          log_msg("  new snapshot published: ", epoch_to_iso(lu),
+                  "  (", length(extract_stations(doc)), " stations)")
+        }
+      }
+    } else {
+      n_err <- n_err + 1L
+      log_msg("  HTTP ", r$status)
+    }
+
+    tick <- tick + 1L
+    elapsed <- as.numeric(difftime(Sys.time(), started, units = "mins"))
+    if (elapsed + opts$interval / 60 > opts$probe_minutes) break
+    sleep_to_tick(started, tick, opts$interval)
+  }
+
+  cat("\n--- results ---\n")
+  cat(sprintf("polls:               %d over %.1f minutes\n", n_probe,
+              as.numeric(difftime(Sys.time(), started, units = "mins"))))
+  cat(sprintf("  304 not modified:  %d\n", n_304))
+  cat(sprintf("  new snapshots:     %d\n", n_new))
+  cat(sprintf("  stale replicas:    %d%s\n", n_stale,
+              if (n_stale > 0) "   <- responses going backwards in time" else ""))
+  cat(sprintf("  errors:            %d\n", n_err))
+
+  if (length(seen_lu) >= 2) {
+    d <- diff(sort(seen_lu)) / 60
+    cat(sprintf("\npublication interval: median %.1f min (min %.1f, max %.1f)\n",
+                median(d), min(d), max(d)))
+    cat(sprintf("Polling faster than ~%.0f min gains nothing but promptness.\n",
+                median(d)))
+  } else {
+    cat("\nFewer than 2 new snapshots seen - run --probe with a longer",
+        "--probe-minutes to measure the publication interval.\n")
+  }
+  invisible(NULL)
 }
 
-write_station_information <- function(endpoints, outdir, city, tag = NULL) {
-  doc <- get_json(endpoints[["station_information"]])
+# ---- the two datasets ------------------------------------------------------
+
+# Returns the ids to keep, or NULL for "everything".
+select_stations <- function(st, centre, radius_km) {
+  if (is.null(centre)) return(NULL)
+  lat <- pluck(st, "lat", "numeric")
+  lon <- pluck(st, "lon", "numeric")
+  d <- haversine_km(centre$lat, centre$lon, lat, lon)
+  keep <- !is.na(d) & d <= radius_km
+  log_msg("Scope: ", sum(keep), " of ", length(st), " stations within ",
+          radius_km, " km of ", centre$label,
+          " (", sprintf("%.4f, %.4f", centre$lat, centre$lon), ")")
+  if (!any(keep)) {
+    stop("No stations within ", radius_km, " km of ", centre$label,
+         ". Widen --radius, or check the centre coordinates.")
+  }
+  keep
+}
+
+# state carries n_seen_max so a truncated reply can be recognised.
+write_station_information <- function(endpoints, opts, centre, state) {
+  doc <- get_json(endpoints[["station_information"]], opts$timeout, opts$retries)
   st  <- extract_stations(doc)
   if (length(st) == 0) {
     dump_shape(doc, "station_information")
     stop("station_information returned no records - see the structure dumped above.")
   }
+
+  if (length(st) < MIN_COUNT_RATIO * state$si_max) {
+    log_msg("REJECTED station_information: ", length(st), " records, but ",
+            state$si_max, " seen earlier this run. Keeping the previous set.")
+    # Stamp the attempt anyway, so a persistently truncated dimension endpoint
+    # is retried on the normal schedule rather than on every single poll.
+    state$si_at <- Sys.time()
+    return(state)
+  }
+  state$si_max <- max(state$si_max, length(st))
   log_msg("station_information: ", length(st), " records returned by the feed")
 
-  st <- st[matches_city(st, city)]
-  if (length(st) == 0) {
-    stop("No stations matched --city '", city, "'. Re-run without --city to see ",
-         "the available station names.")
-  }
+  keep <- select_stations(st, centre, opts$radius)
+  if (!is.null(keep)) st <- st[keep]
 
   out <- data.frame(
     fetched_at_utc = utc_now(),
@@ -304,36 +625,86 @@ write_station_information <- function(endpoints, outdir, city, tag = NULL) {
     capacity       = pluck(st, c("capacity", "num_docks"), "integer"),
     address        = pluck(st, c("address", "cross_street")),
     post_code      = pluck(st, c("post_code", "postal_code")),
+    region_id      = pluck(st, "region_id"),
     stringsAsFactors = FALSE
   )
 
-  path <- file.path(outdir, "station_information",
-                    tagged(paste0("stations_", day_stamp()), ".csv", tag))
-  if (file.exists(path)) unlink(path)
+  path <- file.path(opts$outdir, "station_information",
+                    tagged(paste0("stations_", day_stamp()), ".csv", opts$tag))
   append_csv(path, out)
   log_msg("Wrote ", nrow(out), " stations to ", path)
-  out$station_id
+
+  state$keep_ids <- out$station_id
+  state$si_at    <- Sys.time()
+  state
 }
 
-poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
-  doc <- get_json(endpoints[["station_status"]])
-  st  <- extract_stations(doc)
-  if (length(st) == 0) {
-    dump_shape(doc, "station_status")
-    stop("station_status returned no records - see the structure dumped above.")
+# One conditional poll. Writes at most one snapshot; always appends one row to
+# the poll log so downtime is measurable rather than inferred.
+poll_once <- function(endpoints, opts, state) {
+  r <- http_get(endpoints[["station_status"]], state$etags, opts$timeout, opts$retries)
+  probe_at <- utc_now()
+  if (!is.na(r$etag)) {
+    state$etags <- head(unique(c(r$etag, state$etags)), ETAG_MEMORY)
   }
 
+  finish <- function(action, n = NA_integer_, lu = NA_real_) {
+    append_csv(file.path(opts$outdir, "poll_log",
+                         tagged(paste0("polls_", day_stamp()), ".csv", opts$tag)),
+               data.frame(probe_at_utc = probe_at, http_status = r$status,
+                          action = action, n_records = n,
+                          feed_last_updated = epoch_to_iso(lu),
+                          stringsAsFactors = FALSE))
+    state$last_action <- action
+    state
+  }
+
+  if (r$status == 304L)               return(finish("unchanged"))
+  if (r$status != 200L || is.na(r$path)) return(finish("error"))
+
+  doc <- tryCatch(jsonlite::fromJSON(r$path, simplifyVector = FALSE),
+                  error = function(e) NULL)
+  body_md5 <- unname(tools::md5sum(r$path))
+  unlink(r$path)
+  if (is.null(doc)) return(finish("parse_error"))
+
+  lu <- iso_to_epoch(doc$last_updated)
+  if (MONOTONIC_GATE && !is.na(lu) && !is.na(state$last_lu) && lu <= state$last_lu) {
+    # A replica whose cache is behind. Writing it would fabricate a departure
+    # and a matching arrival at every station that moved in between.
+    return(finish("stale_replica", lu = lu))
+  }
+  # Fallback for a feed that publishes no last_updated, or a server that sends
+  # no ETag: if the bytes are identical to the last snapshot taken, nothing has
+  # changed and writing the row again would only create a duplicate.
+  if (is.na(lu) && !is.na(body_md5) && identical(body_md5, state$last_md5)) {
+    return(finish("unchanged"))
+  }
+
+  st <- extract_stations(doc)
+  if (length(st) == 0) {
+    dump_shape(doc, "station_status")
+    return(finish("empty", 0L, lu))
+  }
+  if (length(st) < MIN_COUNT_RATIO * state$ss_max) {
+    log_msg("REJECTED status: ", length(st), " records, but ", state$ss_max,
+            " seen earlier this run.")
+    return(finish("truncated", length(st), lu))
+  }
+  state$ss_max <- max(state$ss_max, length(st))
+
   sid <- pluck(st, c("station_id", "id"))
-  if (!is.null(keep_ids) && length(keep_ids)) {
-    sel <- sid %in% keep_ids
+  if (!is.null(state$keep_ids) && length(state$keep_ids)) {
+    sel <- sid %in% state$keep_ids
     st  <- st[sel]
     sid <- sid[sel]
   }
-  if (length(st) == 0) return(0L)
+  if (length(st) == 0) return(finish("no_stations_in_scope", 0L, lu))
 
   out <- data.frame(
-    polled_at_utc       = utc_now(),
-    last_reported       = pluck(st, c("last_reported", "last_updated")),
+    polled_at_utc       = probe_at,
+    feed_last_updated   = epoch_to_iso(lu),
+    last_reported       = epoch_to_iso(iso_to_epoch(pluck(st, c("last_reported", "last_updated")))),
     station_id          = sid,
     num_bikes_available = pluck(st, c("num_bikes_available", "num_vehicles_available"), "integer"),
     num_docks_available = pluck(st, c("num_docks_available", "num_vehicle_docks_available"), "integer"),
@@ -345,10 +716,27 @@ poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
     stringsAsFactors = FALSE
   )
 
-  path <- file.path(outdir, "station_status",
-                    tagged(paste0("status_", day_stamp()), ".csv.gz", tag))
-  append_csv(path, out, gzipped = TRUE)
-  nrow(out)
+  append_csv(file.path(opts$outdir, "station_status",
+                       tagged(paste0("status_", day_stamp()), ".csv.gz", opts$tag)),
+             out, gzipped = TRUE)
+
+  state$last_lu <- if (is.na(lu)) state$last_lu else lu
+  state$last_md5 <- body_md5
+  state$written <- state$written + 1L
+  state$rows    <- state$rows + nrow(out)
+  finish("written", nrow(out), lu)
+}
+
+# ---- scheduling ------------------------------------------------------------
+# Sleeping for `interval` after the work is done makes the true cadence
+# interval + fetch time, and the drift accumulates over a 5-hour run. Sleep
+# until the next absolute tick instead, and skip ticks already missed.
+
+sleep_to_tick <- function(started, tick, interval) {
+  target <- as.numeric(started) + tick * interval
+  wait <- target - as.numeric(Sys.time())
+  if (wait > 0) Sys.sleep(wait)
+  invisible(NULL)
 }
 
 # ---- main ------------------------------------------------------------------
@@ -356,62 +744,103 @@ poll_status <- function(endpoints, outdir, keep_ids, tag = NULL) {
 main <- function() {
   opts <- parse_args(commandArgs(trailingOnly = TRUE))
 
+  if (!nzchar(CURL_BIN)) {
+    log_msg("NOTE: no curl binary found. Falling back to download.file(); ",
+            "conditional GET is disabled, so every poll downloads in full.")
+  }
+
   if (opts$inspect) {
-    inspect_feed(opts$feed)
+    inspect_feed(opts$feed, opts$timeout)
     return(invisible(NULL))
   }
 
-  dir.create(opts$outdir, recursive = TRUE, showWarnings = FALSE)
+  centre <- resolve_centre(opts)
+  if (is.null(centre)) {
+    log_msg("Scope: the WHOLE network (no --city or --centre given).")
+  }
 
-  endpoints <- tryCatch(discover_feeds(opts$feed), error = function(e) {
+  endpoints <- tryCatch(discover_feeds(opts$feed, opts$timeout), error = function(e) {
     log_msg("ERROR reading the feed: ", conditionMessage(e))
     log_msg("Run with --inspect to dump the raw structure. Feed URLs also move; ",
             "see github.com/MobilityData/gbfs/blob/master/systems.csv (filter CH).")
     quit(status = 1)
   })
 
-  keep_ids <- tryCatch(
-    write_station_information(endpoints, opts$outdir, opts$city, opts$tag),
-    error = function(e) { log_msg("ERROR: ", conditionMessage(e)); quit(status = 1) })
+  if (opts$probe) {
+    probe_feed(endpoints, opts)
+    return(invisible(NULL))
+  }
 
-  last_refresh <- day_stamp()
-  polls <- 0L
+  dir.create(opts$outdir, recursive = TRUE, showWarnings = FALSE)
+
+  state <- list(keep_ids = NULL, etags = character(0), last_lu = NA_real_,
+                last_md5 = NA_character_,
+                si_max = 0L, ss_max = 0L, si_at = NULL,
+                written = 0L, rows = 0L, last_action = NA_character_)
+
+  state <- tryCatch(write_station_information(endpoints, opts, centre, state),
+                    error = function(e) {
+                      log_msg("ERROR: ", conditionMessage(e)); quit(status = 1)
+                    })
+
   started <- Sys.time()
+  tick <- 0L
+  polls <- 0L
+  actions <- character(0)
   if (!is.null(opts$duration)) {
     log_msg("Bounded run: stopping after ", opts$duration, " minutes.")
   }
+  log_msg("Polling every ", opts$interval, "s; a snapshot is written only when ",
+          "the feed's last_updated advances.")
 
   repeat {
-    res <- tryCatch({
-      if (day_stamp() != last_refresh) {
-        keep_ids <- write_station_information(endpoints, opts$outdir, opts$city, opts$tag)
-        last_refresh <- day_stamp()
+    state <- tryCatch({
+      if (!is.null(state$si_at) &&
+          as.numeric(difftime(Sys.time(), state$si_at, units = "hours")) >=
+            opts$station_refresh_hours) {
+        state <- write_station_information(endpoints, opts, centre, state)
       }
-      poll_status(endpoints, opts$outdir, keep_ids, opts$tag)
+      poll_once(endpoints, opts, state)
     }, error = function(e) {
       log_msg("Poll failed (", conditionMessage(e), ") - retrying next interval.")
-      NA_integer_
+      state$last_action <- "error"
+      state
     })
 
-    if (!is.na(res)) {
-      polls <- polls + 1L
-      if (polls <= 3L || polls %% 10L == 0L) {
-        log_msg("Poll ", polls, " - ", res, " stations recorded")
-      }
+    polls <- polls + 1L
+    actions <- c(actions, state$last_action)
+    if (identical(state$last_action, "written")) {
+      log_msg("Snapshot ", state$written, " written (", state$rows,
+              " rows so far, feed at ", epoch_to_iso(state$last_lu), ")")
+    } else if (polls %% 40L == 0L) {
+      log_msg("Poll ", polls, " - ", state$written, " snapshots written; ",
+              "last action: ", state$last_action)
     }
 
     if (opts$once) break
+    tick <- tick + 1L
     if (!is.null(opts$duration)) {
       elapsed <- as.numeric(difftime(Sys.time(), started, units = "mins"))
       if (elapsed + opts$interval / 60 >= opts$duration) {
-        log_msg("Duration limit reached (", round(elapsed, 1), " min, ", polls, " polls).")
+        log_msg("Duration limit reached (", round(elapsed, 1), " min).")
         break
       }
     }
-    Sys.sleep(opts$interval)
+    sleep_to_tick(started, tick, opts$interval)
   }
 
-  log_msg("Stopped after ", polls, " poll(s).")
+  tab <- table(actions)
+  cat("\n--- run summary ---\n")
+  cat(sprintf("polls:     %d over %.1f minutes\n", polls,
+              as.numeric(difftime(Sys.time(), started, units = "mins"))))
+  for (nm in names(tab)) cat(sprintf("  %-22s %d\n", nm, tab[[nm]]))
+  cat(sprintf("snapshots written: %d  (%s status rows)\n",
+              state$written, format(state$rows, big.mark = ",")))
+  if (state$written == 0L && polls > 2L) {
+    cat("\nWARNING: nothing was written. Either the run was shorter than the\n")
+    cat("feed's publication interval, or every response was a stale replica.\n")
+    cat("Run with --probe to measure the feed before collecting further.\n")
+  }
 }
 
 main()

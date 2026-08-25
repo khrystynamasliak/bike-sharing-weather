@@ -23,6 +23,21 @@
 # Dependencies: base R only.
 # ============================================================================
 
+# Station names carry umlauts and accents (Mühleberg, Charrière). If R is
+# running under a non-UTF-8 locale - a bare shell gives you "C" - write.csv
+# cannot represent them and silently writes the literal text "M<U+00FC>hleberg"
+# into the data instead. Ask for a UTF-8 locale before anything is written.
+local({
+  if (isTRUE(l10n_info()[["UTF-8"]])) return(invisible(NULL))
+  for (loc in c("C.UTF-8", "en_US.UTF-8", "de_CH.UTF-8", "UTF-8")) {
+    if (nzchar(suppressWarnings(Sys.setlocale("LC_CTYPE", loc)))) break
+  }
+  if (!isTRUE(l10n_info()[["UTF-8"]])) {
+    warning("No UTF-8 locale available; accented station names may be mangled ",
+            "in the output CSVs.", call. = FALSE)
+  }
+})
+
 parse_args <- function(args) {
   opts <- list(derived = "derived", shift = 0)
   i <- 1
@@ -35,13 +50,48 @@ parse_args <- function(args) {
   opts
 }
 
+# Parse an hour column WITHOUT letting R choose the format for us.
+#
+# write.csv drops the time part of a midnight POSIXct, so the column reads
+# "2026-01-01" on the hour and "2026-01-01 13:00:00" on every other. Bare
+# as.POSIXct() picks one format from the FIRST element and applies it to the
+# whole vector: if row one happens to be a midnight, every reading in the file
+# collapses onto midnight, the overlap check finds nothing, and it blames the
+# weather script - which parsed the source perfectly well. Parse with an
+# explicit format and only fall back to date-only for the rows that need it.
+parse_hour <- function(x) {
+  x <- trimws(as.character(x))
+  ts <- suppressWarnings(as.POSIXct(x, format = "%Y-%m-%d %H:%M:%S", tz = "UTC"))
+  gap <- is.na(ts) & nzchar(x) & !is.na(x)
+  if (any(gap)) {
+    ts[gap] <- suppressWarnings(as.POSIXct(x[gap], format = "%Y-%m-%dT%H:%M:%S", tz = "UTC"))
+  }
+  gap <- is.na(ts) & nzchar(x) & !is.na(x)
+  if (any(gap)) {
+    ts[gap] <- suppressWarnings(as.POSIXct(x[gap], format = "%Y-%m-%d %H:%M", tz = "UTC"))
+  }
+  gap <- is.na(ts) & nzchar(x) & !is.na(x)
+  if (any(gap)) {                       # midnight, written by write.csv as a bare date
+    ts[gap] <- suppressWarnings(as.POSIXct(x[gap], format = "%Y-%m-%d", tz = "UTC"))
+  }
+  ts
+}
+
 load_hourly <- function(path, label) {
   if (!file.exists(path)) stop("Missing ", label, ": ", path)
   df <- read.csv(path, stringsAsFactors = FALSE)
-  df$hour <- as.POSIXct(df$hour, tz = "UTC")
+  df$hour <- parse_hour(df$hour)
   df <- df[!is.na(df$hour), ]
-  cat(sprintf("%-14s %s rows, %s to %s\n", paste0(label, ":"),
-              format(nrow(df), big.mark = ","), min(df$hour), max(df$hour)))
+  if (nrow(df) == 0) stop("No parseable timestamps in ", path)
+
+  hods <- length(unique(format(df$hour, "%H", tz = "UTC")))
+  cat(sprintf("%-14s %s rows, %s to %s  (%d distinct hours-of-day)\n",
+              paste0(label, ":"), format(nrow(df), big.mark = ","),
+              min(df$hour), max(df$hour), hods))
+  if (hods <= 1 && nrow(df) > 24) {
+    cat("  WARNING: every reading sits at the same hour of day. The time part\n")
+    cat("  was lost somewhere upstream; the join will find nothing.\n")
+  }
   df
 }
 
@@ -96,8 +146,12 @@ build_network_hourly <- function(flow, weather) {
 
   emp <- aggregate(as.integer(flow$is_empty), by = list(hour = flow$hour), FUN = sum)
   names(emp)[2] <- "stations_empty"
-  ful <- aggregate(as.integer(flow$is_full), by = list(hour = flow$hour), FUN = sum)
-  names(ful)[2] <- "stations_full"
+  # Nominal capacity, not physical docks - see the note in 02_derive_flows.R.
+  # `is_full` is the old name for the same thing, kept so an already-collected
+  # derived/hourly_flow.csv still loads.
+  full_col <- if ("at_nominal_capacity" %in% names(flow)) "at_nominal_capacity" else "is_full"
+  ful <- aggregate(as.integer(flow[[full_col]]), by = list(hour = flow$hour), FUN = sum)
+  names(ful)[2] <- "stations_at_nominal_capacity"
   fil <- aggregate(flow$fill_rate, by = list(hour = flow$hour),
                    FUN = function(x) mean(x, na.rm = TRUE))
   names(fil)[2] <- "mean_fill_rate"

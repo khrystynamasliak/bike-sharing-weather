@@ -1,0 +1,14 @@
+# macOS / R cruft
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Local scratch
+/tmp/
+*.log
+
+# derived/ IS committed: the analyse workflow regenerates and pushes it so the
+# tables are readable on GitHub without cloning and running R. Raw data under
+# data/ is the source of truth; everything in derived/ can be rebuilt from it.

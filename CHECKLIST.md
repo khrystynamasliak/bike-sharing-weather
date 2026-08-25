@@ -1,68 +1,89 @@
 # Collection week checklist
 
-**Collecting:** Mon 24 Aug → Mon 31 Aug 2026
-**City:** Bern · **Interval:** 60 seconds · **Expected data:** ~7 MB
+**Collecting:** Tue 25 Aug → Mon 31 Aug 2026 (consider extending — see the end)
+**City:** Bern, 5 km radius, 272 stations · **Poll:** 30 s · **Data:** ~320 KB/day
 
 ---
 
-## Today — Monday 24 August (about 30 minutes)
+## Read this first — where things stand
 
-- [ ] **Create a PUBLIC repo** on GitHub, e.g. `publibike-weather`.
+Collection has **not started yet**. The two runs on 24 August were both
+`duration 2` test runs, and a run under 60 minutes deliberately does not chain
+to a successor, so each one collected two polls and stopped. That is the
+workflow behaving as designed; it just was not the run you wanted.
+
+Three things were also found and fixed while checking the pipeline, and they
+matter for what you write up:
+
+- The feed publishes **every ~15 minutes**, not every 60 seconds as its `ttl`
+  claims. Your effective time resolution is 15 minutes.
+- Its replicas serve snapshots **out of order**, which fabricates flow events.
+  The collector now rejects any snapshot older than the newest it has seen.
+- Every `bikes_type_*` column was **silently all zeros** — a regex bug meant the
+  e-bike/classic split never worked. It does now, which makes Q3 answerable.
+
+`docs/DATA_QUALITY.md` has the measurements behind all three.
+
+---
+
+## Today — Tuesday 25 August (about 20 minutes)
+
+- [ ] **Push the current state.** The scripts, workflow and docs have changed.
+
+- [ ] **Confirm the repo is PUBLIC.**
       Public matters: private repos get 2,000 Actions minutes/month and this
       uses ~1,440 a day.
-
-- [ ] **Push this project.** From the unzipped folder:
-      ```bash
-      git init && git add . && git commit -m "Initial: collection pipeline"
-      git branch -M main
-      git remote add origin https://github.com/YOU/publibike-weather.git
-      git push -u origin main
-      ```
 
 - [ ] **Enable write permissions.**
       Settings → Actions → General → Workflow permissions →
       **Read and write permissions** → Save.
 
-- [ ] **Create the chaining token.**
+- [ ] **Create the chaining token** (skip if `COLLECTOR_PAT` already exists).
       Settings (your account) → Developer settings → Personal access tokens →
       Fine-grained tokens → Generate new token.
-      - Repository access: only `publibike-weather`
+      - Repository access: only this repo
       - Permissions: **Actions: Read and write**, **Contents: Read and write**
       - Expiry: 30 days is fine
-      Copy the token.
+      Save it as a repository secret named `COLLECTOR_PAT`
+      (Settings → Secrets and variables → Actions).
 
-- [ ] **Save it as a secret.**
-      Repo → Settings → Secrets and variables → Actions → New repository secret.
-      Name: `COLLECTOR_PAT`. Value: the token.
-
-- [ ] **Test the feed locally first** (catches a dead URL before you wait 6 hours):
+- [ ] **Test the feed locally first** (catches a dead URL before you wait hours):
       ```bash
       R -e 'install.packages("jsonlite", repos="https://cloud.r-project.org")'
       Rscript R/01_collect_publibike.R --once --city Bern
       ls data/station_information/   # should show a stations_*.csv
       ```
-      If this fails, fix it before starting the workflow. Do not skip.
+      Expect `Scope: 272 of 1663 stations within 5 km of Bern`.
+      If it fails, fix it before starting the workflow. Do not skip.
+
+- [ ] **Delete the local test data** so it does not confuse the real run:
+      `rm -rf data/station_status data/station_information data/poll_log`
 
 - [ ] **Start collection.**
       Actions tab → "Collect PubliBike data" → Run workflow →
-      city `Bern`, interval `60` → Run.
+      city `Bern`, radius `5`, interval `30`, **duration `320`**, probe `false`.
 
-- [ ] **Confirm it's running.** Within 2 minutes a run should appear with a
-      spinning amber dot. Open it, check the "Collect for 5h30m" step is
-      logging polls.
+      ⚠️ **Duration must be 320.** Anything under 60 is treated as a test and
+      will not chain — that is what stopped collection yesterday.
 
-- [ ] **Delete the local test data** so it doesn't confuse things later:
-      `rm -rf data/`
+- [ ] **Confirm it is running and chaining.** Within 2 minutes a run should
+      appear. Open it and check:
+      - the "Preflight" step lists the endpoints
+      - the "Collect" step logs `Snapshot 1 written`
+      - at the end, the **job summary** says `Chained a successor | yes`
+
+      The job summary is the thing to check daily. If it ever says `no`, the
+      chain is dead and only the 6-hourly watchdog will restart it.
 
 ---
 
-## Tomorrow — Tuesday 25 August ⚠️ THE IMPORTANT ONE
+## Tomorrow — Wednesday 26 August ⚠️ THE IMPORTANT ONE
 
-This is the most valuable half-hour of the week. **Run the entire pipeline on
-partial data.** If something is broken, you find out with six days left to fix
-it, not on the morning of the deadline.
+The most valuable half-hour of the week. **Run the entire pipeline on partial
+data.** If something is broken, you find out with five days left to fix it, not
+on the morning of the deadline.
 
-- [ ] Check the repo: there should be **3–4 commits** from
+- [ ] Check the repo: there should be **4–5 commits** from
       `github-actions[bot]`, and files in `data/station_status/`.
 
 - [ ] Pull and run everything:
@@ -75,33 +96,40 @@ it, not on the morning of the deadline.
       ```
 
 - [ ] Verify each of these:
-      - [ ] Derive reports a sensible station count (Bern ≈ 100–170)
-      - [ ] Weather station list shows BER or similar, within a few km
+      - [ ] Derive reports **272 stations** and roughly **96 snapshots per day**
+      - [ ] The de-duplication line reports **0 duplicates** (anything else means
+            two collectors overlapped)
+      - [ ] `stale_replica` in the poll-log breakdown is a small percentage
+      - [ ] Station liveness shows **~65–70% reporting within 1 h** — if this
+            collapses, the network went down, not your collector
+      - [ ] Vehicle types report **non-zero** ebike and mbike totals
+      - [ ] Weather station list shows **BER** within a few km, and the spread
+            warning does **not** appear
       - [ ] The join reports **overlap > 0** — this is the one that fails silently
       - [ ] The hourly turnover chart shows a plausible daily shape
 
 - [ ] If the join reports zero overlap, try `--shift-weather 1`, and check the
-      weather file isn't the historical archive.
+      weather file is not the historical archive.
 
-- [ ] **Note the gap statistics.** In `derived/events.csv`, look at
-      `gap_minutes`. Median should be ~1. A few large values are the handovers
-      between Actions runs — expected, and you'll report them.
+- [ ] **Note the gap statistics** from the poll-log section of
+      `02_derive_flows.R`. You want: polls made, how many were `unchanged`
+      (expected: the large majority), and total minutes where polling itself
+      stopped. That last number is your collection downtime — everything else
+      is the feed not publishing, which is a different thing and worth saying.
 
 ---
 
-## Wednesday 26 August (5 minutes)
+## Thursday 27 August (5 minutes)
 
 - [ ] Has it rained? `derived/weather_hourly.csv`, column `precip_mm`.
 - [ ] **If precipitation is essentially zero so far** → plan to extend
       collection to ~11 days rather than 7. No rain means no primary finding.
-- [ ] Confirm commits are still arriving (the chain hasn't silently died).
+- [ ] Job summary still says `Chained a successor | yes`?
 
----
+## Saturday 29 August (5 minutes)
 
-## Friday 28 August (5 minutes)
-
-- [ ] Commits still arriving? Roughly 16–20 by now.
-- [ ] `du -sh data/` — should be around 4–5 MB.
+- [ ] Commits still arriving? Roughly 4 a day.
+- [ ] `du -sh data/` — should be around 1.5 MB.
 - [ ] Re-run the pipeline; sanity-check the numbers are growing sensibly.
 
 ---
@@ -122,9 +150,12 @@ it, not on the morning of the deadline.
 
 - [ ] Record these for your methods section:
       - Collection window (first and last timestamp)
-      - Number of stations
-      - Total status observations
-      - Median and maximum `gap_minutes`, and number of gaps > 5 min
+      - Number of stations, and how many were silent for the whole window
+      - Total status observations and number of distinct snapshots
+      - Median and maximum interval between snapshots
+      - Polling downtime in minutes, from the poll log
+      - Share of events timestamped from `last_reported` vs the snapshot
+      - Number of `stale_replica` rejections
       - Number of wet hours vs dry hours
       - Whether the shift-weather sensitivity check changed the conclusion
 
@@ -137,9 +168,9 @@ claim then rests on a sample of one, which is thin — a single rainy Saturday
 would distort it badly.
 
 Stretching to **Thursday 4 September (11 days)** gives you two weekends and
-roughly doubles your rain exposure, at no extra cost or effort. If your
-deadline permits, do that. Decide on Wednesday when you see how much rain
-you're getting.
+roughly doubles your rain exposure, at no extra cost or effort. At ~320 KB a
+day the storage is irrelevant. If your deadline permits, do that. Decide on
+Thursday when you see how much rain you're getting.
 
 ---
 
@@ -147,11 +178,15 @@ you're getting.
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
+| Ran once, then stopped | `duration` under 60 = test run, does not chain | Re-run with duration `320` |
 | No runs appear | Workflow not on default branch | Ensure `collect.yml` is on `main` |
 | Runs but doesn't commit | Workflow permissions | Settings → Actions → Read and write |
-| Only one run, then stops | `COLLECTOR_PAT` missing/expired | Recreate the secret; re-run manually |
-| Feed error in logs | PubliBike URL changed | Check `systems.csv` in the MobilityData repo, filter CH |
+| Chain dies after one run | `COLLECTOR_PAT` missing/expired | Recreate the secret; job summary names this |
+| Feed error in logs | Feed URL changed | `--inspect`; check `systems.csv` in the MobilityData repo, filter CH |
+| `stale_replica` on most polls | Feed replicas badly out of step | Data is still correct, just sparser — note it in limitations |
+| Nothing written for hours | Feed stopped publishing | Check the poll log: `unchanged` means it is up and static |
 | Join overlap = 0 | Historical weather file, or timing | Re-fetch without `--historical`; try `--shift-weather 1` |
-| Very few events derived | Interval too coarse, or wrong city | Check station count and `gap_minutes` |
+| Weather station is far away | Collecting more than one city | Use `--city Bern`, not the whole network |
+| Very few events derived | Expected — 15 min resolution nets out short trips | See `docs/DATA_QUALITY.md` §1 |
 
 Anything else — paste the error output and I'll debug it.
