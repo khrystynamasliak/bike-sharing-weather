@@ -20,21 +20,31 @@ The feed sets `ttl: 60`, which reads as "refreshes every 60 seconds". It does
 not, and the truth is worse than a simple longer interval.
 
 Snapshot timestamps land on the quarter hour — `06:15:05`, `06:30:05`,
-`07:45:05` — so something upstream does run every 15 minutes. But what actually
-*reaches* the API is sparse and irregular. Polling 110 times over 38 minutes
-returned only **three distinct snapshots**, and there was a **75-minute stretch
-in which no new snapshot appeared at all**.
+`07:45:05` — and the best measurement available confirms roughly that cadence,
+with stalls.
 
-> A caution about measuring this. A first probe lasting a few minutes saw
-> `06:15:05` and `06:30:05` and suggested a tidy 15-minute cadence. Running for
-> 38 minutes showed that conclusion was wrong. Probe for an hour or more before
-> you trust a number, and re-probe rather than assuming today matches.
+**13.5 hours of continuous collection** (24–25 Aug, polled every 60 s) produced
+**619 polls but only 39 distinct network states**:
 
-**Consequence.** Fifteen minutes is a best case, not a guarantee. Some hours
-will carry four observations and some only one; `02_derive_flows.R` writes an
-`observations` column per station-hour so you can tell them apart, and reports
-the median and maximum interval between snapshots. Quote both in the methods
-section rather than a single nominal interval.
+| | |
+|---|---|
+| median interval between snapshots | 15.1 min |
+| shortest | 12.2 min |
+| longest | 75.4 min |
+| gaps of 16 min or less | 68% |
+| polls that returned identical data | 93.5% |
+
+> A caution about measuring this. A first probe of a few minutes saw two
+> snapshots 15 minutes apart and suggested a tidy cadence. A 38-minute probe
+> then landed inside a stall and suggested something far worse. Neither was
+> representative. Trust a long collection run over a short probe, and quote the
+> realised distribution rather than a nominal figure.
+
+**Consequence.** Fifteen minutes is the typical case, not a guarantee: about a
+third of intervals are longer, and stalls past an hour happen. Some hours carry
+four observations and some one; `02_derive_flows.R` writes an `observations`
+column per station-hour so you can tell them apart, and reports the median and
+maximum interval. Quote both in the methods section.
 
 The original plan's 60-second interval and the proposal's 5-minute interval
 were both describing a precision the source does not offer. Polling fast is
@@ -48,6 +58,13 @@ same window nets to zero and is invisible. This undercount is worse than a
 systematic bias, not noise. Say so in the limitations, and if you want to
 quantify it, note that this is now unfixable from the source side: no amount of
 polling recovers what the publisher never published.
+
+### The 93.5% figure is the whole argument for the collector's design
+
+Polling every 60 seconds and storing every response wrote the same snapshot
+about fifteen times over. That is what the first version of the collector did,
+and it is why `data/` holds 13 MB for half a day of a feed that only produced
+39 genuinely distinct observations.
 
 ## 2. Replicas serve snapshots out of order, and the spread is wide
 
@@ -91,8 +108,18 @@ A side effect worth noting: because out-of-step replicas are a *source* of
 snapshots rather than only a nuisance, this collects more history than a
 strictly-newer rule would.
 
-*If you have data collected before this guard existed, treat short-gap events
-with suspicion — a change and its exact reversal a minute apart is the tell.*
+**Data collected before this guard existed is recoverable, and is recovered
+automatically.** In the 24–25 Aug files, 3.9% of polls returned to a network
+state already seen, and the feed's own clock — the newest `last_reported` across
+all stations — ran backwards on 4.4% of transitions, by up to 105 minutes.
+Differencing that in poll order would have fabricated flows.
+
+The fix needs no new fields. The newest `last_reported` in a poll identifies the
+snapshot it came from, and on that data the mapping is exactly one-to-one: 619
+polls, 39 distinct network states, 39 distinct values of `max(last_reported)`.
+`02_derive_flows.R` detects files with no `feed_last_updated`, keys on that
+instead, and collapses the repeats — recovering the true 39-snapshot series from
+1.03 million rows.
 
 ## 3. Conditional GET works, so frequent polling is nearly free
 

@@ -93,19 +93,42 @@ load_status <- function(data_dir) {
   df$station_id <- as.character(df$station_id)
   df <- df[!is.na(df$polled_at_utc), ]
 
-  # The observation time is the feed's own last_updated, not the moment we
-  # happened to ask. The feed publishes every ~15 minutes; poll time carries
-  # up to that much jitter relative to when the data was actually current.
-  if ("feed_last_updated" %in% names(df)) {
-    df$observed_at <- as_utc(df$feed_last_updated)
-    df$observed_at[is.na(df$observed_at)] <- df$polled_at_utc[is.na(df$observed_at)]
-  } else {
-    df$observed_at <- df$polled_at_utc
-  }
   if ("last_reported" %in% names(df)) {
     df$last_reported <- suppressWarnings(as_utc(df$last_reported))
   } else {
     df$last_reported <- as.POSIXct(NA, tz = "UTC")
+  }
+
+  # The observation time is the feed's own publication clock, not the moment we
+  # happened to ask. Poll time carries up to a full publication interval of
+  # jitter relative to when the data was actually current.
+  if ("feed_last_updated" %in% names(df)) {
+    df$observed_at <- as_utc(df$feed_last_updated)
+    df$observed_at[is.na(df$observed_at)] <- df$polled_at_utc[is.na(df$observed_at)]
+  } else if (any(!is.na(df$last_reported))) {
+    # RECOVERY PATH for data collected before feed_last_updated was recorded.
+    #
+    # Those files have one row per poll, so a 60-second poll of a feed that
+    # publishes every ~15 minutes stored the same snapshot ~15 times, and the
+    # out-of-step replicas (docs/DATA_QUALITY.md §2) mean the sequence sometimes
+    # returns to a snapshot already recorded. Differencing that in poll order
+    # invents a departure and a matching arrival at every station that moved in
+    # between - measured at 3.9% of polls in the 24-25 Aug data.
+    #
+    # The newest last_reported in a poll identifies the snapshot it came from.
+    # On the 24-25 Aug data that mapping is exactly one-to-one: 619 polls, 39
+    # distinct network states, 39 distinct max(last_reported). Using it as the
+    # observation key collapses the repeats and restores the true series.
+    key <- as.numeric(df$polled_at_utc)
+    snap <- ave(as.numeric(df$last_reported), key,
+                FUN = function(v) if (all(is.na(v))) NA_real_ else max(v, na.rm = TRUE))
+    df$observed_at <- as.POSIXct(snap, origin = "1970-01-01", tz = "UTC")
+    df$observed_at[is.na(df$observed_at)] <- df$polled_at_utc[is.na(df$observed_at)]
+    cat(sprintf("No feed_last_updated column: recovered %d distinct snapshots from %d polls\n",
+                length(unique(df$observed_at)), length(unique(df$polled_at_utc))))
+    cat("       (older collector; snapshot identity taken from max(last_reported))\n")
+  } else {
+    df$observed_at <- df$polled_at_utc
   }
 
   # One row per station per published snapshot. Duplicates arise when two
