@@ -20,8 +20,20 @@ historical trip data.** GBFS is a real-time specification that reports current
 system state and retains nothing, and there is no Swiss equivalent of the trip
 archives published by North American operators such as Capital Bikeshare or Citi
 Bike. The project therefore constructs its own historical dataset by polling the
-live feed at five-minute intervals over the collection period, then infers bike
-movements by differencing consecutive snapshots of station occupancy.
+live feed over the collection period, then infers bike movements by differencing
+consecutive snapshots of station occupancy.
+
+Measurement of the feed (25 August 2026, `docs/DATA_QUALITY.md`) sets the
+resolution this can achieve, and it is coarser than planned. The feed advertises
+a 60-second time-to-live; in practice its snapshot timestamps are quarter-hour
+aligned, and only three distinct snapshots were served across 38 minutes of
+continuous polling, including a 75-minute stretch with nothing new. Fifteen
+minutes is therefore a best case rather than a sampling interval, and the
+realised spacing is irregular. The collector polls every 30 seconds regardless,
+because unchanged polls are conditional-GET 304s that cost nothing, and stores
+each distinct published snapshot once. The number of observations behind every
+station-hour is recorded so that sparsely covered hours can be identified rather
+than silently averaged in.
 
 This constraint is also what makes the project original. Rather than analysing a
 pre-cleaned dataset that thousands of other students have used, it involves building
@@ -91,30 +103,52 @@ pivot to this question.
 
 | | |
 |---|---|
-| Publisher | PubliBike AG |
-| Access | `https://api.publibike.ch/v1/gbfs/v2/gbfs.json` |
-| Standard | GBFS 2.3 |
+| Publisher | PubliBike AG, republished by MobiData BW |
+| Access | `https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs` |
+| Standard | GBFS 3.0 |
 | Authentication | None required |
 | Catalogue | `github.com/MobilityData/gbfs/blob/master/systems.csv` (filter Country Code = CH) |
 | Specification | `https://gbfs.org/` |
 
 Two tables, retrieved from separate endpoints listed in the discovery document:
 
-**`station_status`** — the fact table. One row per station per poll.
-Fields: `station_id`, timestamp, `num_bikes_available`, `num_docks_available`,
-`num_bikes_disabled`, `is_renting`, `is_returning`, `vehicle_types_available`.
-Approximately 187,000 rows per day at five-minute polling across roughly 650
-stations; about 1.3 million rows after one week.
+**`station_status`** — the fact table. One row per station per *published
+snapshot*. Fields: `station_id`, `polled_at_utc`, `feed_last_updated`,
+`last_reported`, `num_bikes_available`, `is_installed`, `is_renting`,
+`is_returning`, `vehicle_types_available`.
+
+`num_docks_available` and `num_bikes_disabled` are named in the specification
+but absent from every record this feed returns, and every station is
+`is_virtual_station: true` — so `capacity` is a nominal allowance for a
+geofenced area rather than a count of physical docks. Occupancy is measurable;
+dock saturation is not.
+
+At best-case 15-minute publication and 272 stations in scope (Bern, 5 km
+radius), this is about 26,000 rows a day and 180,000 after a week; fewer
+whenever the feed stalls.
+
+**`poll_log`** — a collection audit. One row per poll attempt with its outcome
+(`written`, `unchanged`, `already_recorded`, `error`). This is what separates
+"the collector was down" from "the feed published nothing", which are
+indistinguishable in the status series alone.
 
 **`station_information`** — the dimension table. One row per station.
-Fields: `station_id`, `name`, `lat`, `lon`, `capacity`, `address`, `post_code`.
-Approximately 650 rows, static.
+Fields: `station_id`, `name`, `lat`, `lon`, `capacity`, `address`, `post_code`,
+`region_id`. 1,663 rows nationwide, 272 in the Bern scope; refreshed every
+6 hours rather than treated as static, since names and capacities do change.
 
-*Note on network coverage:* PubliBike merged with Velospot, and the two are
-published as separate feeds. PubliBike proper covers Bern, Lausanne–Morges, Nyon,
-Sottoceneri and Zurich; Velospot covers Fribourg, Basel, Biel, Valais and others, at
-`https://api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch/gbfs`. Select the feed
-matching the target city.
+*Note on network coverage:* PubliBike merged with Velospot and the merged
+network is published as one GBFS 3.0 feed by MobiData BW, covering 1,663
+stations across Bern, Zürich, Basel, Ticino, Fribourg, Biel, Valais and others.
+The original `api.publibike.ch` endpoint still responds but returns an **empty
+station list** (verified 25 August 2026), so it cannot be used.
+
+Those 1,663 stations are not one network — they are a dozen city networks
+hundreds of kilometres apart, and averaging across them is meaningless for a
+weather question. Collection is therefore scoped by distance from a city
+centre. Matching on station names does not work as a substitute: "Bern" appears
+in `Bernoullistrasse 30 - Basel` and `Berninaplatz - Zürich`, and `post_code` is
+populated for only half the stations.
 
 ### Source 2 — MeteoSwiss (federal agency)
 
@@ -171,8 +205,13 @@ with and without a one-hour shift, and sensitivity to the choice is reported.
 
 ## 5. Method
 
-1. **Collect.** Poll the PubliBike GBFS feed every five minutes, appending each
-   snapshot to disk. Refresh the station dimension table daily.
+1. **Collect.** Poll the PubliBike GBFS feed every 30 seconds with conditional
+   GET, appending a snapshot whenever the feed's own `last_updated` advances —
+   roughly every 15 minutes. Reject any response older than the newest already
+   accepted; the endpoint's replicas are not cache-coherent and will otherwise
+   serve snapshots out of order. Refresh the station dimension every 6 hours.
+   Scope the network geographically (Bern, 5 km radius) rather than by matching
+   station names.
 2. **Derive flows.** Difference consecutive occupancy readings per station.
    Negative changes are treated as departures, positive as arrivals. Changes of five
    or more bikes within one interval are flagged as likely operator rebalancing.
@@ -188,13 +227,28 @@ with and without a one-hour shift, and sensitivity to the choice is reported.
 
 ## 6. Limitations
 
-**Stock rather than flow.** The feed reports how many bikes are at a station, not
-individual rides. Departures and arrivals are inferred by differencing, so a bike
-leaving and another arriving between two polls nets to zero and is invisible. This
-undercounts activity, and undercounts it most at the busiest stations — a systematic
-bias rather than random noise. The magnitude can be estimated by collecting at
-one-minute intervals for a period and comparing against the same data downsampled to
-five minutes.
+**Stock rather than flow, at 15-minute resolution.** The feed reports how many
+bikes are at a station, not individual rides. Departures and arrivals are
+inferred by differencing, so a bike leaving and another arriving within the same
+published snapshot nets to zero and is invisible. This undercounts activity, and
+undercounts it most at the busiest stations — a systematic bias rather than
+random noise.
+
+The severity is set by the publication interval, and the original plan
+understated it: at 15 minutes rather than 5, considerably more activity nets out
+than anticipated. Nor can the magnitude be estimated by polling faster and
+downsampling, as first proposed — the publisher does not emit the intermediate
+states, so no polling strategy recovers them. What can be done is to report the
+share of station-hours in which occupancy changed at all, as an upper bound on
+how much of the series is informative.
+
+**Per-station reporting is uneven.** Station `last_reported` timestamps show
+that only ~31% of the network had reported within the hour, and 17% had been
+silent for over a day. A silent station yields a flat series, which differencing
+reads as zero flow — indistinguishable from a station nobody used. Bern is among
+the healthiest parts of the network (68% within the hour), which is a further
+reason to scope there; stations silent for the whole window should be excluded
+from network totals, and the count reported.
 
 **Limited observation window.** The dataset spans only the collection period. A week
 supports weekday–weekend comparison; two weeks is preferable. Whether sufficient
@@ -206,9 +260,12 @@ cycle rather than a weather effect. The analysis controls for hour of day; resul
 without this control are reported only as descriptive.
 
 **Single weather station.** One station represents conditions across the whole
-network. This is defensible for compact urban networks but becomes questionable
-across larger areas, particularly for precipitation, which MeteoSwiss notes exhibits
-high spatial variability.
+network. This is defensible for a compact urban network — Bern within a 5 km
+radius — and is the reason collection is scoped to one city. It would not be
+defensible across the full 1,663-station Swiss feed, whose centroid falls in
+open country between the cities; a single station standing for Bern, Basel,
+Zürich and Ticino at once would measure nothing, least of all precipitation,
+which MeteoSwiss notes exhibits high spatial variability.
 
 **Rebalancing contamination.** Operator van movements appear in the data as bike
 count changes indistinguishable in kind from rider activity. The five-bike threshold
@@ -222,9 +279,11 @@ events.
 Both sources are cited: PubliBike for system data, MeteoSwiss for meteorological
 data, subject to their respective terms of use. The GBFS specification deliberately
 excludes personally identifiable information, so the data contains no individual-level
-records, and no attempt is made to link bike movements to individuals. Polling is
-conducted at five-minute intervals — well within reasonable use, and above the
-30-second refresh floor the specification itself contemplates.
+records, and no attempt is made to link bike movements to individuals. Polling is conducted at 30-second intervals using conditional GET, so an
+unchanged feed is answered with an empty 304 response; the bandwidth cost to the
+publisher is a fraction of what a 5-minute unconditional poll would impose, and
+the interval matches the 30-second refresh floor the specification itself
+contemplates.
 
 ---
 
@@ -243,11 +302,14 @@ everything else uses base R.
 ```r
 install.packages("jsonlite")
 
+# Measure the feed before trusting any interval
+Rscript 01_collect_publibike.R --probe --probe-minutes 45
+
 # Validate the feed and take one snapshot
-Rscript 01_collect_publibike.R --once
+Rscript 01_collect_publibike.R --once --city Bern
 
 # Begin continuous collection (leave running)
-Rscript 01_collect_publibike.R --interval 300 --city Bern
+Rscript 01_collect_publibike.R --interval 30 --city Bern --radius 5
 
 # After several days
 Rscript 02_derive_flows.R --data data --out derived

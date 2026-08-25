@@ -34,6 +34,21 @@ suppressPackageStartupMessages({
   library(jsonlite)
 })
 
+# Station names carry umlauts and accents (Mühleberg, Charrière). If R is
+# running under a non-UTF-8 locale - a bare shell gives you "C" - write.csv
+# cannot represent them and silently writes the literal text "M<U+00FC>hleberg"
+# into the data instead. Ask for a UTF-8 locale before anything is written.
+local({
+  if (isTRUE(l10n_info()[["UTF-8"]])) return(invisible(NULL))
+  for (loc in c("C.UTF-8", "en_US.UTF-8", "de_CH.UTF-8", "UTF-8")) {
+    if (nzchar(suppressWarnings(Sys.setlocale("LC_CTYPE", loc)))) break
+  }
+  if (!isTRUE(l10n_info()[["UTF-8"]])) {
+    warning("No UTF-8 locale available; accented station names may be mangled ",
+            "in the output CSVs.", call. = FALSE)
+  }
+})
+
 STAC_ROOT  <- "https://data.geo.admin.ch/api/stac/v1"
 COLLECTION <- "ch.meteoschweiz.ogd-smn"
 
@@ -90,15 +105,36 @@ find_col <- function(df, ...) {
 }
 
 # Read a MeteoSwiss CSV, sniffing the separator (they use ';').
+#
+# The files are Windows-1252, and the obvious approach - read.csv2(fileEncoding
+# = "latin1") - is locale-dependent and fails BADLY when it fails. Under a
+# non-UTF-8 locale, R tries to re-encode into the native charset, cannot
+# represent "météorologiques", and stops reading at that line with only a
+# warning. The station metadata then comes back with ONE row instead of 158,
+# and the script cheerfully picks the "nearest" weather station from a list of
+# one. It works on a UTF-8 CI runner and silently mangles the analysis anywhere
+# else, which is the worst combination.
+#
+# Reading the bytes and converting explicitly with iconv gives the same result
+# in every locale.
 read_ms_csv <- function(url) {
   tmp <- tempfile(fileext = ".csv")
   on.exit(unlink(tmp), add = TRUE)
   utils::download.file(url, tmp, quiet = TRUE, mode = "wb")
-  df <- utils::read.csv2(tmp, fileEncoding = "latin1", stringsAsFactors = FALSE,
-                         check.names = TRUE)
+
+  lines <- readLines(tmp, warn = FALSE)
+  lines <- iconv(lines, from = "WINDOWS-1252", to = "UTF-8", sub = "?")
+  lines <- lines[!is.na(lines)]
+  if (length(lines) == 0) stop("Downloaded an empty file from ", url)
+
+  df <- utils::read.csv2(text = lines, stringsAsFactors = FALSE, check.names = TRUE)
   if (ncol(df) == 1) {
-    df <- utils::read.csv(tmp, fileEncoding = "latin1", stringsAsFactors = FALSE,
-                          check.names = TRUE)
+    df <- utils::read.csv(text = lines, stringsAsFactors = FALSE, check.names = TRUE)
+  }
+  if (nrow(df) < length(lines) - 2) {
+    warning("Read ", nrow(df), " rows from a ", length(lines),
+            "-line file - parsing stopped early. Check ", basename(url),
+            call. = FALSE)
   }
   df
 }
@@ -137,6 +173,14 @@ fetch_station_metadata <- function() {
   cat("Station metadata:", meta_url, "\n")
   df <- read_ms_csv(meta_url)
   cat(sprintf("Loaded %d MeteoSwiss stations\n", nrow(df)))
+  # SwissMetNet has ~160 automatic stations. A handful means the CSV was only
+  # partly parsed, and "nearest station" would then be chosen from whatever
+  # happened to survive - a wrong answer that looks like a right one.
+  if (nrow(df) < 50) {
+    stop("Only ", nrow(df), " weather stations parsed; expected around 160. ",
+         "The metadata CSV was not read properly - do not trust a station ",
+         "chosen from this list.")
+  }
   df
 }
 
@@ -352,7 +396,28 @@ main <- function() {
     bikes <- read.csv(opts$stations, stringsAsFactors = FALSE)
     clat <- mean(as.numeric(bikes$lat), na.rm = TRUE)
     clon <- mean(as.numeric(bikes$lon), na.rm = TRUE)
-    cat(sprintf("\nBike network centroid: %.4f, %.4f\n", clat, clon))
+    cat(sprintf("\nBike network centroid: %.4f, %.4f  (%d stations)\n",
+                clat, clon, nrow(bikes)))
+
+    # A centroid only means something if the stations cluster around it.
+    #
+    # This is not hypothetical: collecting the whole Swiss network unfiltered
+    # puts the centroid at 46.92, 7.92 - empty countryside between the cities,
+    # near no bike station at all - and the "nearest" weather station comes out
+    # as Schüpfheim, a rural site representing Bern, Basel, Zürich and Ticino
+    # at once. The join still runs. It just measures nothing.
+    spread <- haversine_km(clat, clon, as.numeric(bikes$lat), as.numeric(bikes$lon))
+    cat(sprintf("Station spread from centroid: median %.1f km, 90th pct %.1f km, max %.1f km\n",
+                median(spread, na.rm = TRUE),
+                quantile(spread, 0.9, na.rm = TRUE), max(spread, na.rm = TRUE)))
+    if (quantile(spread, 0.9, na.rm = TRUE) > 15) {
+      cat("\n  *** WARNING ***\n")
+      cat("  These stations are spread over tens of kilometres, so one weather\n")
+      cat("  station cannot represent them - least of all for precipitation,\n")
+      cat("  which MeteoSwiss itself notes is highly variable in space.\n")
+      cat("  Collect a single city (01_collect_publibike.R --city Bern), or\n")
+      cat("  split the network by city and fetch weather for each.\n\n")
+    }
 
     weather$distance_km <- haversine_km(clat, clon, weather$weather_lat, weather$weather_lon)
     ranked <- weather[order(weather$distance_km), ]

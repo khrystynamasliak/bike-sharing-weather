@@ -21,7 +21,7 @@ missing one destroys the flow inference.
 Run **one long job that polls internally**. GitHub-hosted jobs can run up to
 6 hours, so the workflow:
 
-1. starts a single R process that polls every 60 seconds for 5h20m,
+1. starts a single R process that polls every 30 seconds for 5h20m,
 2. commits the collected data,
 3. dispatches the next run,
 4. exits before the 6-hour kill.
@@ -29,6 +29,13 @@ Run **one long job that polls internally**. GitHub-hosted jobs can run up to
 Four runs a day instead of 1,440. Scheduling delay costs you a gap between
 runs, not the sampling structure inside them. A 6-hourly cron entry sits behind
 this as a watchdog in case the chain breaks.
+
+**Why 30 seconds when the feed only publishes every 15 minutes?** Because an
+unchanged poll is a conditional GET returning `304` with an empty body — it
+costs nothing. Polling that often means each new snapshot is captured within
+about half a minute of appearing, instead of up to fifteen minutes late, and
+the collector writes a row only when the feed's own `last_updated` advances.
+See `docs/DATA_QUALITY.md`.
 
 ## Setup
 
@@ -50,6 +57,9 @@ your-repo/
 │   └── 04_join_and_analyse.R
 ├── .gitignore
 └── data/            <- created by the workflow
+    ├── station_information/
+    ├── station_status/
+    └── poll_log/    <- every poll attempt, for the methods section
 ```
 
 **3. Allow the workflow to commit.**
@@ -68,8 +78,17 @@ new workflow run — GitHub blocks that to prevent runaway recursion. Without th
 PAT, the chain stops after one run and you fall back to the delayed watchdog.
 
 **5. Start it.**
-Actions → "Collect PubliBike data" → Run workflow. Set the city, or leave it
-blank for the whole network.
+Actions → "Collect PubliBike data" → Run workflow. Set city `Bern` and leave
+**duration at 320**.
+
+A duration under 60 minutes is treated as a test run and deliberately does
+*not* dispatch a successor — otherwise every experiment would start an endless
+chain. That safety is what stopped the 24 August runs after two polls each. The
+job summary on every run states plainly whether it chained.
+
+Leaving the city blank collects all 1,663 Swiss stations, which spans four
+cities hundreds of kilometres apart and makes the single-weather-station join
+meaningless. Only do that if you intend to split by city afterwards.
 
 **6. Stop it when you have enough data.**
 Actions → the workflow → "..." → Disable workflow. It will otherwise run
@@ -93,10 +112,14 @@ than appending to a shared one. This matters for git: a file that is created
 once and never modified adds its size to history once. A file that grows and is
 recommitted daily adds its full size every day.
 
-At one-minute polling for one city, expect roughly 1 MB per run and 7 MB per
-week — trivial for a git repo. The whole network at one minute is about 36 MB
-per week, still fine. Only if you ran the full network for several months would
-repo size become worth thinking about.
+Because a row is written per *publication* rather than per poll, volume is set
+by the feed, not by the poll interval. The Bern network (272 stations) produces
+about 96 snapshots a day at ~3.3 KB gzipped each — roughly **320 KB a day, or
+2.5 MB for a week**. Even eleven days of the whole 1,663-station network would
+stay under 25 MB.
+
+Writing every poll instead, as the first version did, would have been ~28 MB a
+day for the whole network — about 200 MB a week of near-duplicate rows.
 
 ## Retrieving the data
 
@@ -108,8 +131,10 @@ Rscript R/03_fetch_meteoswiss.R --stations derived/stations.csv --out derived
 Rscript R/04_join_and_analyse.R --derived derived
 ```
 
-`derived/` is gitignored — it regenerates from the raw data in seconds, so
-there's no reason to version it.
+`derived/` **is** committed, by the "Analyse collected data" workflow, so the
+tables are readable on GitHub without cloning and running R. It regenerates
+from `data/` in seconds, so treat it as output rather than source: if the two
+ever disagree, `data/` wins.
 
 ## Honest comparison with the alternatives
 
@@ -130,8 +155,12 @@ methodology.
 ## One caveat for your writeup
 
 This approach produces small gaps between runs — a few minutes if the chain
-works, longer if a dispatch fails and the watchdog has to pick it up. Those
-gaps are visible in the derived events table as large `gap_minutes` values.
-Filter on that column rather than treating the series as continuous, and state
-the median gap and the number of interruptions in your methods section. It is a
-limitation, but a documented and quantified one, which is all a marker asks.
+works, longer if a dispatch fails and the watchdog has to pick it up.
+
+You can now say exactly how long those gaps were, rather than inferring them.
+`data/poll_log/` records every poll attempt with its outcome, so
+`02_derive_flows.R` can separate two things that look identical in the status
+series: minutes where the collector was not running, and minutes where it was
+running and the feed simply had nothing new. Report the first as collection
+downtime and the second as the feed's publication cadence. That distinction is
+worth more in a methods section than a single gap statistic.
