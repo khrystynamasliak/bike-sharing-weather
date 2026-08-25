@@ -24,11 +24,16 @@ live feed over the collection period, then infers bike movements by differencing
 consecutive snapshots of station occupancy.
 
 Measurement of the feed (25 August 2026, `docs/DATA_QUALITY.md`) sets the
-resolution this can achieve. The feed advertises a 60-second time-to-live but
-publishes a new snapshot only every ~15 minutes, so 15 minutes — not 5, and not
-1 — is the finest interval over which change can be observed. The collector
-polls every 30 seconds anyway, because unchanged polls are conditional-GET 304s
-that cost nothing, and writes a record only when the feed advances.
+resolution this can achieve, and it is coarser than planned. The feed advertises
+a 60-second time-to-live; in practice its snapshot timestamps are quarter-hour
+aligned, and only three distinct snapshots were served across 38 minutes of
+continuous polling, including a 75-minute stretch with nothing new. Fifteen
+minutes is therefore a best case rather than a sampling interval, and the
+realised spacing is irregular. The collector polls every 30 seconds regardless,
+because unchanged polls are conditional-GET 304s that cost nothing, and stores
+each distinct published snapshot once. The number of observations behind every
+station-hour is recorded so that sparsely covered hours can be identified rather
+than silently averaged in.
 
 This constraint is also what makes the project original. Rather than analysing a
 pre-cleaned dataset that thousands of other students have used, it involves building
@@ -118,11 +123,12 @@ but absent from every record this feed returns, and every station is
 geofenced area rather than a count of physical docks. Occupancy is measurable;
 dock saturation is not.
 
-At ~15-minute publication and 272 stations in scope (Bern, 5 km radius), this
-is about 26,000 rows a day and 180,000 after a week.
+At best-case 15-minute publication and 272 stations in scope (Bern, 5 km
+radius), this is about 26,000 rows a day and 180,000 after a week; fewer
+whenever the feed stalls.
 
 **`poll_log`** — a collection audit. One row per poll attempt with its outcome
-(`written`, `unchanged`, `stale_replica`, `error`). This is what separates
+(`written`, `unchanged`, `already_recorded`, `error`). This is what separates
 "the collector was down" from "the feed published nothing", which are
 indistinguishable in the status series alone.
 

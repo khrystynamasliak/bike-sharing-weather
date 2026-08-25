@@ -14,24 +14,32 @@ than its observed behaviour will overstate what the dataset measures.
 
 ---
 
-## 1. It publishes every ~15 minutes, not every minute
+## 1. It publishes far less often than `ttl: 60` claims — and irregularly
 
 The feed sets `ttl: 60`, which reads as "refreshes every 60 seconds". It does
-not. Observed `last_updated` values land on the quarter hour:
+not, and the truth is worse than a simple longer interval.
 
-```
-06:15:05   06:30:05   07:45:05   08:00:05 ...
-```
+Snapshot timestamps land on the quarter hour — `06:15:05`, `06:30:05`,
+`07:45:05` — so something upstream does run every 15 minutes. But what actually
+*reaches* the API is sparse and irregular. Polling 110 times over 38 minutes
+returned only **three distinct snapshots**, and there was a **75-minute stretch
+in which no new snapshot appeared at all**.
 
-Fifteen polls a minute apart return byte-identical bodies. A 22-minute test run
-at 20-second polling made 22 requests and wrote 2 snapshots — the other 20 were
-the same data.
+> A caution about measuring this. A first probe lasting a few minutes saw
+> `06:15:05` and `06:30:05` and suggested a tidy 15-minute cadence. Running for
+> 38 minutes showed that conclusion was wrong. Probe for an hour or more before
+> you trust a number, and re-probe rather than assuming today matches.
 
-**Consequence.** The effective time resolution of this dataset is 15 minutes.
-The original plan's 60-second interval, and the proposal's 5-minute interval,
-were both describing a precision the source does not offer. Polling faster is
-still worth doing — it catches each publication within ~30 s of it appearing,
-rather than up to 15 minutes late — but it does not produce finer data.
+**Consequence.** Fifteen minutes is a best case, not a guarantee. Some hours
+will carry four observations and some only one; `02_derive_flows.R` writes an
+`observations` column per station-hour so you can tell them apart, and reports
+the median and maximum interval between snapshots. Quote both in the methods
+section rather than a single nominal interval.
+
+The original plan's 60-second interval and the proposal's 5-minute interval
+were both describing a precision the source does not offer. Polling fast is
+still worth doing — it catches each snapshot shortly after it appears, and each
+poll is free — but it does not produce finer data.
 
 **Consequence for the flow inference.** Differencing recovers only the *net*
 change over each 15-minute window. A bike leaving and another arriving in the
@@ -41,29 +49,47 @@ systematic bias, not noise. Say so in the limitations, and if you want to
 quantify it, note that this is now unfixable from the source side: no amount of
 polling recovers what the publisher never published.
 
-## 2. Replicas serve snapshots out of order
+## 2. Replicas serve snapshots out of order, and the spread is wide
 
-Consecutive requests, seconds apart, returned:
+The endpoint sits behind several caches that are not in step. What each returns
+depends on which replica the load balancer picks, and they can be far apart:
 
 ```
-07:34:20   last_updated = 06:30:05
-07:35:01   last_updated = 06:15:05      <- fifteen minutes older
+served 07:34:20  ->  snapshot 06:30:05    64 min old
+served 07:35:01  ->  snapshot 06:15:05    80 min old
+served 07:46:56  ->  snapshot 07:45:05     2 min old
+served 07:52:59  ->  snapshot 06:30:05    83 min old
+served 07:59:00  ->  snapshot 07:45:05    14 min old
+served 08:06:03  ->  snapshot 06:30:05    96 min old
 ```
 
-The endpoint sits behind several caches that are not in step. This is not
-occasional: `If-None-Match` with a single ETag returned `200` where the same
-request carrying *both* recently-seen ETags returned `304`, which is the
-signature of two replicas alternating.
+Snapshots **90 minutes apart** were served interchangeably inside one window.
+This is not occasional: `If-None-Match` with a single ETag returned `200` where
+the same request carrying *both* recently-seen ETags returned `304` — the
+signature of replicas alternating.
 
-**Consequence.** Naive differencing turns this into fabricated activity. Going
-06:30 → 06:15 → 06:30 reads as a departure followed by a matching arrival at
-every station that moved in between, all timestamped wrongly. It inflates
-turnover and adds it disproportionately to busy stations, which is exactly
-where the analysis looks.
+**Consequence.** Recording that stream in arrival order fabricates activity.
+06:30 → 06:15 → 06:30 reads as a departure and then a matching arrival at every
+station that moved in between, all timestamped wrongly. It inflates turnover and
+does so most at busy stations, which is exactly where the analysis looks.
 
-**Handled.** `01_collect_publibike.R` drops any snapshot whose `last_updated` is
-not strictly newer than the newest already accepted (`MONOTONIC_GATE`), and logs
-it as `stale_replica` in the poll log so the rate is visible rather than hidden.
+**Handled — but not the obvious way.** The intuitive fix is "accept only
+snapshots newer than the newest so far". That is wrong here, and measurably so:
+because the replicas hold *different* snapshots, an older-looking response is
+often one this run has never recorded. In a 22-minute test the collector
+rejected `06:30:05` as stale while holding `06:15:05` and `07:45:05` — throwing
+away a real, useful, intermediate observation.
+
+The collector therefore keys on snapshot **identity**: each distinct
+`last_updated` is stored exactly once, whenever it turns up, and repeats are
+logged as `already_recorded`. Arrival order does not matter, because
+`02_derive_flows.R` sorts by `feed_last_updated` before differencing and
+de-duplicates on `(station_id, observed_at)`. The series it works from is
+chronological however the parts arrived.
+
+A side effect worth noting: because out-of-step replicas are a *source* of
+snapshots rather than only a nuisance, this collects more history than a
+strictly-newer rule would.
 
 *If you have data collected before this guard existed, treat short-gap events
 with suspicion — a change and its exact reversal a minute apart is the tell.*
@@ -76,11 +102,12 @@ only silences one replica. It also serves gzip: 27 KB on the wire instead of
 634 KB.
 
 **Consequence.** Polling every 30 seconds costs almost nothing, so there is no
-reason to poll slowly to be polite. The collector writes a row only when the
-feed advances, so the file contains one record per publication instead of one
-per poll — about **96 snapshots a day, ~320 KB gzipped** for the Bern network,
-against the ~28 MB a day that writing every poll of the whole network would
-have produced.
+reason to poll slowly to be polite. The collector stores each distinct snapshot
+once rather than one row per poll, so volume is set by the feed, not the
+interval: at best (a true 15-minute cadence) about **96 snapshots and ~320 KB
+gzipped a day** for the Bern network, and less when the feed stalls. Writing
+every poll of the whole network instead would have been ~28 MB a day of
+near-duplicates.
 
 ## 4. `last_reported` is the real event clock
 
@@ -168,6 +195,7 @@ exceed total turnover.
 - **Real turnover at busy stations.** Systematically undercounted, worst where
   demand is highest.
 - **Dock saturation.** Not published.
-- **Anything at finer than 15-minute resolution.**
+- **Anything at finer than 15-minute resolution** — and not reliably that:
+  some hours carry a single observation. Check the `observations` column.
 - **Anything about Basel, Lugano or Sion** from this feed, without first
   establishing that their stations report at all.

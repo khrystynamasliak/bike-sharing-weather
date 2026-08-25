@@ -29,17 +29,27 @@
 #
 # Measured against api.mobidata-bw.de/sharing/gbfs/v3/velospot_ch on 25 Aug 2026:
 #
-#  1. It advertises `ttl: 60` but the published snapshot only advances every
-#     ~15 minutes, on the quarter hour. Polling every 60 s therefore fetches the
-#     same bytes 15 times over. The collector polls often but writes a row only
-#     when the feed's own `last_updated` moves forward, so the file contains one
-#     record per genuine publication rather than per poll.
+#  1. It advertises `ttl: 60`, which is not remotely true. Snapshot timestamps
+#     land on the quarter hour (:15:05, :30:05, :45:05), so something upstream
+#     runs every 15 minutes - but what actually REACHES the API is far sparser
+#     and quite irregular. Over 110 polls across 38 minutes, only three distinct
+#     snapshots were ever served, and one 75-minute stretch produced no new
+#     snapshot at all. Polling every 60 s fetched the same bytes 15 times over.
 #
-#  2. It is served by several replicas whose caches are NOT in step. Consecutive
-#     requests can return snapshots going BACKWARDS in time (06:30 then 06:15).
-#     Differencing that series would invent a departure and a matching arrival
-#     out of nothing. MONOTONIC_GATE below drops any response not newer than the
-#     newest already seen, which removes the artefact entirely.
+#     Treat ~15 minutes as a best case and expect worse. Run --probe over an
+#     hour or more to see what the feed is doing today; a single short probe
+#     will mislead you, as the first one here did.
+#
+#  2. It is served by several replicas whose caches are NOT in step, and the
+#     spread is large: snapshots 90 minutes apart were served interchangeably
+#     within one window, individual responses up to 96 minutes stale. Recording
+#     that stream in arrival order would invent a departure and a matching
+#     arrival at every station that moved in between.
+#
+#     The fix is to key on snapshot IDENTITY, not recency - see
+#     DEDUPE_BY_SNAPSHOT below. Each distinct `last_updated` is stored once,
+#     whenever it turns up, and 02_derive_flows sorts by it before differencing.
+#     Rejecting merely-older responses would instead discard real history.
 #
 #  3. It supports conditional GET. Sending the last few ETags in If-None-Match
 #     turns an unchanged poll into a 304 with an empty body, so frequent polling
@@ -47,9 +57,10 @@
 #     matters because of (2): holding several ETags keeps every replica quiet.
 #
 #  4. Each station carries its own `last_reported`, at second resolution, which
-#     is when THAT STATION last changed. This is far better than the poll time:
-#     the 15-minute publication cadence limits how promptly a change is seen,
-#     not how precisely it can be timestamped. 02_derive_flows.R keys off it.
+#     is when THAT STATION last changed. This is the one piece of precision the
+#     feed does give you: the publication cadence limits how promptly a change
+#     is seen, not how precisely it can be timestamped. 02_derive_flows.R keys
+#     off it.
 #
 #  5. `num_docks_available` and `num_bikes_disabled` are absent. Every station
 #     is `is_virtual_station: true`, so `capacity` is a nominal allowance rather
@@ -87,9 +98,21 @@ OUT_DIR      <- "data"
 # like a network-wide outage in the derived data.
 MIN_COUNT_RATIO <- 0.5
 
-# Drop any snapshot not strictly newer than the newest already accepted. See
-# note (2) above.
-MONOTONIC_GATE <- TRUE
+# Record each distinct published snapshot exactly once. See note (2) above.
+#
+# The obvious rule - "accept only snapshots newer than the newest so far" - is
+# wrong here, and measurably so. Because the replicas hold DIFFERENT snapshots,
+# an older-looking response is often one this run has never recorded, and
+# discarding it throws away real history: in a 22-minute test the collector
+# rejected 06:30:05 as stale, having stored 06:15:05 and 07:45:05 but never
+# 06:30:05 itself.
+#
+# Keying on identity instead of recency collects every snapshot the load
+# balancer routes us to. Arrival order does not matter, because 02_derive_flows
+# sorts by feed_last_updated before differencing and de-duplicates on
+# (station_id, observed_at) - so the series it works from is chronological
+# whatever order the parts turned up in.
+DEDUPE_BY_SNAPSHOT <- TRUE
 
 # How many recent ETags to offer in If-None-Match. Needs to cover the number of
 # out-of-step replicas; 6 is comfortably above the 2 observed.
@@ -530,10 +553,10 @@ probe_feed <- function(endpoints, opts) {
       unlink(r$path)
       if (is.null(doc)) { n_err <- n_err + 1L } else {
         lu <- iso_to_epoch(doc$last_updated)
-        if (length(seen_lu) && !is.na(lu) && lu <= max(seen_lu, na.rm = TRUE)) {
+        if (!is.na(lu) && lu %in% seen_lu) {
           n_stale <- n_stale + 1L
-          log_msg("  replica served an OLDER snapshot: ", epoch_to_iso(lu),
-                  " (newest seen ", epoch_to_iso(max(seen_lu, na.rm = TRUE)), ")")
+          log_msg("  replica re-served a snapshot already seen: ", epoch_to_iso(lu),
+                  "  (", round((as.numeric(Sys.time()) - lu) / 60), " min old)")
         } else {
           n_new <- n_new + 1L
           seen_lu <- c(seen_lu, lu)
@@ -557,8 +580,8 @@ probe_feed <- function(endpoints, opts) {
               as.numeric(difftime(Sys.time(), started, units = "mins"))))
   cat(sprintf("  304 not modified:  %d\n", n_304))
   cat(sprintf("  new snapshots:     %d\n", n_new))
-  cat(sprintf("  stale replicas:    %d%s\n", n_stale,
-              if (n_stale > 0) "   <- responses going backwards in time" else ""))
+  cat(sprintf("  already seen:      %d%s\n", n_stale,
+              if (n_stale > 0) "   <- replicas re-serving old snapshots" else ""))
   cat(sprintf("  errors:            %d\n", n_err))
 
   if (length(seen_lu) >= 2) {
@@ -669,10 +692,10 @@ poll_once <- function(endpoints, opts, state) {
   if (is.null(doc)) return(finish("parse_error"))
 
   lu <- iso_to_epoch(doc$last_updated)
-  if (MONOTONIC_GATE && !is.na(lu) && !is.na(state$last_lu) && lu <= state$last_lu) {
-    # A replica whose cache is behind. Writing it would fabricate a departure
-    # and a matching arrival at every station that moved in between.
-    return(finish("stale_replica", lu = lu))
+  if (DEDUPE_BY_SNAPSHOT && !is.na(lu) && lu %in% state$seen_lu) {
+    # Already recorded. Writing it again would duplicate every station's reading
+    # for that instant, and differencing a duplicated series double-counts.
+    return(finish("already_recorded", lu = lu))
   }
   # Fallback for a feed that publishes no last_updated, or a server that sends
   # no ETag: if the bytes are identical to the last snapshot taken, nothing has
@@ -720,7 +743,10 @@ poll_once <- function(endpoints, opts, state) {
                        tagged(paste0("status_", day_stamp()), ".csv.gz", opts$tag)),
              out, gzipped = TRUE)
 
-  state$last_lu <- if (is.na(lu)) state$last_lu else lu
+  if (!is.na(lu)) {
+    state$seen_lu <- c(state$seen_lu, lu)
+    state$last_lu <- if (is.na(state$last_lu)) lu else max(state$last_lu, lu)
+  }
   state$last_md5 <- body_md5
   state$written <- state$written + 1L
   state$rows    <- state$rows + nrow(out)
@@ -774,7 +800,7 @@ main <- function() {
   dir.create(opts$outdir, recursive = TRUE, showWarnings = FALSE)
 
   state <- list(keep_ids = NULL, etags = character(0), last_lu = NA_real_,
-                last_md5 = NA_character_,
+                seen_lu = numeric(0), last_md5 = NA_character_,
                 si_max = 0L, ss_max = 0L, si_at = NULL,
                 written = 0L, rows = 0L, last_action = NA_character_)
 
@@ -811,7 +837,7 @@ main <- function() {
     actions <- c(actions, state$last_action)
     if (identical(state$last_action, "written")) {
       log_msg("Snapshot ", state$written, " written (", state$rows,
-              " rows so far, feed at ", epoch_to_iso(state$last_lu), ")")
+              " rows so far, ", length(state$seen_lu), " distinct snapshots held)")
     } else if (polls %% 40L == 0L) {
       log_msg("Poll ", polls, " - ", state$written, " snapshots written; ",
               "last action: ", state$last_action)

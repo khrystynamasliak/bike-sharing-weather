@@ -4,7 +4,8 @@ Measuring how weather affects PubliBike demand, using two independently
 published data sources joined on time.
 
 **Status:** collecting from 25 August 2026 · Bern network (272 stations within
-5 km of the centre) · polled every 30 s, published every ~15 min
+5 km of the centre) · polled every 30 s; the feed publishes irregularly, at
+best every ~15 min
 
 ---
 
@@ -30,8 +31,8 @@ see `docs/DATA_QUALITY.md` for the full account.
 
 | Observation | Consequence |
 |---|---|
-| Advertises `ttl: 60`, but publishes a new snapshot only every ~15 min, on the quarter hour | **Effective time resolution is 15 minutes, not 60 seconds.** Polling faster buys promptness, not detail |
-| Served by replicas whose caches are out of step — consecutive requests can go *backwards* in time | Differencing unguarded would invent a departure and a matching arrival out of nothing. The collector drops any snapshot not newer than the newest seen |
+| Advertises `ttl: 60`; snapshot times are quarter-hour aligned, but only 3 distinct snapshots reached us in 38 min of polling, with a 75-min stretch of nothing new | **Effective resolution is 15 minutes at best, and irregular.** Some hours carry four observations, some one — check the `observations` column |
+| Served by replicas whose caches are out of step, by as much as 90 minutes | Differencing unguarded would invent a departure and a matching arrival out of nothing. The collector stores each distinct snapshot once, keyed on identity rather than recency, so out-of-order arrivals are kept rather than discarded |
 | Supports conditional GET (`If-None-Match`), including multiple ETags | An unchanged poll is a 304 with an empty body, so 30-second polling is nearly free. A row is written only when the feed advances |
 | Each station carries its own `last_reported`, to the second | Changes can be timestamped precisely even though publication is coarse. This is the event clock the analysis uses |
 | No `num_docks_available`; every station is `is_virtual_station` | Occupancy is measurable. Dock saturation is **not** — `capacity` is a nominal allowance |

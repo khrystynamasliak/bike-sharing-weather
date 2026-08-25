@@ -15,10 +15,13 @@ workflow behaving as designed; it just was not the run you wanted.
 Three things were also found and fixed while checking the pipeline, and they
 matter for what you write up:
 
-- The feed publishes **every ~15 minutes**, not every 60 seconds as its `ttl`
-  claims. Your effective time resolution is 15 minutes.
-- Its replicas serve snapshots **out of order**, which fabricates flow events.
-  The collector now rejects any snapshot older than the newest it has seen.
+- The feed publishes **far less often than its `ttl: 60` claims, and
+  irregularly** — 38 minutes of polling yielded three distinct snapshots, with a
+  75-minute stretch of nothing new. Fifteen minutes is a best case, not a
+  sampling interval.
+- Its replicas serve snapshots **up to 90 minutes out of step**, which would
+  fabricate flow events. The collector now stores each distinct snapshot once,
+  keyed on identity, so out-of-order arrivals are kept rather than thrown away.
 - Every `bikes_type_*` column was **silently all zeros** — a regex bug meant the
   e-bike/classic split never worked. It does now, which makes Q3 answerable.
 
@@ -96,10 +99,12 @@ on the morning of the deadline.
       ```
 
 - [ ] Verify each of these:
-      - [ ] Derive reports **272 stations** and roughly **96 snapshots per day**
+      - [ ] Derive reports **272 stations**; note how many snapshots per day you
+            actually get (96 would be the 15-minute best case — expect fewer)
       - [ ] The de-duplication line reports **0 duplicates** (anything else means
             two collectors overlapped)
-      - [ ] `stale_replica` in the poll-log breakdown is a small percentage
+      - [ ] `already_recorded` appears in the poll-log breakdown — that is the
+            replica de-duplication working, and a high share is normal
       - [ ] Station liveness shows **~65–70% reporting within 1 h** — if this
             collapses, the network went down, not your collector
       - [ ] Vehicle types report **non-zero** ebike and mbike totals
@@ -155,7 +160,9 @@ on the morning of the deadline.
       - Median and maximum interval between snapshots
       - Polling downtime in minutes, from the poll log
       - Share of events timestamped from `last_reported` vs the snapshot
-      - Number of `stale_replica` rejections
+      - Number of `already_recorded` responses (duplicate snapshots suppressed)
+      - Distribution of the `observations` column — how many station-hours rest
+        on a single reading rather than four
       - Number of wet hours vs dry hours
       - Whether the shift-weather sensitivity check changed the conclusion
 
@@ -183,7 +190,8 @@ Thursday when you see how much rain you're getting.
 | Runs but doesn't commit | Workflow permissions | Settings → Actions → Read and write |
 | Chain dies after one run | `COLLECTOR_PAT` missing/expired | Recreate the secret; job summary names this |
 | Feed error in logs | Feed URL changed | `--inspect`; check `systems.csv` in the MobilityData repo, filter CH |
-| `stale_replica` on most polls | Feed replicas badly out of step | Data is still correct, just sparser — note it in limitations |
+| `already_recorded` on most non-304 polls | Replicas re-serving snapshots you have | Normal and harmless — the de-duplication is doing its job |
+| Long stretches with nothing written | Feed stalled upstream | Confirmed behaviour, not your collector — the poll log proves it. See `docs/DATA_QUALITY.md` §1 |
 | Nothing written for hours | Feed stopped publishing | Check the poll log: `unchanged` means it is up and static |
 | Join overlap = 0 | Historical weather file, or timing | Re-fetch without `--historical`; try `--shift-weather 1` |
 | Weather station is far away | Collecting more than one city | Use `--city Bern`, not the whole network |
