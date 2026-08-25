@@ -816,8 +816,8 @@ main <- function() {
   if (!is.null(opts$duration)) {
     log_msg("Bounded run: stopping after ", opts$duration, " minutes.")
   }
-  log_msg("Polling every ", opts$interval, "s; a snapshot is written only when ",
-          "the feed's last_updated advances.")
+  log_msg("Polling every ", opts$interval, "s; a snapshot is written the first ",
+          "time its last_updated is seen, in whatever order replicas serve them.")
 
   repeat {
     state <- tryCatch({
