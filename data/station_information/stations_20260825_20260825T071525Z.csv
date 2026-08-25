@@ -1,0 +1,1664 @@
+"fetched_at_utc","station_id","name","lat","lon","capacity","address","post_code"
+"2026-08-25T07:15:27","PIB:Station:168","MUZOO - La Chaux-de-Fonds",47.10511,6.823428,40,"Rue Alexis-Marie-Piaget 84","2300"
+"2026-08-25T07:15:27","PIB:Station:169","Le Parc des Sports - La Chaux-de-Fonds",47.112366,6.836345,40,"Rue de la Charrière 70A","2300"
+"2026-08-25T07:15:27","PIB:Station:170","Passage Léopold-Robert 3 (urbanisme) - La Chaux-de-Fonds",47.103138,6.8319397,40,"Passage Léopold-Robert 3","2300"
+"2026-08-25T07:15:27","PIB:Station:171","Collège de l'Ouest - La Chaux-de-Fonds",47.100338,6.8189073,40,"Rue du Temple-Allemand 110b","2300"
+"2026-08-25T07:15:27","PIB:Station:172","Collège des Forges - La Chaux-de-Fonds",47.09336,6.809921,40,"Avenue des Forges 16","2300"
+"2026-08-25T07:15:27","PIB:Station:173","Parking de la Ronde - La Chaux-de-Fonds",47.10674,6.8354955,40,"Rue du Marais 10","2300"
+"2026-08-25T07:15:27","PIB:Station:174","Place du marché - La Chaux-de-Fonds",47.104267,6.8312244,40,"Rue du Marché 3","2300"
+"2026-08-25T07:15:27","PIB:Station:175","Eplatures-Centre - Manor - La Chaux-de-Fonds",47.089146,6.8024964,40,"Boulevard des Eplatures 20","2300"
+"2026-08-25T07:15:27","PIB:Station:176","Bahnhof Chaux-de-Fonds - La Chaux-de-Fonds",47.09896,6.8248487,40,"Avenue Léopold-Robert 63","2300"
+"2026-08-25T07:15:27","PIB:Station:177","Piscine-patinoire des Mélèzes - La Chaux-de-Fonds",47.09572,6.8295436,40,"Rue des Mélèzes 4","2300"
+"2026-08-25T07:15:27","PIB:Station:179","Bibliothèque - La Chaux-de-Fonds",47.1043,6.8261456,40,"Rue du Progrès 33","2300"
+"2026-08-25T07:15:27","PIB:Station:181","Crêt du Locle Parking - La Chaux-de-Fonds",47.078014,6.785388,40,"Crêt-du-Locle 7","2322"
+"2026-08-25T07:15:27","PIB:Station:182","Migros MMM Métropole - La Chaux-de-Fonds",47.10042,6.827044,40,"Rue Daniel-Jeanrichard 23","2300"
+"2026-08-25T07:15:27","PIB:Station:184","Place du Pré-de-Foire - Martigny",46.09235,7.0645943,40,"Place du Pré-de-Foire 26","1920"
+"2026-08-25T07:15:27","PIB:Station:185","Parking - Rue de la Surfrète - Martigny",46.094337,7.069139,40,"Rue de Surfrête 44","1920"
+"2026-08-25T07:15:27","PIB:Station:186","Parking - Rue de la Fusion - Martigny",46.095215,7.06282,40,"Avenue de la Fusion 57","1920"
+"2026-08-25T07:15:27","PIB:Station:187","Rue des Epineys - Martigny",46.09667,7.0661364,40,"Rue des Epineys 19","1920"
+"2026-08-25T07:15:27","PIB:Station:188","Avenue de la Fusion - Martigny",46.098362,7.065958,40,"Avenue de la Fusion 62","1920"
+"2026-08-25T07:15:27","PIB:Station:189","Avenue de la Fusion - Ecole/Piscine - Martigny",46.102608,7.069784,40,"Avenue de la Fusion 12","1920"
+"2026-08-25T07:15:27","PIB:Station:190","Parking des Neuvilles - Martigny",46.10267,7.080553,40,"Rue des Finettes 19","1920"
+"2026-08-25T07:15:27","PIB:Station:191","Bahnhof Martigny - Martigny",46.105618,7.0794816,40,"Avenue de la Gare  53","1920"
+"2026-08-25T07:15:27","PIB:Station:192","Rue de la Bâtiaz - Martigny",46.105125,7.0711026,40,"Rue de la Bâtiaz  2","1920"
+"2026-08-25T07:15:27","PIB:Station:193","Rue des Prés-Aubert - Martigny",46.10739,7.0775185,40,"Rue des Prés-Aubert 8","1920"
+"2026-08-25T07:15:27","PIB:Station:195","WBGB - PSI - Villigen",47.535324,8.221411,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:197","WNLA - PSI - Villigen",47.535446,8.222656,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:198","WWHB - PSI - Villigen",47.53601,8.221389,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:199","WMSA - PSI - Villigen",47.536945,8.2217655,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:200","WBGA - PSI - Villigen",47.536976,8.223536,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:201","WSGA - PSI - Villigen",47.53741,8.222122,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:202","WHGA - PSI - Villigen",47.538334,8.22277,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:203","WBWA - PSI - Villigen",47.538246,8.223403,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:204","WGHA - PSI - Villigen",47.53953,8.22378,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:206","OHLA - PSI - Würenlingen",47.539845,8.229673,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:207","OTLA - PSI - Villigen",47.53908,8.229492,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:208","OKWA - PSI - Villigen",47.538998,8.228592,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:209","OFLA - PSI - Villigen",47.53819,8.228108,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:210","OHSB - PSI - Villigen",47.537975,8.228927,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:211","OBEA - PSI - Würenlingen",47.537235,8.227358,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:212","OSCB - PSI - Würenlingen",47.536774,8.227525,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:213","OVGA - PSI - Villigen",47.53831,8.229827,40,"Paul Scherrer Institut ","5234"
+"2026-08-25T07:15:27","PIB:Station:214","OSFA 710 - PSI - Würenlingen",47.53505,8.230456,40,"Paul Scherrer Institut ","5232"
+"2026-08-25T07:15:27","PIB:Station:216","Funiculaire - Vevey",46.468678,6.8360734,40,"Mont-Pèlerin ","1800"
+"2026-08-25T07:15:27","PIB:Station:217","Nestlé Bergère - Vevey",46.46579,6.8357086,40,"Avenue Nestlé 55","1800"
+"2026-08-25T07:15:27","PIB:Station:220","Gare de Vevey - SBB Bahnhof - Vevey",46.462498,6.8436627,40,"Rue des Communaux 39","1800"
+"2026-08-25T07:15:27","PIB:Station:221","Alimentarium - Vevey",46.458267,6.8454313,40,"Rlle du Lac 1","1800"
+"2026-08-25T07:15:27","PIB:Station:224","Nestlé entre-deux-Villes - La Tour-de-Peilz",46.45621,6.853485,40,"Avenue des Alpes ","1814"
+"2026-08-25T07:15:27","PIB:Station:225","A l'imprévu - Gare CFF - La Tour-de-Peilz",46.45502,6.8589983,40,"Avenue de la Gare 5","1814"
+"2026-08-25T07:15:27","PIB:Station:226","La Faraz - La Tour-de-Peilz",46.455902,6.8667254,40,"Avenue de la Perrausaz 98","1814"
+"2026-08-25T07:15:27","PIB:Station:227","Nestlé Rive-Reine - La Tour-de-Peilz",46.45119,6.859253,40,"Avenue de Sully 2","1814"
+"2026-08-25T07:15:27","PIB:Station:228","Restaurant le Petit Baigneur - Piscine de La Maladaire/Parking - Montreux",46.446243,6.878432,40,"Chemin du Vallon 1","1814"
+"2026-08-25T07:15:27","PIB:Station:229","Port du Basset - Montreux",46.442173,6.885497,40,"Rue du Lac 141","1815"
+"2026-08-25T07:15:27","PIB:Station:230","Salle du Pierrier - Montreux",46.44101,6.8902993,40,"Rue du Lac 115","1815"
+"2026-08-25T07:15:27","PIB:Station:232","Gambetta - Montreux",46.440155,6.8957872,40,"Gambetta ","1815"
+"2026-08-25T07:15:27","PIB:Station:233","Parfumerie Pharmacie du Montreux-Palace - Montreux",46.43794,6.907008,40,"Centre des Congrès ","1820"
+"2026-08-25T07:15:27","PIB:Station:234","1820 Restaurant & Cocktails Bar - Montreux",46.434917,6.909835,40,"Grand' Rue 57","1820"
+"2026-08-25T07:15:27","PIB:Station:235","Nautic Loisirs - Locations de bateaux - Montreux",46.428886,6.9134398,40,"Quai des Fleurs ","1820"
+"2026-08-25T07:15:27","PIB:Station:237","Räblus - Vingelz - Biel/Bienne",47.13171,7.221798,40,"Neuenburgstrasse 78","2505"
+"2026-08-25T07:15:27","PIB:Station:238","Restaurant du Port Joran - Schiffländte/ Strandbad - Biel/Bienne",47.13132,7.2360406,40,"Ch. des Roseau 2","2503"
+"2026-08-25T07:15:27","PIB:Station:239","Restaurant La Péniche - Nidau - Biel/Bienne",47.12742,7.2350273,40,"Schlossstrasse 24","2560"
+"2026-08-25T07:15:27","PIB:Station:240","Parkplatz Strandboden - Biel/Bienne",47.135456,7.2357297,40,"Magglingenbahn ","2502"
+"2026-08-25T07:15:27","PIB:Station:241","Elfenaupark - Biel/Bienne",47.13532,7.242042,40,"Unterer Quai 7","2502"
+"2026-08-25T07:15:27","PIB:Station:242","Amthaus - Biel/Bienne",47.137123,7.241869,40,"Spitalstrasse 12","2502"
+"2026-08-25T07:15:27","PIB:Station:243","Rueschlistrasse 14 - Biel/Bienne",47.137768,7.244437,40,"Rüschlistrasse 14","2502"
+"2026-08-25T07:15:27","PIB:Station:244","Manor - Biel/Bienne",47.137608,7.2456803,40,"Rue Centrale 40","2502"
+"2026-08-25T07:15:27","PIB:Station:245","Mühlebrücke - Biel/Bienne",47.139996,7.243882,40,"Mühlebrücke 2","2502"
+"2026-08-25T07:15:27","PIB:Station:246","Jakob-Rosius-Platz - Biel/Bienne",47.141575,7.2453265,40,"Rue du Bourg  31","2502"
+"2026-08-25T07:15:27","PIB:Station:247","Neumarktplatz - Biel/Bienne",47.140232,7.2486176,40,"Bibliothek ","2504"
+"2026-08-25T07:15:27","PIB:Station:248","Gerbergasse - Biel/Bienne",47.14164,7.2477403,40,"Rue des Tanneurs 4","2502"
+"2026-08-25T07:15:27","PIB:Station:249","Juraplatz - Biel/Bienne",47.14359,7.2481966,40,"Juravorstadt 9","2502"
+"2026-08-25T07:15:27","PIB:Station:250","Stadtpark - Biel/Bienne",47.14109,7.2528834,40,"Rue Bubenberg 54","2502"
+"2026-08-25T07:15:27","PIB:Station:251","Rosenheimweg - Biel/Bienne",47.145103,7.250935,40,"Bellevue ","2502"
+"2026-08-25T07:15:27","PIB:Station:252","Berufsbildungszentrum - Biel/Bienne",47.146015,7.254411,40,"BBZ ","2502"
+"2026-08-25T07:15:27","PIB:Station:253","Gurzelen - Biel/Bienne",47.14426,7.257533,40,"Rue Général-Dufour  138","2502"
+"2026-08-25T07:15:27","PIB:Station:255","VBB - Biel/Bienne",47.149483,7.261286,40,"Rue de Boujean  88","2502"
+"2026-08-25T07:15:27","PIB:Station:256","Schlösslifeld - Biel/Bienne",47.149036,7.2683425,40,"Palmenweg 9","2504"
+"2026-08-25T07:15:27","PIB:Station:257","Prinz Coiffeur - Centre de Boujean - Biel/Bienne",47.15246,7.266529,40,"Bözingenstrasse 177","2504"
+"2026-08-25T07:15:27","PIB:Station:258","Robert-Walser Platz - Biel/Bienne",47.131462,7.2412186,40,"Robert-Walser-Platz 7","2503"
+"2026-08-25T07:15:27","PIB:Station:259","Bahnhof Biel - Biel/Bienne",47.132683,7.243846,40,"Bahnhofplatz 6","2502"
+"2026-08-25T07:15:27","PIB:Station:260","Velospot - Centre de production - Biel/Bienne",47.14378,7.267496,40,"Salzhausstrasse 18a","2503"
+"2026-08-25T07:15:27","PIB:Station:263","Kreuzplatz - Biel/Bienne",47.13206,7.2512994,40,"Alfred-Aebi-Strasse 92","2503"
+"2026-08-25T07:15:27","PIB:Station:264","Rotonde - Biel/Bienne",47.134224,7.243752,40,"Aarbergstrasse 112","2502"
+"2026-08-25T07:15:27","PIB:Station:265","Kongresshaus - Biel/Bienne",47.135296,7.247598,40,"Güterstrasse 27","2502"
+"2026-08-25T07:15:27","PIB:Station:266","Kontrollgebäude - Biel/Bienne",47.13714,7.2474546,40,"Quai du Haut 6","2503"
+"2026-08-25T07:15:27","PIB:Station:267","Sporthalle Esplanade - Biel/Bienne",47.1355,7.250962,40,"Silbergasse 54","2503"
+"2026-08-25T07:15:27","PIB:Station:268","PROVISORISCH - Alleestrasse - Biel/Bienne",47.13696,7.252516,40,"Rue des Prés 93","2503"
+"2026-08-25T07:15:27","PIB:Station:270","Energie Service Biel - Biel/Bienne",47.142998,7.2626534,40,"Chemin Ohm 4","2504"
+"2026-08-25T07:15:27","PIB:Station:271","Bärenplatz - Biel/Bienne",47.14684,7.2721834,40,"Poststrasse 21","2504"
+"2026-08-25T07:15:27","PIB:Station:272","Sägefeldweg - Biel/Bienne",47.15463,7.2731194,40,"Länggasse 27","2504"
+"2026-08-25T07:15:27","PIB:Station:273","Tissot Arena 2 - Biel/Bienne",47.153446,7.277395,40,"Länggasse 4","2504"
+"2026-08-25T07:15:27","PIB:Station:274","Tissot Arena 1 - Biel/Bienne",47.156525,7.281263,40,"Stadien ","2504"
+"2026-08-25T07:15:27","PIB:Station:275","Posalux - Biel/Bienne",47.159985,7.2835546,40,"Fritz-Oppliger-Strasse 15","2504"
+"2026-08-25T07:15:27","PIB:Station:276","Rolex 1 - Biel/Bienne",47.162617,7.289678,40,"Rue de Longeau 7","2504"
+"2026-08-25T07:15:27","PIB:Station:277","Rolex 2 - Biel/Bienne",47.163326,7.292013,40,"Rue de Longeau 18","2504"
+"2026-08-25T07:15:27","PIB:Station:278","Grenchenstrasse - Biel/Bienne",47.160137,7.293673,40,"Grenchenstrasse 10","2504"
+"2026-08-25T07:15:27","PIB:Station:279","Bahnhof Boujean - Biel/Bienne",47.15871,7.2950115,40,"Bözingenfeld ","2504"
+"2026-08-25T07:15:27","PIB:Station:280","Kauer trend Möbelmarkt - Biel/Bienne",47.149204,7.276727,40,"Chemin du Long-Champ  20","2504"
+"2026-08-25T07:15:27","PIB:Station:281","Geyisried - Biel/Bienne",47.146763,7.2826843,40,"Bartolomäusweg 3","2504"
+"2026-08-25T07:15:27","PIB:Station:282","Orpundplatz - Biel/Bienne",47.143585,7.2756195,40,"Orpundstrasse 23","2504"
+"2026-08-25T07:15:27","PIB:Station:283","Schollstrasse - Biel/Bienne",47.142883,7.2723255,40,"Rue du Midi 33","2504"
+"2026-08-25T07:15:27","PIB:Station:284","HEP-BEJUNE - Biel/Bienne",47.137833,7.2685823,40,"Scheibenweg 66","2503"
+"2026-08-25T07:15:27","PIB:Station:285","Krähenberg - Biel/Bienne",47.135616,7.2592363,40,"Meisenweg 2","2503"
+"2026-08-25T07:15:27","PIB:Station:286","Privatklinik Linde - Biel/Bienne",47.132576,7.2627983,40,"Rebenweg 34","2503"
+"2026-08-25T07:15:27","PIB:Station:287","Pestalozzi-Allee - Biel/Bienne",47.13016,7.264102,40,"Johann-Heinrich-Pestalozzi-Allee 72","2503"
+"2026-08-25T07:15:27","PIB:Station:288","Friedhof - Biel/Bienne",47.127434,7.260057,40,"Mösliweg 2","2503"
+"2026-08-25T07:15:27","PIB:Station:289","Cristal - Biel/Bienne",47.125805,7.2582035,40,"Erlacherweg 35","2503"
+"2026-08-25T07:15:27","PIB:Station:290","ZihlPlatz - Biel/Bienne",47.12713,7.2520747,40,"Alexander-Moser-Strasse 25","2503"
+"2026-08-25T07:15:27","PIB:Station:291","Gymnasium Strandboden - Biel/Bienne",47.13358,7.2378254,40,"Unterer Quai 1B","2503"
+"2026-08-25T07:15:27","PIB:Station:292","AGIE Charmille - Biel/Bienne",47.15891,7.2787547,40,"Roger-Federer-Allee 1a","2504"
+"2026-08-25T07:15:27","PIB:Station:293","Swatch - Biel/Bienne",47.14414,7.2611394,40,"Nicolas G. Hayek Strasse 2","2502"
+"2026-08-25T07:15:27","PIB:Station:294","Omega - Biel/Bienne",47.14392,7.2599926,40,"Omega ","2502"
+"2026-08-25T07:15:27","PIB:Station:296","Chemin du Milieu - Martigny",46.11022,7.067472,40,"Chemin du Milieu 31","1920"
+"2026-08-25T07:15:27","PIB:Station:297","Guercet - Martigny",46.10434,7.0986915,40,"Le Guercet ","1920"
+"2026-08-25T07:15:27","PIB:Station:305","Station Test - Locarnese",47.131313,7.2591505,40,"Ch. des Vignes 4",""
+"2026-08-25T07:15:27","PIB:Station:307","Hôtel du Rhône - Martigny",46.099976,7.071463,40,"Avenue du Grand-Saint-Bernard 9","1920"
+"2026-08-25T07:15:27","PIB:Station:309","Groupe Mutuel - Martigny",46.104,7.07397,40,"Rue du Rhône 5","1920"
+"2026-08-25T07:15:27","PIB:Station:310","Service Technique Martigny - Martigny",46.101242,7.072067,40,"Rue du Manoir 1","1920"
+"2026-08-25T07:15:27","PIB:Station:311","Coop Entilles - La Chaux-de-Fonds",47.0947,6.8166094,40,"Avenue Léopold-Robert 151","2300"
+"2026-08-25T07:15:27","PIB:Station:312","Musée Paysan et artisanal/P+R Bruyère - La Chaux-de-Fonds",47.09081,6.814061,40,"Rue de la Bruyère 16","2300"
+"2026-08-25T07:15:27","PIB:Station:318","ODGA - PSI - Würenlingen",47.539474,8.230463,40,"Forschungsstrasse 121","5303"
+"2026-08-25T07:15:27","PIB:Station:329","OSFA 613 - PSI - Villigen",47.534252,8.230614,40,"Paul Scherrer Institut ","5232"
+"2026-08-25T07:15:27","PIB:Station:330","OSFA 285 - PSI - Würenlingen",47.531155,8.231274,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:331","OSFA 148 - PSI - Villigen",47.530052,8.231478,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:333","OSFA 0 - PSI - Würenlingen",47.528862,8.2315645,40,"Paul Scherrer Institut ","5303"
+"2026-08-25T07:15:27","PIB:Station:334","Piscine des Arêtes - La Chaux-de-Fonds",47.105354,6.844275,40,"Rue de la Croix-Fédérale  35","2300"
+"2026-08-25T07:15:27","PIB:Station:360","Hopital Riviera-Chablais - Rennaz",46.37873,6.9205666,40,"Route des Tilles 6a","1847"
+"2026-08-25T07:15:27","PIB:Station:406","Chemin des Vignes - Biel/Bienne",47.13138,7.2595177,40,"Rebenweg 6","2503"
+"2026-08-25T07:15:27","PIB:Station:410","Gare CFF - Villeneuve",46.398315,6.925973,40,"Grand Rue 1","1844"
+"2026-08-25T07:15:27","PIB:Station:411","Bokoloko - Tour de l'Horloge - Vevey",46.458263,6.850202,40,"Clara Haskil ","1800"
+"2026-08-25T07:15:27","PIB:Station:412","Zeugma - Pizza au feu de bois et Menu du jour - 021 546 21 21 - Rue des Moulins - Vevey",46.46442,6.842088,40,"Rue des Moulins 1B","1800"
+"2026-08-25T07:15:27","PIB:Station:413","Clos - Panorama - Vevey",46.46051,6.8477154,40,"Rue du Clos 14","1800"
+"2026-08-25T07:15:27","PIB:Station:424","VITEOS - La Chaux-de-Fonds",47.102234,6.8281355,40,"Espacité 2","2300"
+"2026-08-25T07:15:27","PIB:Station:426","Bahnhof Siggenthal Würenlingen - PSI - Würenlingen",47.51952,8.240522,40,"Bahnhof ","5303"
+"2026-08-25T07:15:27","PIB:Station:441","BCN - La Chaux-de-Fonds",47.101624,6.8269043,40,"Rue du Cygne 6","2300"
+"2026-08-25T07:15:27","PIB:Station:442","Hôtel de Ville - Place du Marché - Aigle",46.31762,6.969389,40,"Place du Marché 4","1860"
+"2026-08-25T07:15:27","PIB:Station:443","Rue du Molage - Aigle",46.319508,6.9646783,40,"Rue du Molage 37A","1860"
+"2026-08-25T07:15:27","PIB:Station:444","Gare Nord - Place de la Gare 3 - Aigle",46.31635,6.9644985,40,"Place de la Gare  3","1860"
+"2026-08-25T07:15:27","PIB:Station:445","Cinéma Cosmopolis - Aigle",46.316208,6.9633512,40,"Avenue des Alpes  1","1860"
+"2026-08-25T07:15:27","PIB:Station:446","Café-Restaurant les Tombettes - Aigle",46.31366,6.959083,40,"Chemin des Dents-du-Midi 29","1860"
+"2026-08-25T07:15:27","PIB:Station:447","Ecole Dents-du-Midi - Aigle",46.32037,6.956399,40,"Chemin de Pré d'Emoz 27","1860"
+"2026-08-25T07:15:27","PIB:Station:448","Chemin de Pré d'Emoz - Aigle",46.322002,6.9585485,40,"Chemin de Pré d'Emoz 2","1860"
+"2026-08-25T07:15:27","PIB:Station:449","Camping/Piscine - Aigle",46.323174,6.9628506,40,"Avenue des Glariers 3","1860"
+"2026-08-25T07:15:27","PIB:Station:450","Text Eau - Place Alphonse Mex - Aigle",46.32006,6.9684124,40,"Place Alphonse Mex 7","1860"
+"2026-08-25T07:15:27","PIB:Station:451","Caveau du Cloître Restaurant - Aigle",46.315495,6.974449,40,"Avenue du Cloître 40","1860"
+"2026-08-25T07:15:27","PIB:Station:452","SDIS du Chablais - Route d'Ollon - Aigle",46.307777,6.9683094,40,"Chemin de Marjolin 91","1860"
+"2026-08-25T07:15:27","PIB:Station:455","Chemin des Vergers - Aigle",46.313683,6.962971,40,"Chemin des Vergers 11","1860"
+"2026-08-25T07:15:27","PIB:Station:457","Centre Mondial du Cyclisme - Aigle",46.318035,6.9344006,40,"Chemin de la Mêlée 12","1860"
+"2026-08-25T07:15:27","PIB:Station:458","Rue de la Poste - Martigny",46.102863,7.0766563,40,"Rue de la Poste 7","1920"
+"2026-08-25T07:15:27","PIB:Station:459","Rue du Grand Verger - Martigny",46.103016,7.0749645,40,"Avenue de la Gare 15","1920"
+"2026-08-25T07:15:27","PIB:Station:470","Rue du Collège - Aigle",46.31875,6.970511,40,"Rue du Collège 12","1860"
+"2026-08-25T07:15:27","PIB:Station:474","Gare sud - Ascenseur - La Chaux-de-Fonds",47.097927,6.825866,40,"Rue du Commerce 25","2300"
+"2026-08-25T07:15:27","PIB:Station:476","Wasgenring 158 - Basel",47.55756,7.5647635,15,"Wasgenring 158","4055"
+"2026-08-25T07:15:27","PIB:Station:477","Holeestrasse 79 - Basel",47.54519,7.570429,15,"Holeestrasse 79","4054"
+"2026-08-25T07:15:27","PIB:Station:478","General-Guisan Strasse 29 - Basel",47.55171,7.56982,15,"General Guisan-Strasse 29","4054"
+"2026-08-25T07:15:27","PIB:Station:479","St. Johanns-Vorstadt 80 - Basel",47.565197,7.583253,25,"Sankt Johanns-Vorstadt 80","4056"
+"2026-08-25T07:15:27","PIB:Station:480","Bernoullistrasse 30 - Basel",47.56001,7.580358,15,"Bernoullistrasse 30","4056"
+"2026-08-25T07:15:27","PIB:Station:481","Paroisse Catholique de langue française - Feierabendstrasse 68 - Basel",47.55359,7.57933,15,"Feierabendstrasse 68","4051"
+"2026-08-25T07:15:27","PIB:Station:482","Leimenstrasse 79 - Basel",47.551395,7.579952,15,"Leimenstrasse 79","4051"
+"2026-08-25T07:15:27","PIB:Station:483","Leonhardsstrasse 45 - Basel",47.55388,7.5842447,15,"Holbeinstrasse 22","4051"
+"2026-08-25T07:15:27","PIB:Station:484","Solothurnerstrasse 55 - Basel",47.543625,7.589987,15,"Solothurnerstrasse 55","4053"
+"2026-08-25T07:15:27","PIB:Station:485","Güterstrasse 190 - Basel",47.54329,7.593124,15,"Güterstrasse 190","4053"
+"2026-08-25T07:15:27","PIB:Station:487","Engelgasse 40 - Basel",47.549786,7.600808,15,"Sevogelstrasse 82","4052"
+"2026-08-25T07:15:27","PIB:Station:488","St. Alban-Vorstadt 94 - Basel",47.55373,7.601041,15,"Sankt Alban-Vorstadt 94","4052"
+"2026-08-25T07:15:27","PIB:Station:489","Bäckerei Jetzer 1 - www.jetzerbegg.ch - Basel",47.55403,7.60941,15,"Zürcherstrasse 65","4052"
+"2026-08-25T07:15:27","PIB:Station:491","Barfüsserplatz - Basel",47.554688,7.588991,25,"Barfüsserplatz 17","4051"
+"2026-08-25T07:15:27","PIB:Station:493","Leonhardsgraben 47 - Basel",47.555794,7.5864124,15,"Leonhardsgraben 47","4051"
+"2026-08-25T07:15:27","PIB:Station:494","Petersgraben 27 - Basel",47.559166,7.584495,15,"Petersgraben 27","4051"
+"2026-08-25T07:15:27","PIB:Station:495","Spiegelgasse 2 - Basel",47.560535,7.587032,15,"Spiegelgasse 2","4051"
+"2026-08-25T07:15:27","PIB:Station:496","Claragraben 43 - Basel",47.56009,7.5968056,15,"Claragraben 20","4058"
+"2026-08-25T07:15:27","PIB:Station:497","Picassoplatz - Basel",47.553284,7.595144,15,"Lautengartenstrasse 1a","4052"
+"2026-08-25T07:15:27","PIB:Station:498","St. Jakobs-Strasse 11 - Basel",47.55053,7.596037,15,"Sankt Jakob-Strasse 13","4052"
+"2026-08-25T07:15:27","PIB:Station:500","St. Alban-Vorstadt 32 - Basel",47.554615,7.5962157,15,"Sankt Alban-Vorstadt 22","4052"
+"2026-08-25T07:15:27","PIB:Station:501","Schönbeinstrasse 40 - Basel",47.560886,7.5812793,15,"Schönbeinstrasse 43","4056"
+"2026-08-25T07:15:27","PIB:Station:502","Mattenstrasse 35 - Basel",47.566578,7.6014295,15,"Mattenstrasse 35","4058"
+"2026-08-25T07:15:27","PIB:Station:503","St. Johanns-Ring 17 - Basel",47.5658,7.5801415,15,"Sankt Johanns-Ring 17","4056"
+"2026-08-25T07:15:27","PIB:Station:505","Birsigstrasse 43 - Basel",47.5502,7.5828047,15,"Birsigstrasse 48","4054"
+"2026-08-25T07:15:27","PIB:Station:506","Clarastrasse 38 - Basel",47.562935,7.5977216,15,"Clarastrasse 38","4058"
+"2026-08-25T07:15:27","PIB:Station:507","Hermann Kinkelin-Strasse 10 - Basel",47.550488,7.5922675,15,"Hermann Kinkelin-Strasse 10","4051"
+"2026-08-25T07:15:27","PIB:Station:508","Kienbergstrasse 14 - Basel",47.562565,7.607264,15,"Kienbergstrasse 14","4058"
+"2026-08-25T07:15:27","PIB:Station:509","Eiscafé Acero - www.acero.ch - 061 222 27 28 - Basel",47.565975,7.5939937,15,"Mörsbergerstrasse 2","4057"
+"2026-08-25T07:15:27","PIB:Station:510","Münsterplatz 11 - Basel",47.55581,7.5915794,15,"Münsterplatz 11","4051"
+"2026-08-25T07:15:27","PIB:Station:511","Nadelberg 33 - Basel",47.55747,7.585491,15,"Nadelberg 31","4051"
+"2026-08-25T07:15:27","PIB:Station:512","Fischmarkt 10 - Basel",47.559074,7.5867653,15,"Fischmarkt 10","4051"
+"2026-08-25T07:15:27","PIB:Station:513","Kohlenberggasse 11 - Basel",47.553043,7.5880446,15,"Kohlenberggasse 10","4051"
+"2026-08-25T07:15:27","PIB:Station:514","Schützenmattstrasse 5 - Basel",47.557125,7.5825787,15,"Schützenmattstrasse 5","4051"
+"2026-08-25T07:15:27","PIB:Station:515","Theodorsgraben 14 - Basel",47.55786,7.598075,15,"Theodorsgraben 14","4058"
+"2026-08-25T07:15:27","PIB:Station:516","Untere Rebgasse 22 - Basel",47.562878,7.5921836,15,"Untere Rebgasse 22","4058"
+"2026-08-25T07:15:27","PIB:Station:518","Ausser Betrieb wegen Bauarbeiten - Missionsstrasse 52 - Basel",47.560795,7.575975,15,"Missionsstrasse 50","4055"
+"2026-08-25T07:15:27","PIB:Station:519","Sharing Zone SBB - Nord - Basel",47.54753,7.5901766,25,"Meret Oppenheim-Strasse  ","4053"
+"2026-08-25T07:15:27","PIB:Station:520","Mum's Kitchen - Vietnamese Food - Basel",47.546852,7.5845313,15,"Margarethenstrasse 35","4053"
+"2026-08-25T07:15:27","PIB:Station:521","Ausser Betrieb wegen Bauarbeiten - GAIA – www.gaiahotel.ch - Basel",47.547497,7.5913234,15,"Centralbahnstrasse 17","4051"
+"2026-08-25T07:15:27","PIB:Station:522","Steinentorberg 12 - Basel",47.549694,7.587954,15,"Steinentorberg 18","4051"
+"2026-08-25T07:15:27","PIB:Station:523","Nadelberg 8/10 - Basel",47.55823,7.5854793,15,"Nadelberg 8","4051"
+"2026-08-25T07:15:27","PIB:Station:524","Tapas Bar  Don Pincho - St. Johanns-Vorstadt 29 - Basel",47.56382,7.5842075,15,"Sankt Johanns-Vorstadt 29","4056"
+"2026-08-25T07:15:27","PIB:Station:525","Pfeffingerstrasse 74 - Basel",47.54261,7.590187,15,"Pfeffingerstrasse 74","4053"
+"2026-08-25T07:15:27","PIB:Station:526","Alemannengasse 17 - Basel",47.557957,7.599734,15,"Alemannengasse 17","4058"
+"2026-08-25T07:15:27","PIB:Station:527","Theodorsgraben 34 - Basel",47.558674,7.5987267,15,"Theodorsgraben 34","4058"
+"2026-08-25T07:15:27","PIB:Station:528","Velospot 1 - Tellstrasse 32 - Basel",47.543083,7.5961947,15,"Tellstrasse 36","4053"
+"2026-08-25T07:15:27","PIB:Station:529","Falknerstrasse 18 - Basel",47.55606,7.5889425,15,"Pfluggässlein 13","4001"
+"2026-08-25T07:15:27","PIB:Station:530","Ausser Betrieb - Marktplatz - Basel",47.558575,7.587616,20,"Marktplatz 6","4001"
+"2026-08-25T07:15:27","PIB:Station:531","Steinenvorstadt 62 - Basel",47.551765,7.5875525,15,"Steinenvorstadt 62","4051"
+"2026-08-25T07:15:27","PIB:Station:532","Vogelsangstrasse 12 - Basel",47.56305,7.6058116,15,"Itelpfad 16","4058"
+"2026-08-25T07:15:27","PIB:Station:533","Münsterplatz 2 - Basel",47.55603,7.592182,15,"Rittergasse 2","4051"
+"2026-08-25T07:15:27","PIB:Station:534","Kohlenberggasse 5 - Basel",47.55399,7.5878677,15,"Kohlenberggasse 1","4051"
+"2026-08-25T07:15:27","PIB:Station:535","Kasernenstrasse 32 - Basel",47.562847,7.591457,15,"Gassa 32","4058"
+"2026-08-25T07:15:27","PIB:Station:536","Außer Betrieb wegen Bauarbeiten - Istanbul Streetfood - Güterstrasse 89 - Basel",47.546337,7.5855403,15,"Güterstrasse 85","4053"
+"2026-08-25T07:15:27","PIB:Station:537","Martinskirche - Basel",47.558826,7.5886297,15,"Martinskirchplatz 4","4051"
+"2026-08-25T07:15:27","PIB:Station:539","Heuwaage - Basel",47.550884,7.586353,15,"Binningerstrasse 5","4051"
+"2026-08-25T07:15:27","PIB:Station:540","Hebelstrasse 65 - Basel",47.561802,7.579238,15,"Hebelstrasse 65","4056"
+"2026-08-25T07:15:27","PIB:Station:541","Ausser Betrieb wegen Bauarbeiten - Holbeinstrasse 5 - Basel",47.555,7.58431,15,"Holbeinstrasse 3","4051"
+"2026-08-25T07:15:27","PIB:Station:543","Nestlé Nespresso - Vevey",46.464237,6.8440986,20,"Chaussée de la Guinguette 5","1800"
+"2026-08-25T07:15:27","PIB:Station:544","Restaurant Aeschenplatz - Tél. 061 271 38 55 - Basel",47.551365,7.5957994,15,"Aeschenplatz 2","4052"
+"2026-08-25T07:15:27","PIB:Station:545","Ausser Betrieb wegen Bauarbeiten - Restaurant Alte Post - Gartenstrasse 143 - Basel",47.547077,7.5921507,15,"Gartenstrasse 150","4052"
+"2026-08-25T07:15:27","PIB:Station:546","De Wette-Strasse 7 - Basel",47.549614,7.591555,15,"De Wette-Strasse 7","4051"
+"2026-08-25T07:15:27","PIB:Station:547","Henric-Petri Stasse 12 - Basel",47.551838,7.5927544,15,"Henric Petri-Strasse 18","4051"
+"2026-08-25T07:15:27","PIB:Station:548","Hammerstrasse 45 - Basel",47.56165,7.5972896,15,"Hammerstrasse 47","4058"
+"2026-08-25T07:15:27","PIB:Station:549","Dolderweg - Basel",47.560593,7.5947237,15,"Rebgasse 13","4058"
+"2026-08-25T07:15:27","PIB:Station:550","Rebgasse 6 - Basel",47.561405,7.5935006,15,"Rebgasse 6","4058"
+"2026-08-25T07:15:27","PIB:Station:551","Untere Rheingasse 14 - Basel",47.561394,7.5906854,15,"Unterer Rheinweg 14","4058"
+"2026-08-25T07:15:27","PIB:Station:552","Teichgässlein 9  - Basel",47.5621,7.5926585,15,"Teichgässlein 9","4058"
+"2026-08-25T07:15:27","PIB:Station:553","Unterer Rheinweg 30 - Basel",47.56334,7.5884113,15,"Unterer Rheinweg 30","4057"
+"2026-08-25T07:15:27","PIB:Station:554","Ausser Betrieb wegen Event - Rheingasse 31 - Basel",47.559845,7.5923905,15,"Rheingasse 29","4058"
+"2026-08-25T07:15:27","PIB:Station:555","Nadelberg 5 - Basel",47.559,7.5855546,15,"Totengässlein 17","4051"
+"2026-08-25T07:15:27","PIB:Station:558","Rheinschanze 2 - Basel",47.56608,7.5822864,15,"Rheinschanze 2","4056"
+"2026-08-25T07:15:27","PIB:Station:559","Burgfelderstrasse 10 - Basel",47.562504,7.572892,15,"Burgfelderstrasse 17","4055"
+"2026-08-25T07:15:27","PIB:Station:560","Totentanz 14 - Basel",47.56216,7.585658,15,"Totentanz 12","4051"
+"2026-08-25T07:15:27","PIB:Station:561","St. Alban-Rheinweg 64 - Basel",47.55496,7.6016445,15,"Sankt Alban-Rheinweg 64","4052"
+"2026-08-25T07:15:27","PIB:Station:562","Brunngässlein 11 - Basel",47.55293,7.594501,15,"Brunngässlein 11","4052"
+"2026-08-25T07:15:27","PIB:Station:563","Kunstmuseum Dufourstrasse 16 - Basel",47.55394,7.5946727,15,"Dufourstrasse 9","4052"
+"2026-08-25T07:15:27","PIB:Station:565","Didi Offensiv - Fussballkulturbar - Basel",47.56591,7.589434,15,"Feldbergstrasse 28","4057"
+"2026-08-25T07:15:27","PIB:Station:566","Steinentorberg 8 - Basel",47.550594,7.5872974,15,"Steinentorberg 2","4051"
+"2026-08-25T07:15:27","PIB:Station:567","Heuberg 5 - Basel",47.556496,7.585471,15,"Heuberg 5","4051"
+"2026-08-25T07:15:27","PIB:Station:568","Riehenring 21 - Basel",47.561886,7.6007667,15,"Riehenring 21","4058"
+"2026-08-25T07:15:27","PIB:Station:569","Klingelbergstrasse 61 - Basel",47.562992,7.5801473,15,"Klingelbergstrasse 77","4056"
+"2026-08-25T07:15:27","PIB:Station:570","Oetlingerstrasse 2 - Basel",47.567245,7.586696,15,"Oetlingerstrasse 2","4057"
+"2026-08-25T07:15:27","PIB:Station:571","Ausser Betrieb - Amerbachstrasse 65 - Basel",47.569347,7.5948133,15,"Hammerstrasse 177","4057"
+"2026-08-25T07:15:27","PIB:Station:572","Klingentalstrasse 58 - Basel",47.564346,7.596281,15,"Klingentalstrasse 58","4057"
+"2026-08-25T07:15:27","PIB:Station:573","Rosentalstrasse 56 - Basel",47.565834,7.6058564,15,"Rosentalstrasse 56","4058"
+"2026-08-25T07:15:27","PIB:Station:574","Ausser Betrieb wegen Bauarbeiten - Rosengartenweg 11 - Basel",47.559483,7.6032767,15,"Rosengartenweg 9","4058"
+"2026-08-25T07:15:27","PIB:Station:575","Peter Merian-Strasse 16 - Basel",47.548504,7.5963826,15,"Peter Merian-Strasse 16","4052"
+"2026-08-25T07:15:27","PIB:Station:576","Clarastrasse 12 - Basel",47.562347,7.5960073,15,"Clarastrasse 12","4058"
+"2026-08-25T07:15:27","PIB:Station:578","Beim Goldenen Löwen 16 - Basel",47.55338,7.5961637,15,"Lautengartenstrasse 9","4052"
+"2026-08-25T07:15:27","PIB:Station:579","Restaurant Bar Saona - Drahtzugstrasse 30 - Basel",47.56339,7.595934,15,"Drahtzugstrasse 30","4057"
+"2026-08-25T07:15:27","PIB:Station:581","Ochsengasse 19 - Basel",47.56181,7.59153,15,"Ochsengasse 19","4058"
+"2026-08-25T07:15:27","PIB:Station:582","Claraturm - Riehenring 92 - Basel",47.564728,7.598715,15,"Riehenring 83","4058"
+"2026-08-25T07:15:27","PIB:Station:583","Multi Kitchen Basel - Pizza Joker - Messo Burger - 0800 444 551 / 061 202 77 80 - Basel",47.565624,7.5878468,15,"Feldbergstrasse 5","4057"
+"2026-08-25T07:15:27","PIB:Station:584","Utengasse 25 - Basel",47.55982,7.5935836,15,"Utengasse 25","4058"
+"2026-08-25T07:15:27","PIB:Station:585","Bäckerei-Conditorei-Catering BUMANN - 061 281 24 68 - Basel",47.550045,7.5803275,15,"Bachlettenstrasse 16","4054"
+"2026-08-25T07:15:27","PIB:Station:586","Nordtangente Sportsbar - 061 322 65 53 - Basel",47.56959,7.5759487,15,"Lothringerstrasse 99","4056"
+"2026-08-25T07:15:27","PIB:Station:587","Bäckerei Kübler - Tel. 061 321 01 44 - Basel",47.567528,7.5779443,15,"Lothringerstrasse 43","4056"
+"2026-08-25T07:15:27","PIB:Station:588","Claragraben 123 - Basel",47.564304,7.592802,15,"Claragraben 123","4057"
+"2026-08-25T07:15:27","PIB:Station:589","Café Charlotte - 061 222 27 66 - Basel",47.5649,7.6031456,15,"Mattenstrasse 16A","4058"
+"2026-08-25T07:15:27","PIB:Station:590","Avenue du Temple - La Tour-de-Peilz",46.453194,6.8562446,40,"Rue du Temple 1","1814"
+"2026-08-25T07:15:27","PIB:Station:591","Musée suisse du Jeu - La Tour-de-Peilz",46.45303,6.8543143,40,"Rue du Château ","1814"
+"2026-08-25T07:15:27","PIB:Station:592","Ausser Betrieb - Leonhardsgraben 10 - Basel",47.556473,7.5842695,15,"Leonhardsgraben 10","4051"
+"2026-08-25T07:15:27","PIB:Station:593","Confiserie Bücheli - 061 261 40 25 - Basel",47.555946,7.584285,15,"Auf der Lyss 16","4051"
+"2026-08-25T07:15:27","PIB:Station:594","Ausser Betrieb - Malzgasse 30 - Basel",47.552166,7.5962377,15,"Malzgasse 30","4052"
+"2026-08-25T07:15:27","PIB:Station:595","Kohlenberg 13 - Basel",47.554234,7.588155,25,"Kohlenberg 13/15","4051"
+"2026-08-25T07:15:27","PIB:Station:596","Gempenstrasse 78 - Basel",47.542854,7.585528,15,"Gempenstrasse 78","4053"
+"2026-08-25T07:15:27","PIB:Station:598","Rebgasse 43 - Basel",47.55958,7.595879,15,"Rebgasse 54","4058"
+"2026-08-25T07:15:27","PIB:Station:600","Steinentorstrasse 14 - Basel",47.552048,7.589262,15,"Steinentorstrasse 14","4051"
+"2026-08-25T07:15:27","PIB:Station:601","Heumattstrasse - Basel",47.548508,7.5910015,15,"Centralbahnplatz 1","4051"
+"2026-08-25T07:15:27","PIB:Station:602","Blauensteinerstrasse 5 - Basel",47.544502,7.5823293,15,"Blauensteinerstrasse 2","4053"
+"2026-08-25T07:15:27","PIB:Station:603","Ausser Betrieb - Petersgraben 50 - Basel",47.557816,7.584284,15,"Petersgraben 50","4051"
+"2026-08-25T07:15:27","PIB:Station:605","Café Restaurant du Levant - Martigny",46.101246,7.086504,15,"Rue du Levant 125","1920"
+"2026-08-25T07:15:27","PIB:Station:606","Moi pour Toit - Martigny",46.1047,7.0773897,15,"Avenue de la Gare 29","1920"
+"2026-08-25T07:15:27","PIB:Station:607","Manoir - Martigny",46.10227,7.0726266,15,"Rue Marc Morand 7","1920"
+"2026-08-25T07:15:27","PIB:Station:608","Pizzeria Restaurant d'Octodure - Martigny",46.098904,7.0748196,15,"Rue d'Octodure 34","1920"
+"2026-08-25T07:15:27","PIB:Station:609","Ausser Betrieb wegen Bauarbeiten - Herbergsgasse 2 - Basel",47.560078,7.5860314,15,"Herbergsgasse 2","4051"
+"2026-08-25T07:15:27","PIB:Station:610","Argentinischer Grill Che que lomo - www.chequelomo.ch - Basel",47.570786,7.5946636,15,"Horburgstrasse 70","4057"
+"2026-08-25T07:15:27","PIB:Station:611","Wettsteinplatz - Basel",47.559223,7.5978384,15,"Wettsteinplatz 1","4058"
+"2026-08-25T07:15:27","PIB:Station:613","Camping Les Grangettes - Noville",46.39338,6.895133,15,"Route des Grangettes 31","1845"
+"2026-08-25T07:15:27","PIB:Station:614","Camping des Horizons Bleus - Villeneuve",46.395195,6.9211845,15,"Rue du Quai 11","1844"
+"2026-08-25T07:15:27","PIB:Station:615","Riehenstrasse 29 - Basel",47.560932,7.5983605,15,"Riehenstrasse 29","4058"
+"2026-08-25T07:15:27","PIB:Station:618","SILO Erlenmatt - Signalstrasse 37 - Basel",47.571922,7.6020617,50,"Signalstrasse 37","4058"
+"2026-08-25T07:15:27","PIB:Station:620","Basel Land - FHNW Campus - Muttenz",47.534176,7.6428046,50,"Hofackerstrasse 30","4132"
+"2026-08-25T07:15:27","PIB:Station:621","Centralbahnplatz - SBB Nord - Basel",47.54787,7.590355,15,"Centralbahnplatz 3","4051"
+"2026-08-25T07:15:27","PIB:Station:622","Sharing Zone SBB - Süd - Basel",47.54585,7.588507,15,"Meret Oppenheim-Strasse 60","4053"
+"2026-08-25T07:15:27","PIB:Station:624","Zoo - Basel",47.54915,7.5822787,15,"Birsigstrasse 64","4054"
+"2026-08-25T07:15:27","PIB:Station:625","Al Panino - www.alpanino.ch - Basel",47.547012,7.5936036,15,"Postpassage 11","4052"
+"2026-08-25T07:15:27","PIB:Station:626","Steinengraben 18 - Basel",47.554554,7.5852013,15,"Steinengraben 18","4051"
+"2026-08-25T07:15:27","PIB:Station:627","Sternengasse 4 - Basel",47.552246,7.593152,15,"Sternengasse 4","4051"
+"2026-08-25T07:15:27","PIB:Station:628","St. Alban-Anlage 26 - Basel",47.55183,7.598405,15,"Sankt Alban-Anlage 26","4052"
+"2026-08-25T07:15:27","PIB:Station:629","Voltastrasse 38 - Basel",47.57099,7.5783954,15,"Voltastrasse 4","4056"
+"2026-08-25T07:15:27","PIB:Station:630","SH:OP - www.oeko-job.ch - Basel",47.57585,7.5911307,15,"Gärtnerstrasse 35","4057"
+"2026-08-25T07:15:27","PIB:Station:634","Steinengraben 42 - Basel",47.553196,7.585999,15,"Steinengraben 42","4051"
+"2026-08-25T07:15:27","PIB:Station:635","Bernouillistrasse 21 - Basel",47.559483,7.58254,15,"Petersplatz 11","4056"
+"2026-08-25T07:15:27","PIB:Station:636","PiA - PSI -  Villigen",47.534912,8.21971,40,"Parkstrasse 1","5234"
+"2026-08-25T07:15:27","PIB:Station:637","Haarwerkstatt - Basel",47.55277,7.584618,15,"Holbeinstrasse 49","4051"
+"2026-08-25T07:15:27","PIB:Station:638","Zürcherstrasse 143 - Basel",47.555576,7.613598,25,"Zürcherstrasse 143","4052"
+"2026-08-25T07:15:27","PIB:Station:639","Rose Nails & Beauty - Basel",47.570175,7.6010838,15,"Erlenmattstrasse 24","4058"
+"2026-08-25T07:15:27","PIB:Station:640","Bäckerei Jetzer 2 - www.jetzerbegg.ch - Basel",47.54357,7.5877295,15,"Sempacherstrasse 30","4053"
+"2026-08-25T07:15:27","PIB:Station:641","TEMPORÄRE STATION - Plage - CdF",47.1043,6.832167,40,"Rue de la Ronde 1","2300"
+"2026-08-25T07:15:27","PIB:Station:642","Velostation 2221 - P+R Terminal Car - Martigny",46.10542,7.0804567,40,"Rue d'Aoste 3","1920"
+"2026-08-25T07:15:27","PIB:Station:643","Velostation 2222 - Place du Manoir – Martigny",46.102253,7.071458,40,"Rue du Manoir 1","1920"
+"2026-08-25T07:15:27","PIB:Station:672","Im Grenzacherhof 14 - Basel",47.56054,7.616469,15,"Im Grenzacherhof 14","4058"
+"2026-08-25T07:15:27","PIB:Station:675","Grenzacherstrasse 487 - Basel",47.562626,7.626843,15,"Grenzacherstrasse 488","4058"
+"2026-08-25T07:15:27","PIB:Station:676","Bäumlihofstrasse 132 - Basel",47.565205,7.6177135,15,"Bäumlihofstrasse 134","4058"
+"2026-08-25T07:15:27","PIB:Station:677","Paracelsusstrasse 2 - Basel",47.564175,7.6148295,15,"Paracelsusstrasse 2","4058"
+"2026-08-25T07:15:27","PIB:Station:678","Egliseestrasse 1 - Basel",47.56981,7.6092906,15,"Egliseestrasse 1","4058"
+"2026-08-25T07:15:27","PIB:Station:679","Erlenparkweg 45 - Basel",47.573566,7.604675,15,"Erlenparkweg ","4058"
+"2026-08-25T07:15:27","PIB:Station:680","Hochbergerstrasse 70 - Basel",47.579197,7.5952663,15,"Hochbergerstrasse 70","4057"
+"2026-08-25T07:15:27","PIB:Station:681","Singh Indian Food - Basel",47.582508,7.593422,15,"Neuhausstrasse 12","4057"
+"2026-08-25T07:15:27","PIB:Station:682","Wiesendamm 15 - Basel",47.581238,7.592351,15,"Wiesendamm 15","4057"
+"2026-08-25T07:15:27","PIB:Station:683","Gärtnerstrasse 61 - Basel",47.57744,7.591725,15,"Gärtnerstrasse 61","4057"
+"2026-08-25T07:15:27","PIB:Station:684","Klybeckstrasse 140 - Basel",47.568916,7.590455,15,"Klybeckstrasse 140","4057"
+"2026-08-25T07:15:27","PIB:Station:685","Mauerstrasse 2 - Basel",47.57379,7.5909514,15,"Mauerstrasse 1","4057"
+"2026-08-25T07:15:27","PIB:Station:686","Egliseeparkplatz - Basel",47.57039,7.6153693,15,"Egliseestrasse 85","4058"
+"2026-08-25T07:15:27","PIB:Station:687","Ausser Betrieb - Schwarzwaldallee 185 - Basel",47.566628,7.6065745,15,"Schwarzwaldallee 183","4058"
+"2026-08-25T07:15:27","PIB:Station:688","Erlenstrasse 98 - Basel",47.56959,7.6042027,15,"Erlenstrasse 98","4058"
+"2026-08-25T07:15:27","PIB:Station:689","Schönaustrasse 32 - Basel",47.567913,7.6008325,15,"Schönaustrasse 43","4058"
+"2026-08-25T07:15:27","PIB:Station:690","Riehenring 153 - Basel",47.568348,7.597624,15,"Riehenring 153","4058"
+"2026-08-25T07:15:27","PIB:Station:691","Hammerstrasse 129 - Basel",47.56708,7.5950165,15,"Hammerstrasse 129","4057"
+"2026-08-25T07:15:27","PIB:Station:692","Gundeldingerstrasse 125 - Basel",47.542397,7.586578,15,"Gundeldingerstrasse 125","4053"
+"2026-08-25T07:15:27","PIB:Station:693","Klingentalgraben 37 - Basel",47.564198,7.5912952,15,"Klingentalgraben 37","4057"
+"2026-08-25T07:15:27","PIB:Station:694","Grenzacherstrasse 30 - Basel",47.55894,7.60071,15,"Grenzacherstrasse 32","4058"
+"2026-08-25T07:15:27","PIB:Station:695","Roche - Chrischonastrasse 64 - Basel",47.55982,7.6042614,15,"Chrischonastrasse 64","4058"
+"2026-08-25T07:15:27","PIB:Station:696","Gottfried Keller-Strasse 20 - Basel",47.554146,7.5651035,15,"Gottfried Keller-Strasse 20","4054"
+"2026-08-25T07:15:27","PIB:Station:697","Claragraben 159 - Basel",47.566193,7.591719,15,"Claragraben 159","4057"
+"2026-08-25T07:15:27","PIB:Station:698","Güterstrasse 123 - Basel",47.5453,7.588203,15,"Güterstrasse 125","4053"
+"2026-08-25T07:15:27","PIB:Station:699","Gundeldingerstrasse 207 - Basel",47.540604,7.5915866,15,"Gundeldingerstrasse 207","4053"
+"2026-08-25T07:15:27","PIB:Station:700","Thiersteinerallee 89 - Basel",47.539547,7.59669,15,"Thiersteinerallee 89","4053"
+"2026-08-25T07:15:27","PIB:Station:702","Münchensteinerstrasse 134 - Basel",47.542667,7.6004705,15,"Münchensteinerstrasse 134","4053"
+"2026-08-25T07:15:27","PIB:Station:703","Hochstrasse 87 - Basel",47.543953,7.5972304,15,"Hochstrasse 87","4053"
+"2026-08-25T07:15:27","PIB:Station:704","Thiersteinerallee 19 - Basel",47.542423,7.5984287,15,"Thiersteinerallee 19","4053"
+"2026-08-25T07:15:27","PIB:Station:705","Thiersteinerallee 58 - Basel",47.540993,7.597326,15,"Thiersteinerallee 58","4053"
+"2026-08-25T07:15:27","PIB:Station:706","Liesbergerstrasse 1 - Basel",47.542107,7.596584,15,"Güterstrasse 234","4053"
+"2026-08-25T07:15:27","PIB:Station:707","Zeughausstrasse 53 - Basel",47.5453,7.6108356,15,"Zeughausstrasse 47","4052"
+"2026-08-25T07:15:27","PIB:Station:708","St. Alban-Ring 213 - Basel",47.548447,7.6095505,15,"Sankt Alban-Ring 213","4052"
+"2026-08-25T07:15:27","PIB:Station:709","St. Jakobs-Strasse 397 - Basel",47.54086,7.617853,15,"St. Jakobs-Strasse 397","4052"
+"2026-08-25T07:15:27","PIB:Station:710","Hardstrasse 95 - Basel",47.549667,7.6065445,15,"Hardstrasse 95","4052"
+"2026-08-25T07:15:27","PIB:Station:711","Hardstrasse 24 - Basel",47.551193,7.60296,15,"Hardstrasse 24","4052"
+"2026-08-25T07:15:27","PIB:Station:712","St. Alban-Vorstadt 101 - Basel",47.55312,7.603051,15,"Sankt Alban-Vorstadt 67","4052"
+"2026-08-25T07:15:27","PIB:Station:713","Redingstrasse 43 - Basel",47.547424,7.621352,15,"Redingstrasse 38","4052"
+"2026-08-25T07:15:27","PIB:Station:714","Birsstrasse 116 - Basel",47.55097,7.6217976,15,"Birsstrasse 116","4052"
+"2026-08-25T07:15:27","PIB:Station:715","Restaurant blindekuh - www.blindekuh.ch - Basel",47.541775,7.59442,15,"Baumgartenweg 23","4053"
+"2026-08-25T07:15:27","PIB:Station:716","WMHA - PSI - Villigen",47.537537,8.222843,40,"WMHA ","5234"
+"2026-08-25T07:15:27","PIB:Station:718","WLHA - PSI - Villigen",47.534874,8.2231455,40,"WLHA ","5234"
+"2026-08-25T07:15:27","PIB:Station:719","OWGA - PSI - Würenlingen",47.539692,8.2312355,40,"Industriestrasse Beznau 1","5303"
+"2026-08-25T07:15:27","PIB:Station:721","Kirschgartenstrasse 31 - Basel",47.55164,7.59149,15,"Kirschgartenstrasse 7","4051"
+"2026-08-25T07:15:27","PIB:Station:722","Dorenbachviadukt 2 - Basel",47.544083,7.5760937,15,"Dorenbachviadukt 2","4054"
+"2026-08-25T07:15:27","PIB:Station:723","Ausser Betrieb wegen Bauarbeiten - Neubadstrasse 134 und 138 - Basel",47.547123,7.5654807,15,"Neubadstrasse 138","4054"
+"2026-08-25T07:15:27","PIB:Station:724","Neuweilerstrasse 100 - Basel",47.54608,7.557902,15,"Neuweilerstrasse 100","4054"
+"2026-08-25T07:15:27","PIB:Station:725","General Guisan-Strasse 104 - Basel",47.5498,7.5656333,15,"Morgartenring 182","4054"
+"2026-08-25T07:15:27","PIB:Station:726","St. Galler-Ring 225 - Basel",47.550236,7.568674,15,"Sankt Galler-Ring 225","4054"
+"2026-08-25T07:15:27","PIB:Station:727","Brennerstrasse 9 / Bundeplatz - Basel",47.551376,7.5741143,15,"Neubadstrasse 70","4054"
+"2026-08-25T07:15:27","PIB:Station:728","Rütimeyerplatz 4 - Basel",47.548996,7.5760217,15,"Rütimeyerplatz 4","4054"
+"2026-08-25T07:15:27","PIB:Station:729","tuk tuk thaï kitchen - Basel",47.553795,7.5822005,15,"Leimenstrasse 32","4051"
+"2026-08-25T07:15:27","PIB:Station:730","Steinenring 3 - Basel",47.55291,7.5776167,15,"Steinenring 3","4051"
+"2026-08-25T07:15:27","PIB:Station:731","Eulerstrasse - Basel",47.555573,7.5802193,15,"Schützenmattstrasse 30","4051"
+"2026-08-25T07:15:27","PIB:Station:732","Auberg 9 - Basel",47.552185,7.5849214,15,"Schertlingasse 9","4051"
+"2026-08-25T07:15:27","PIB:Station:733","St. Galler-Ring 174 - Basel",47.552727,7.567466,15,"Sankt Galler-Ring 174","4054"
+"2026-08-25T07:15:27","PIB:Station:734","Allschwilerstrasse 83 - Basel",47.557297,7.5694137,15,"Allschwilerstrasse 81","4055"
+"2026-08-25T07:15:27","PIB:Station:735","Spalenring 89 - Basel",47.55795,7.575138,15,"Spalenring 89","4055"
+"2026-08-25T07:15:27","PIB:Station:736","Ausser Betrieb - Hegenheimerstrasse 110 - Basel",47.56224,7.567388,15,"Hegenheimerstrasse 110","4055"
+"2026-08-25T07:15:27","PIB:Station:737","Sundgauerstrasse 2 - Basel",47.564632,7.563507,15,"Sundgauerstrasse 2","4055"
+"2026-08-25T07:15:27","PIB:Station:738","Belforterstrasse 135 - Basel",47.56359,7.5575767,15,"Bachgraben ","4055"
+"2026-08-25T07:15:27","PIB:Station:739","Ausser Betrieb - Burgfelderstrasse 190 - Basel",47.56654,7.564652,15,"Burgfelderstrasse 188","4055"
+"2026-08-25T07:15:27","PIB:Station:740","Ausser Betrieb - Burgfelderstrasse 65 - Basel",47.56425,7.5690117,15,"Burgfelderstrasse 65","4055"
+"2026-08-25T07:15:27","PIB:Station:741","Strassburgerallee 3 - Basel",47.564457,7.572552,15,"Strassburgerallee 3","4055"
+"2026-08-25T07:15:27","PIB:Station:742","Kannenfeldstrasse 26 - Basel",47.563095,7.573727,15,"Kannenfeldstrasse 26","4056"
+"2026-08-25T07:15:27","PIB:Station:743","Kannenfeldplatz - Basel",47.566025,7.5731373,15,"Kannenfeldplatz ","4056"
+"2026-08-25T07:15:27","PIB:Station:744","Lachenstrasse 1 - Basel",47.568283,7.5697346,15,"Lachenstrasse 1","4056"
+"2026-08-25T07:15:27","PIB:Station:745","Strassburgerallee 104 - Basel",47.561275,7.5686693,15,"Strassburgerallee 98","4055"
+"2026-08-25T07:15:27","PIB:Station:746","Allschwilerplatz 22 - Basel",47.557472,7.570931,15,"Allschwilerplatz 22","4055"
+"2026-08-25T07:15:27","PIB:Station:747","Theaterstrasse 7 - Basel",47.55328,7.589942,15,"Theaterstrasse 7","4051"
+"2026-08-25T07:15:27","PIB:Station:748","Luftgässlein 4 - Basel",47.5545,7.592688,15,"Luftgässlein 4","4051"
+"2026-08-25T07:15:27","PIB:Station:749","Spalengraben 1 - Basel",47.55838,7.582587,15,"Petersplatz 4","4051"
+"2026-08-25T07:15:27","PIB:Station:750","Eisengasse 1 - Basel",47.559525,7.588581,15,"Eisengasse 1","4051"
+"2026-08-25T07:15:27","PIB:Station:751","Außer Betrieb wegen Bauarbeiten - Petersgasse 20 - Basel",47.56082,7.5864987,15,"Petersgasse 4","4051"
+"2026-08-25T07:15:27","PIB:Station:752","Spitalstrasse 17 - Basel",47.562145,7.584229,15,"Spitalstrasse 8a","4031"
+"2026-08-25T07:15:27","PIB:Station:753","Metzerstrasse 3 - Basel",47.56396,7.579115,15,"Metzerstrasse ","4056"
+"2026-08-25T07:15:27","PIB:Station:754","Metzerstrasse 38 - Basel",47.56475,7.5764503,15,"Metzerstrasse 38","4056"
+"2026-08-25T07:15:27","PIB:Station:755","Elsässerstrasse 127 - Basel",47.57253,7.576185,15,"Elsässerstrasse 127","4056"
+"2026-08-25T07:15:27","PIB:Station:756","Elsässerstrasse 231 - Basel",47.575256,7.573442,15,"Elsässerstrasse 231","4056"
+"2026-08-25T07:15:27","PIB:Station:759","Im Langen Loh 143 - Basel",47.551617,7.5612826,15,"Im Langen Loh 145","4054"
+"2026-08-25T07:15:27","PIB:Station:760","Spalenring 115 - Basel",47.556385,7.575583,15,"Spalenring 115","4055"
+"2026-08-25T07:15:27","PIB:Station:761","Leonhardskirchplatz - Basel",47.555244,7.587976,15,"Leonhardskirchplatz 12","4051"
+"2026-08-25T07:15:27","PIB:Station:762","Zürcherstrasse 15 - Basel",47.55308,7.606493,15,"Sankt Alban-Anlage 15","4052"
+"2026-08-25T07:15:27","PIB:Station:763","Im Margarethenletten 1 - Basel",47.54677,7.58246,15,"Im Margarethenletten 1","4053"
+"2026-08-25T07:15:27","PIB:Station:764","Kartausgasse 1 - Basel",47.558853,7.5957313,15,"Kartausgasse 1","4058"
+"2026-08-25T07:15:27","PIB:Station:765","Ausser Betrieb - Wiesenschanzweg 30 - Basel",47.572376,7.595031,15,"Gottesackerstrasse 27","4057"
+"2026-08-25T07:15:27","PIB:Station:766","Sportzentrum Rankhof - Basel",47.561546,7.6208696,15,"Grenzacherstrasse 351","4058"
+"2026-08-25T07:15:27","PIB:Station:767","Byfangweg 22 - Basel",47.55196,7.582208,15,"Feierabendstrasse 22","4051"
+"2026-08-25T07:15:27","PIB:Station:769","Güterstrasse 213 - Basel",47.5427,7.5950823,15,"Güterstrasse 213","4053"
+"2026-08-25T07:15:27","PIB:Station:770","Falkensteinerstrasse 60 - Basel",47.5383,7.600789,15,"Falkensteinerstrasse 60","4053"
+"2026-08-25T07:15:27","PIB:Station:771","Unterer Batterieweg - Basel",47.53583,7.587168,15,"Unterer Batterieweg 179","4059"
+"2026-08-25T07:15:27","PIB:Station:772","Bruderholzallee 44 - Basel",47.53341,7.5875053,15,"Bruderholzallee 44","4059"
+"2026-08-25T07:15:27","PIB:Station:773","Margarethenstrasse 63 - Basel",47.545856,7.583401,15,"Margarethenstrasse 63","4053"
+"2026-08-25T07:15:27","PIB:Station:774","Steinenring 42 - Basel",47.550964,7.5798407,15,"Steinenring 42","4051"
+"2026-08-25T07:15:27","PIB:Station:775","Außer Betrieb wegen Bauarbeiten - Holeestrasse 117 - Basel",47.54559,7.5684204,15,"Holeestrasse 117","4054"
+"2026-08-25T07:15:27","PIB:Station:776","Spalenring 147 - Basel",47.554783,7.576178,15,"Spalenring 147","4055"
+"2026-08-25T07:15:27","PIB:Station:777","Birmannsgasse 49 - Basel",47.557102,7.5757027,15,"Birmannsgasse 49","4055"
+"2026-08-25T07:15:27","PIB:Station:778","Allschwilerstrasse 56 - Basel",47.55677,7.5716386,15,"Allschwilerstrasse 56","4055"
+"2026-08-25T07:15:27","PIB:Station:779","Allschwilerstrasse 106 - Basel",47.55728,7.5667624,15,"Allschwilerstrasse 106","4055"
+"2026-08-25T07:15:27","PIB:Station:780","Wasgenring 78 - Basel",47.560745,7.564372,15,"Wasgenring 78","4055"
+"2026-08-25T07:15:27","PIB:Station:781","Strassburgerallee 73 - Basel",47.562363,7.5699053,15,"Strassburgerallee 73","4055"
+"2026-08-25T07:15:27","PIB:Station:782","Pestalozzistrasse - Basel",47.56483,7.5806055,15,"Spitalstrasse 43","4056"
+"2026-08-25T07:15:27","PIB:Station:783","Ausser Betrieb - Blumenrain 32 - Basel",47.561264,7.586558,15,"Blumenrain 32","4051"
+"2026-08-25T07:15:27","PIB:Station:784","Claragraben 64 - Basel",47.561718,7.595084,15,"Claragraben 64","4058"
+"2026-08-25T07:15:27","PIB:Station:785","Clarastrasse 57 - Basel",47.563354,7.598686,15,"Clarastrasse 57","4058"
+"2026-08-25T07:15:27","PIB:Station:786","Riehenring 113 - Basel",47.566277,7.5976214,15,"Haltingerstrasse 97","4057"
+"2026-08-25T07:15:27","PIB:Station:788","Kleinhüningeranlage 39 - Basel",47.58423,7.5938125,15,"Kleinhüningeranlage 39","4057"
+"2026-08-25T07:15:27","PIB:Station:789","Wettsteinallee 83 - Basel",47.561195,7.6038203,15,"Wettsteinallee 83","4058"
+"2026-08-25T07:15:27","PIB:Station:790","St. Alban-Graben 7 - Basel",47.55447,7.5938263,15,"Sankt Alban-Graben 11","4051"
+"2026-08-25T07:15:27","PIB:Station:791","Freie Strasse 109 - Vorsicht! Fussgängerzone - Basel",47.554108,7.591934,15,"Freie Strasse 109","4051"
+"2026-08-25T07:15:27","PIB:Station:792","St. Alban-Anlage 33 - Basel",47.552444,7.599966,15,"Sankt Alban-Anlage 33","4052"
+"2026-08-25T07:15:27","PIB:Station:793","Lehenmattstrasse 265 - Basel",47.546757,7.621167,15,"Lehenmattstrasse 267","4052"
+"2026-08-25T07:15:27","PIB:Station:794","Birsstrasse 94 - Basel",47.551598,7.6208453,15,"Birsstrasse 94","4052"
+"2026-08-25T07:15:27","PIB:Station:795","Eulerstrasse 15 - Basel",47.554615,7.5818067,15,"Eulerstrasse 15","4051"
+"2026-08-25T07:15:27","PIB:Station:796","Jakob-Burckhardt-Strasse 67 - Basel",47.546143,7.6003923,15,"Jacob Burckhardt-Strasse 67","4052"
+"2026-08-25T07:15:27","PIB:Station:797","Klybeckstrasse 115 - Basel",47.569996,7.590207,25,"Klybeckstrasse 170","4057"
+"2026-08-25T07:15:27","PIB:Station:798","Wielandplatz - Basel",47.552616,7.571372,15,"General Guisan-Strasse  10","4054"
+"2026-08-25T07:15:27","PIB:Station:799","Ausser Betrieb  - Weiherweg 80 - Basel",47.55331,7.573296,15,"Weiherweg 80","4054"
+"2026-08-25T07:15:27","PIB:Station:800","Drahtzugstrasse 2 - Basel",47.562958,7.5943694,15,"Drahtzugstrasse 2","4057"
+"2026-08-25T07:15:27","PIB:Station:801","Gotthelfplatz - Basel",47.553707,7.5684924,15,"Gotthelfplatz 3","4054"
+"2026-08-25T07:15:27","PIB:Station:802","Gotthelfstrasse 98 - Basel",47.556744,7.568641,15,"Gotthelfstrasse 99","4054"
+"2026-08-25T07:15:27","PIB:Station:804","Maiengasse 51 - Basel",47.561317,7.5780287,15,"Maiengasse 51","4056"
+"2026-08-25T07:15:27","PIB:Station:805","Hebelstrasse 3 - Basel",47.56023,7.583889,15,"Hebelstrasse 3","4056"
+"2026-08-25T07:15:27","PIB:Station:807","Engelgasse 120 - Basel",47.54728,7.6052403,15,"Engelgasse 10","4052"
+"2026-08-25T07:15:27","PIB:Station:808","Vogesenplatz 15 - Basel",47.570362,7.5733757,15,"Vogesenplatz 15","4056"
+"2026-08-25T07:15:27","PIB:Station:810","Augustinergasse 2 - Basel",47.55768,7.5905876,15,"Augustinergasse 2","4051"
+"2026-08-25T07:15:27","PIB:Station:811","Feldbergstrasse 81 - Basel",47.566685,7.592986,15,"Feldbergstrasse 76","4057"
+"2026-08-25T07:15:27","PIB:Station:812","Ausser Betrieb wegen Bauarbeiten - Missionsstrasse 20 - Basel",47.559303,7.578837,15,"Missionsstrasse 20","4055"
+"2026-08-25T07:15:27","PIB:Station:814","Hochstrasse 4 - Basel",47.545567,7.5919237,15,"Hochstrasse 4","4053"
+"2026-08-25T07:15:27","PIB:Station:815","Nauenstrasse 90 - Basel",47.54609,7.5958815,15,"Nauenstrasse 90","4052"
+"2026-08-25T07:15:27","PIB:Station:816","Roche – Grenzacherstrasse 124 - Basel",47.558807,7.6057034,35,"Grenzacherstrasse 122","4058"
+"2026-08-25T07:15:27","PIB:Station:817","Roche – Grenzacherstrasse 134 - Basel",47.55917,7.6089377,50,"Grenzacherstrasse 134","4058"
+"2026-08-25T07:15:27","PIB:Station:819","Place du Scex, Sion - Agglo Valais central - Sion",46.2322,7.363228,30,"Place du Scex ","1950"
+"2026-08-25T07:15:27","PIB:Station:820","Ancien-Stand, Sion - Agglo Valais central - Sion",46.22852,7.3506546,30,"Avenue de France 61","1950"
+"2026-08-25T07:15:27","PIB:Station:821","Châteauneuf-Furet, Sion - Agglo Valais central - Sion",46.22421,7.333039,30,"Avenue Maurice-Troillet 100","1950"
+"2026-08-25T07:15:27","PIB:Station:822","Cible, Sion - Agglo Valais central  - Sion",46.235764,7.3600607,30,"Avenue Ritz 35","1950"
+"2026-08-25T07:15:27","PIB:Station:823","Avenue du Bietschhorn, Sion - Agglo Valais central - Sion - Sion",46.230556,7.373715,30,"Avenue du Bietschhorn 21A","1950"
+"2026-08-25T07:15:27","PIB:Station:824","Hôpital de Sion - Agglo Valais central - Sion",46.23476,7.3860335,30,"Avenue du Grand-Champsec 80","1950"
+"2026-08-25T07:15:27","PIB:Station:825","Déclics, Route de Vissigen, Sion - Agglo Valais central - Sion",46.232162,7.370903,30,"Route de Vissigen 29","1950"
+"2026-08-25T07:15:27","PIB:Station:826","AluInfra 1, Sierre - Agglo Valais central  - Sierre",46.282623,7.532882,20,"Route des Laminoirs 15","3960"
+"2026-08-25T07:15:27","PIB:Station:828","Roche – Zum Bischofstein - Basel",47.560696,7.6052585,15,"Zum Bischofstein 9","4058"
+"2026-08-25T07:15:27","PIB:Station:829","Gare de Sierre Sud - Agglo Valais central - Sierre",46.291405,7.5327873,30,"Route de la Mondérêche 5","3960"
+"2026-08-25T07:15:27","PIB:Station:830","Gare de Sierre Nord - Agglo Valais central - Sierre",46.29259,7.533269,30,"Place de la Gare 6","3960"
+"2026-08-25T07:15:27","PIB:Station:831","Campus Energypolis, Sion - Agglo Valais central - Sion",46.22699,7.3626995,30,"Rue de l'Industrie 21","1950"
+"2026-08-25T07:15:27","PIB:Station:832","Gare de Sion Sud - Agglo Valais central - Sion",46.22662,7.359261,30,"Rue de l'Industrie 13","1950"
+"2026-08-25T07:15:27","PIB:Station:833","Hôpital de Sierre / ECAV - Agglo Valais central - Sierre",46.29156,7.52195,20,"Rue de l'Hôpital 29","3960"
+"2026-08-25T07:15:27","PIB:Station:834","Technopôle, Sierre - Agglo Valais central - Sierre",46.283333,7.5399084,20,"Route de Sous-Géronde 50","3960"
+"2026-08-25T07:15:27","PIB:Station:835","Rue des Rois Mages,  Ormône - Agglo Valais central - Ormône",46.243492,7.348071,15,"Rue des Rois Mages 7","1965"
+"2026-08-25T07:15:27","PIB:Station:836","Drône centre, Savièse - Agglo Valais central - Savièse",46.259636,7.367022,15,"Drône centre ","1965"
+"2026-08-25T07:15:27","PIB:Station:837","Ecole primaire, Veyras, Agglo Valais central - Veyras",46.30214,7.5361357,10,"Rue Charles-Clos Olsommer 9","3968"
+"2026-08-25T07:15:27","PIB:Station:838","Route de Déjot Vy, Miège - Agglo Valais central - Miège",46.310886,7.546374,15,"Les Vergers ","3972"
+"2026-08-25T07:15:27","PIB:Station:839","Route de Montana, Venthône - Agglo Valais central - Venthône",46.30664,7.528433,15,"Route de Montana 7","3973"
+"2026-08-25T07:15:27","PIB:Station:840","Centre Commercial, Veyras - Agglo Valais central - Veyras",46.303764,7.5394216,15,"Avenue Saint-François 6","3968"
+"2026-08-25T07:15:27","PIB:Station:841","Place de la Planta, Sion - Agglo Valais central - Sion",46.23263,7.3585362,15,"Place de la Planta 1","1950"
+"2026-08-25T07:15:27","PIB:Station:842","Bains de Géronde, Sierre - Agglo Valais central - Sierre",46.290157,7.5408688,15,"Chemin du Grand Lac 27","3960"
+"2026-08-25T07:15:27","PIB:Station:844","Phoenix Vélo, Sierre - Agglo Valais central - Sierre",46.295753,7.5382395,15,"Rond-Point du Paradis 1","3960"
+"2026-08-25T07:15:27","PIB:Station:845","Bibliothèque-Médiathèque, Sierre - Agglo Valais central - Sierre",46.29459,7.5345883,6,"Rue Notre Dame des Marais 5","3960"
+"2026-08-25T07:15:27","PIB:Station:846","Place Beaulieu, Sierre - Agglo Valais central - Sierre",46.2917,7.528774,8,"Avenue du Général Guisan 19","3960"
+"2026-08-25T07:15:27","PIB:Station:847","Piscine de Guillamo, Sierre - Agglo Valais central  - Sierre",46.2989,7.5403976,15,"Rue de Glarey 40B","3960"
+"2026-08-25T07:15:27","PIB:Station:848","Administration, Conthey - Agglo Valais central - Conthey",46.23495,7.3051944,15,"Route de Savoie 54","1975"
+"2026-08-25T07:15:27","PIB:Station:851","P+R Potences, Sion - Agglo Valais central - Sion",46.226574,7.3424945,15,"Envol Ouest ","1950"
+"2026-08-25T07:15:27","PIB:Station:852","Gare de Sion Nord - Agglo Valais central  - Sion",46.227863,7.3594522,15,"Av. de la Gare 1","1950"
+"2026-08-25T07:15:27","PIB:Station:853","Agasse, Sion - Agglo Valais central - Sion",46.235176,7.3503,15,"Chemin de l'Agasse 21","1950"
+"2026-08-25T07:15:27","PIB:Station:854","P+R Stade, Sion - Agglo Valais central - Sion",46.235184,7.3790364,15," Tennis de Valèr ","1950"
+"2026-08-25T07:15:27","PIB:Station:855","St-Guérin, Sion - Agglo Valais central - Sion",46.23034,7.350301,15,"Rue de Lausanne 64","1950"
+"2026-08-25T07:15:27","PIB:Station:856","Lac souterrain, Saint-Léonard - Agglo Valais central - Saint-Léonard",46.255264,7.425476,15,"Rue des Champlans 42","1958"
+"2026-08-25T07:15:27","PIB:Station:857","Administration, Saint-Léonard - Agglo Valais central - Saint-Léonard",46.253883,7.417673,10,"Rue de la Place 1","1958"
+"2026-08-25T07:15:27","PIB:Station:858","Proz-Serins, Ardon - Agglo Valais central - Ardon",46.20884,7.2665653,15,"Rue des Proz-Serins 14","1957"
+"2026-08-25T07:15:27","PIB:Station:859","Rue des Verdelets, Ardon - Agglo Valais central - Ardon",46.21086,7.2576594,10,"Route du Simplon 1957","1957"
+"2026-08-25T07:15:27","PIB:Station:860","Ecole primaire, Grône - Agglo Valais central -  Grône",46.252205,7.464125,15,"Rue Centrale 120","3979"
+"2026-08-25T07:15:27","PIB:Station:861","Administration, Grône - Agglo Valais central -  Grône",46.251034,7.4579096,10,"Rue Centrale 168","3979"
+"2026-08-25T07:15:27","PIB:Station:862","Rue Mathieu-Schiner, Sion - Agglo Valais central - Sion",46.23379,7.356555,15,"Planta ","1950"
+"2026-08-25T07:15:27","PIB:Station:863","Rue du Stade, Saint-Germain - Agglo Valais central - Saint-Germain (Savièse)",46.250072,7.3499284,10,"St Germain centre ","1965"
+"2026-08-25T07:15:27","PIB:Station:864","Ecole primaire, Conthey - Agglo Valais central - Conthey",46.22114,7.3037724,10,"Chemin de la Chapelle 28","1964"
+"2026-08-25T07:15:27","PIB:Station:865","Gare de Ardon - Agglo Valais central - Ardon",46.20889,7.270831,10,"Avenue de la Gare 51","1957"
+"2026-08-25T07:15:27","PIB:Station:866","Administration, Chalais - Agglo Valais central - Chalais",46.265247,7.5035706,10,"Route de l'Eglise 4","3966"
+"2026-08-25T07:15:27","PIB:Station:867","Téléphérique, Chalais - Agglo Valais central - Chalais",46.26785,7.5121336,10,"Chalais ","3966"
+"2026-08-25T07:15:27","PIB:Station:868","Chandoline, Savièse - Agglo Valais central - Chandolin-près-Savièse",46.24823,7.319181,10,"Rue de Chandolin 17","1965"
+"2026-08-25T07:15:27","PIB:Station:869","Avenue de Pratifori, Sion - Agglo Valais central - Sion",46.231236,7.3572702,10,"Avenue de Pratifori 1","1950"
+"2026-08-25T07:15:27","PIB:Station:870","Rue de l'Industrie, Sierre - Agglo Valais central - Sierre",46.287537,7.532083,10,"Rue de l'Industrie 6","3960"
+"2026-08-25T07:15:27","PIB:Station:872","Platta, Sion - Agglo Valais central - Sion",46.238445,7.364352,15,"Rue de Loèche 32","1950"
+"2026-08-25T07:15:27","PIB:Station:873","Rue de Granois, Savièse - Agglo Valais central - Savièse",46.249035,7.340727,10,"Zambotte ","1965"
+"2026-08-25T07:15:27","PIB:Station:874","Grand Canal, Granges - Agglo Valais central - Sierre",46.263573,7.4619703,10,"Rue du Grand-Canal 1","3977"
+"2026-08-25T07:15:27","PIB:Station:875","Centre sportif d'Ecossia, Sierre - Agglo Valais central - Sierre",46.27372,7.506946,10,"Chemin des Etourneaux 5","3976"
+"2026-08-25T07:15:27","PIB:Station:876","Stade de foot, Granges - Agglo Valais central - Sierre",46.260265,7.4626145,10,"Route de Pintset 2","3977"
+"2026-08-25T07:15:27","PIB:Station:878","Gemeindehaus Salgesch - Agglo Valais central - Salgesch",46.311687,7.5714374,10,"Klareistrasse 1","3970"
+"2026-08-25T07:15:27","PIB:Station:879","Waldhaus beider Basel - www.waldhausbeiderbasel.ch - Birsfelden",47.547455,7.6473002,15,"Waldhaus 2","4127"
+"2026-08-25T07:15:27","PIB:Station:880","Chervignine, Savièse - Agglo Valais central - Savièse",46.247498,7.328613,10,"Chervignine ","1965"
+"2026-08-25T07:15:27","PIB:Station:881","RRestaurant du Château de la Soie - Fondue - Brisolée - Agglo Valais central - Granois (Savièse)",46.249607,7.3360205,10,"Granois ","1965"
+"2026-08-25T07:15:27","PIB:Station:882","Route de Monteiller, Savièse - Agglo Valais central - Savièse",46.25649,7.35487,10,"Route de Monteiller 29","1965"
+"2026-08-25T07:15:27","PIB:Station:883","Route de la Muraz, Savièse - Agglo Valais central - Savièse",46.237556,7.3388157,10,"Route de la Maze 1","1965"
+"2026-08-25T07:15:27","PIB:Station:884","Gare de Châteauneuf-Conthey - Agglo Valais central - Conthey",46.215927,7.303807,10,"Place de la Gare 4","1964"
+"2026-08-25T07:15:27","PIB:Station:885","Avenue de la Gare, Conthey - Agglo Valais central - Conthey",46.228535,7.3034897,10,"Chalet Le Duc ","1964"
+"2026-08-25T07:15:27","PIB:Station:886","Rue de Vétroz, Conthey - Agglo Valais central - Conthey",46.22557,7.297748,10,"Rue de Vétroz 2B","1964"
+"2026-08-25T07:15:27","PIB:Station:887","Rue des Grands Prés, Conthey - Agglo Valais central - Conthey",46.22545,7.303569,10,"Rue des Grands Prés 35","1964"
+"2026-08-25T07:15:27","PIB:Station:890","Chemin Nord, Vétroz - Agglo Valais central - Vétroz",46.22385,7.2764907,10,"Avenue de la Gare 38","1963"
+"2026-08-25T07:15:27","PIB:Station:891","Magnot, Vetroz - Agglo Valais central - Vétroz",46.219368,7.2645903,10,"Rte Cantonale 225","1963"
+"2026-08-25T07:15:27","PIB:Station:892","Avenue des Vergers, Vétroz - Agglo Valais central - Vétroz",46.22304,7.2847896,10,"Avenue des Vergers 29","1963"
+"2026-08-25T07:15:27","PIB:Station:894","Pont du Rhône, Sion - Agglo Valais central  - Sion",46.227905,7.3724146,10,"Rue des Casernes 12","1950"
+"2026-08-25T07:15:27","PIB:Station:895","Bosphorus Kebab - Avenue de France, Sion - Agglo Valais central - Sion",46.22837,7.3567,10,"Avenue de France 12","1950"
+"2026-08-25T07:15:27","PIB:Station:896","Passage de la Matze, Sion - Agglo Valais central - Sion",46.23042,7.35407,15,"Avenue de Pratifori 24c","1950"
+"2026-08-25T07:15:27","PIB:Station:897","Uvrier Sud, Sion - Agglo Valais central - Sion",46.248093,7.41734,10,"Route des Chenevières 130","1958"
+"2026-08-25T07:15:27","PIB:Station:898","Centre sportif de Châteauneuf, Sion - Agglo Valais central - Sion",46.22117,7.3252373,15,"Rue de la Treille 85","1950"
+"2026-08-25T07:15:27","PIB:Station:899","Place des Cèdres, Sion - Agglo Valais central - Sion",46.23047,7.3597794,15,"Rue de la Dent-Blanche 20","1950"
+"2026-08-25T07:15:27","PIB:Station:900","Weinbergstrasse, Salgesch - Agglo Valais central - Salgesch",46.311924,7.577193,10,"Weinbergstrasse 25","3970"
+"2026-08-25T07:15:27","PIB:Station:901","Unterdorfstrasse, Salgesch - Agglo Valais central - Salgesch",46.310772,7.569108,15,"Unterdorfstrasse 8","3970"
+"2026-08-25T07:15:27","PIB:Station:902","Littenstrasse, Salgesch - Agglo Valais central - Salgesch",46.3038,7.5712085,15,"Littenstrasse 28","3970"
+"2026-08-25T07:15:27","PIB:Station:903","Roche – Wettsteinalle - Basel",47.561657,7.6087413,35,"Wettsteinallee 147","4058"
+"2026-08-25T07:15:27","PIB:Station:904","Rue Centrale, Conthey - Agglo Valais central - Conthey",46.23126,7.3091946,10,"Rue des Caves 31","1964"
+"2026-08-25T07:15:27","PIB:Station:905","Loos, Grône - Agglo Valais central - Grône",46.251358,7.4512806,15,"Rue de la Dérotchiaz 1","3979"
+"2026-08-25T07:15:27","PIB:Station:906","Réchy village, Chalais - Agglo Valais central - Réchy",46.261486,7.4951267,10,"Rue des Fermes 1","3966"
+"2026-08-25T07:15:27","PIB:Station:907","Rue Oscar-Bider, Sion, Agglo Valais central - Sion",46.223312,7.3379536,15,"Rue Hermann Geiger 31","1950"
+"2026-08-25T07:15:27","PIB:Station:908","Aproz village - Agglo Valais central - Nendaz",46.20712,7.3158917,10,"Route de la Printse 26","1994"
+"2026-08-25T07:15:27","PIB:Station:910","Muraz, Sierre - Agglo Valais central - Sierre",46.29749,7.5276356,15,"Ruelle du Nord 4","3960"
+"2026-08-25T07:15:27","PIB:Station:911","Route de Lamberson, Sierre - Agglo Valais central - Sierre",46.287296,7.525227,15,"Route de Lamberson 24","3960"
+"2026-08-25T07:15:27","PIB:Station:912","Parking Girouda, Noës - Agglo Valais central - Noës",46.281002,7.5066214,15,"Rue de Pranou 3","3976"
+"2026-08-25T07:15:27","PIB:Station:915","Hub mobilité Manoir - Martigny",46.10225,7.0715075,20,"Rue de la Dranse 1","1920"
+"2026-08-25T07:15:27","PIB:Station:916","Hôpital de Martigny - Martigny",46.099525,7.0688324,40,"Rue de Plaisance 3","1920"
+"2026-08-25T07:15:27","PIB:Station:918","Salgesch Bahnhof - Agglo Valais central - Salgesch",46.309734,7.577673,40,"Bahnhofstrasse 57","3970"
+"2026-08-25T07:15:27","PIB:Station:919","Coin du Carro, Miège - Agglo Valais central - Miège",46.312195,7.5426254,40,"Rte d' Entre-Deux-Crêtes  18","3972"
+"2026-08-25T07:15:27","PIB:Station:920","Avenue de la Gare / Rue de la Poste - Martigny",46.103634,7.0754285,40,"Avenue de la Gare 21","1920"
+"2026-08-25T07:15:27","PIB:Station:921","Place Centrale Nord - Martigny",46.101795,7.073339,40,"Place Centrale 2","1920"
+"2026-08-25T07:15:27","PIB:Station:922","Sevogelstrasse 140 - Basel",47.548096,7.59904,15,"Sevogelstrasse 123","4052"
+"2026-08-25T07:15:27","PIB:Station:923","Henric Petri-Strasse 9 - Basel",47.552494,7.5918374,15,"Henric Petri-Strasse 9","4051"
+"2026-08-25T07:15:27","PIB:Station:924","Ausser Betrieb wegen Bauarbeiten - Neubadstrasse 97 - Basel",47.548267,7.5685134,15,"Neubadstrasse 95","4054"
+"2026-08-25T07:15:27","PIB:Station:925","Voltastrasse 84 - Basel",47.57099,7.5762835,25,"Voltastrasse 84","4056"
+"2026-08-25T07:15:27","PIB:Station:926","Badischer Bahnhof - Schwarzwaldallee 234 - Basel",47.568245,7.6058784,35,"Signalstrasse 234","4058"
+"2026-08-25T07:15:27","PIB:Station:927","Viaduktstrasse 33 - Basel",47.548832,7.5855904,15,"Viaduktstrasse 40","4051"
+"2026-08-25T07:15:27","PIB:Station:928","Ausser Betrieb wegen Bauarbeiten - Missionsstrasse Nr. 30 - Basel",47.559917,7.577668,15,"Missionsstrasse 30","4055"
+"2026-08-25T07:15:27","PIB:Station:929","Gartenstrasse 108 - Basel",47.54852,7.593758,10,"Gartenstrasse 108","4052"
+"2026-08-25T07:15:27","PIB:Station:930","Lange Gasse 5 - Basel",47.549603,7.5979657,10,"Lange Gasse 5","4052"
+"2026-08-25T07:15:27","PIB:Station:931","Roche - Tinguely Museum - Basel",47.55934,7.6124516,25,"Paul Sacher-Anlage 1","4058"
+"2026-08-25T07:15:27","PIB:Station:933","Constellium, Chippis - Agglo Valais central - Chippis",46.2812,7.5429335,20,"Rue de l'Industrie 15","3965"
+"2026-08-25T07:15:27","PIB:Station:934","Beim Letziturm 7 - Basel",47.55451,7.60532,15,"Beim Letziturm 7","4052"
+"2026-08-25T07:15:27","PIB:Station:935","Place de la Meunière, Champsec - Agglo Valais central - Sion",46.22893,7.3785686,25,"Place de la Meunière 7","1950"
+"2026-08-25T07:15:27","PIB:Station:936","Aeschengraben 12 - Basel",47.55088,7.5937476,25,"Aeschengraben 12","4051"
+"2026-08-25T07:15:27","PIB:Station:938","Rue des Amandiers, Sion - Agglo Valais central - Sion",46.231678,7.3525205,50,"Rue des Amandiers 6","1950"
+"2026-08-25T07:15:27","PIB:Station:939","Bruderholzallee 110 - Basel",47.532616,7.590066,15,"Bruderholzallee 110","4059"
+"2026-08-25T07:15:27","PIB:Station:940","Bruderholzallee 169 - Basel",47.532475,7.5946274,15,"Bruderholzallee 168","4059"
+"2026-08-25T07:15:27","PIB:Station:941","Bruderholzallee 178 - Basel",47.53299,7.59637,15,"Bruderholzallee 178","4059"
+"2026-08-25T07:15:27","PIB:Station:942","Bruderholzallee 226 - Basel",47.5343,7.600948,15,"Bruderholzallee 226","4059"
+"2026-08-25T07:15:27","PIB:Station:943","Funiculaire, Venthône - Agglo Valais central - Venthône",46.30138,7.5185843,20,"Venthône ","3973"
+"2026-08-25T07:15:27","PIB:Station:944","Thérapie des Arcades, Bramois - Agglo Valais central",46.230503,7.403257,30,"Rue du Vieux-Village 14","1967"
+"2026-08-25T07:15:27","PIB:Station:945","Chemin des Ecoles, Bramois - Agglo Valais central - Sion",46.230644,7.3996634,30,"Chemin de l'Ecole 19","1967"
+"2026-08-25T07:15:27","PIB:Station:946","Etang des Rochers, Savièse - Agglo Valais central - Savièse",46.2623,7.3540874,30,"Etang des Rochers ","1965"
+"2026-08-25T07:15:27","PIB:Station:947","Route de Prarainson,  Savièse - Agglo Valais central - Savièse",46.265255,7.3515635,30,"Prafirmin Torrent N ","1965"
+"2026-08-25T07:15:27","PIB:Station:948","Erlenstrasse 70 - Basel",47.569134,7.6024704,25,"Erlenstrasse 70","4058"
+"2026-08-25T07:15:27","PIB:Station:950","Missionsstrasse 3 - Basel",47.55822,7.580526,25,"Missionsstrasse 7","4055"
+"2026-08-25T07:15:27","PIB:Station:951","Ausser Betrieb wegen Bauarbeiten - Gellertstrasse 2 - Basel",47.55253,7.605479,25,"Gellertstrasse 2","4052"
+"2026-08-25T07:15:27","PIB:Station:952","Voltastrasse 104 - Basel",47.57096,7.57288,35,"Voltastrasse 106","4056"
+"2026-08-25T07:15:27","PIB:Station:953","Basel Land - Kirche - Allschwil",47.553974,7.553977,35,"Kirche ","4123"
+"2026-08-25T07:15:27","PIB:Station:954","Basel Land - Im Brühl - Allschwil",47.557293,7.5474625,35,"Hegenheimermattweg 108","4123"
+"2026-08-25T07:15:27","PIB:Station:955","Basel Land - Kreuzstrasse - Allschwil",47.55976,7.550895,35,"Kreuzstrasse 2","4123"
+"2026-08-25T07:15:27","PIB:Station:956","Basel Land - Wänglismatten - Allschwil",47.561634,7.55449,35,"Wängelismatten ","4123"
+"2026-08-25T07:15:27","PIB:Station:957","Ausser Betrieb - Stadthausgasse 10 - Basel",47.558716,7.5870385,15,"Stadthausgasse 10","4051"
+"2026-08-25T07:15:27","PIB:Station:959","Badischer Bahnhof Nord - Schwarzwaldallee 200 - Basel",47.56767,7.6065855,35,"Schwarzwaldallee 200","4058"
+"2026-08-25T07:15:27","PIB:Station:960","Badischer Bahnhof Süd - Schwarzwaldallee 184 - Basel",47.566177,7.6078625,35,"Schwarzwaldallee 200","4058"
+"2026-08-25T07:15:27","PIB:Station:961","Dornacherstrasse 210 - Basel",47.541264,7.5950575,50,"Dornacherstrasse 215","4053"
+"2026-08-25T07:15:27","PIB:Station:964","Hotel Vatel - Martigny",46.109642,7.084965,20,"Rue Marconi 19","1920"
+"2026-08-25T07:15:27","PIB:Station:966","Dreispitz - Basel",47.537434,7.609352,50,"Dreispitz ","4053"
+"2026-08-25T07:15:27","PIB:Station:967","Gare de Fribourg - Fribourg/Freiburg",46.802563,7.151024,32,"Avenue de la Gare 1","1700"
+"2026-08-25T07:15:27","PIB:Station:968","Fribourg-Gottéron - Fribourg/Freiburg",46.81523,7.1557193,13,"Rue de Morat 73","1700"
+"2026-08-25T07:15:27","PIB:Station:969","Schönberg - Fribourg/Freiburg",46.810402,7.173068,25,"Route de Tavel 8","1700"
+"2026-08-25T07:15:27","PIB:Station:970","Bourg - Fribourg/Freiburg",46.806675,7.1620507,10,"Place de Notre Dame 4","1700"
+"2026-08-25T07:15:27","PIB:Station:971","Uni Pérolles - Fribourg/Freiburg",46.793354,7.1583815,25,"Boulevard de Pérolles 95","1700"
+"2026-08-25T07:15:27","PIB:Station:974","Dix-neuf 64 - Resto Bar Lounge, Conthey - Agglo Valais central - Conthey",46.2265,7.3128858,10,"Route de la Morge 19","1964"
+"2026-08-25T07:15:27","PIB:Station:975","Cormanon - Fribourg/Freiburg",46.79315,7.132212,24,"Route de la Berra 2","1752"
+"2026-08-25T07:15:27","PIB:Station:976","Gare de Villars-sur-Glâne - Fribourg/Freiburg",46.789974,7.1160345,20,"Route des Prealpes 1B","1752"
+"2026-08-25T07:15:27","PIB:Station:977","Les Dailles - Fribourg/Freiburg",46.794804,7.11404,21,"Route du Bugnon 38","1752"
+"2026-08-25T07:15:27","PIB:Station:979","Hôpital Fribourgeois - Fribourg/Freiburg",46.80182,7.136614,15,"Hôpital Cantonal ","1752"
+"2026-08-25T07:15:27","PIB:Station:980","MediaParc - Fribourg/Freiburg",46.79459,7.1327596,15,"Rue du Centre 7","1752"
+"2026-08-25T07:15:27","PIB:Station:981","La Neuveville - Fribourg/Freiburg",46.80379,7.161575,8,"Grandes-Rames 10","1700"
+"2026-08-25T07:15:27","PIB:Station:984","Champriond - Fribourg/Freiburg",46.79436,7.140497,14,"Rte de la Veveyse  26","1700"
+"2026-08-25T07:15:27","PIB:Station:985","Softcom - Fribourg/Freiburg",46.809597,7.146789,10,"Route du Jura 41","1700"
+"2026-08-25T07:15:27","PIB:Station:986","Quartier d'Alt - Fribourg/Freiburg",46.808,7.1559362,14,"Rue Jean-Grimoux 5","1700"
+"2026-08-25T07:15:27","PIB:Station:987","Rue du Simplon - Fribourg/Freiburg",46.799366,7.1520925,13,"Rue du Simplon 3","1700"
+"2026-08-25T07:15:27","PIB:Station:988","Bourgknecht - Fribourg/Freiburg",46.811752,7.150177,13,"Avenue du Général-Guisan 53","1700"
+"2026-08-25T07:15:27","PIB:Station:989","Fribourg Gare Nord - Fribourg/Freiburg",46.803963,7.1520157,20,"Place de la Gare 15","1700"
+"2026-08-25T07:15:27","PIB:Station:990","Place Georges Python - Fribourg/Freiburg",46.804565,7.1555567,13,"Rue de l'Abbé-Bovet 2","1700"
+"2026-08-25T07:15:27","PIB:Station:991","La Motta - Fribourg/Freiburg",46.80296,7.159667,8,"Petites-Rames 18","1700"
+"2026-08-25T07:15:27","PIB:Station:992","Beaumont FR - Fribourg/Freiburg",46.79617,7.1432123,16,"Route de Beaumont 3A","1700"
+"2026-08-25T07:15:27","PIB:Station:993","Auge - Fribourg/Freiburg",46.802288,7.166585,7,"Place du Petit-Saint-Jean 13A","1700"
+"2026-08-25T07:15:27","PIB:Station:994","Petit-Moncor - Fribourg/Freiburg",46.80046,7.122342,16,"Rte de Chandolan 3","1752"
+"2026-08-25T07:15:27","PIB:Station:995","Les Fluides - Fribourg/Freiburg",46.812916,7.1146083,14,"rte des Fluides ","1720"
+"2026-08-25T07:15:27","PIB:Station:996","Marly Innovation Center - Fribourg/Freiburg",46.777878,7.150709,13,"Route Ancienne Papeterie 550","1723"
+"2026-08-25T07:15:27","PIB:Station:997","Gare de Givisiez Sud - Fribourg/Freiburg",46.816006,7.129987,12,"Gare ","1762"
+"2026-08-25T07:15:27","PIB:Station:998","Uni Miséricorde - Fribourg/Freiburg",46.806904,7.1529374,17,"Université ","1700"
+"2026-08-25T07:15:27","PIB:Station:999","Route Albert-Gockel - Fribourg/Freiburg",46.794277,7.1550183,15,"Jardin botanique ","1700"
+"2026-08-25T07:15:27","PIB:Station:1000","Pont de Zähringen - Fribourg/Freiburg",46.805428,7.1651855,15,"Rue de Zaehringen 2","1700"
+"2026-08-25T07:15:27","PIB:Station:1001","Marly-Cité - Fribourg/Freiburg",46.776947,7.16039,20,"Route de Fribourg 2","1723"
+"2026-08-25T07:15:27","PIB:Station:1002","Arsenaux - Fribourg/Freiburg",46.797047,7.150592,30,"Route des Arsenaux 16","1700"
+"2026-08-25T07:15:27","PIB:Station:1003","Marly Gérine - Fribourg/Freiburg",46.771748,7.162025,16,"Route de la Gruyère 17","1723"
+"2026-08-25T07:15:27","PIB:Station:1004","Avenue Beauregard - Fribourg/Freiburg",46.80216,7.146347,17,"Avenue Beauregard 11","1700"
+"2026-08-25T07:15:27","PIB:Station:1005","Bois de Moncor - Fribourg/Freiburg",46.79805,7.1196246,16,"Route de Moncor 26","1752"
+"2026-08-25T07:15:27","PIB:Station:1006","bluefactory - Fribourg/Freiburg",46.79817,7.1475163,25,"Passage du Cardinal 1","1700"
+"2026-08-25T07:15:27","PIB:Station:1007","Faucigny - Fribourg/Freiburg",46.79588,7.156484,23,"Rue Petermann-Aymon-de-Faucigny 5","1700"
+"2026-08-25T07:15:27","PIB:Station:1008","Vignettaz - Daler - Fribourg/Freiburg",46.80007,7.1406827,16,"Route de Villars 22","1700"
+"2026-08-25T07:15:27","PIB:Station:1009","Le Domaine (Swiss Lodge) - Fribourg/Freiburg",46.796326,7.131859,50,"Chemin des Eaux-Vives 17","1752"
+"2026-08-25T07:15:27","PIB:Station:1010","Bel-Air - Fribourg/Freiburg",46.7769,7.13955,13,"Route de Bel-Air 17","1723"
+"2026-08-25T07:15:27","PIB:Station:1011","Chantemerle - Fribourg/Freiburg",46.81983,7.139682,13,"Route de Chantemerle 60","1763"
+"2026-08-25T07:15:27","PIB:Station:1012","Marly, chemin du Pont - Fribourg/Freiburg",46.783173,7.1554046,16,"Chemin du Pont 2","1723"
+"2026-08-25T07:15:27","PIB:Station:1013","Belfaux. Champ Bonjart - Fribourg/Freiburg",46.819336,7.1025915,17,"Champ Bonjard 1","1782"
+"2026-08-25T07:15:27","PIB:Station:1014","Route des Noisetiers - Fribourg/Freiburg",46.80798,7.1433716,11,"Route de la Broye 26","1700"
+"2026-08-25T07:15:27","PIB:Station:1015","P+R La Chassotte - Fribourg/Freiburg",46.81081,7.1391826,60,"Jura Chassotte ","1700"
+"2026-08-25T07:15:27","PIB:Station:1016","Gare de Belfaux-Village - Fribourg/Freiburg",46.821434,7.1083813,12,"Place Gare GFM 1","1782"
+"2026-08-25T07:15:27","PIB:Station:1017","Marteray - Fribourg/Freiburg",46.79152,7.1390514,20,"Rue du Marteray 1","1752"
+"2026-08-25T07:15:27","PIB:Station:1018","Martinets - Fribourg/Freiburg",46.79094,7.127251,15,"Chemin de la Prairie 11","1752"
+"2026-08-25T07:15:27","PIB:Station:1019","Schönberg Chaley - Fribourg/Freiburg",46.80626,7.175163,13,"Avenue Jean-Marie-Musy 1","1700"
+"2026-08-25T07:15:27","PIB:Station:1020","Forum Fribourg - Fribourg/Freiburg",46.82481,7.1517415,14,"Route du Lac 11","1763"
+"2026-08-25T07:15:27","PIB:Station:1021","Place des Osses - Fribourg/Freiburg",46.817966,7.126944,18,"Place des Osses 1","1762"
+"2026-08-25T07:15:27","PIB:Station:1022","Corminboeuf. Route du Centre - Fribourg/Freiburg",46.80779,7.1029544,20,"Corminboeuf ","1720"
+"2026-08-25T07:15:27","PIB:Station:1023","Place d'Affry - Fribourg/Freiburg",46.81246,7.127803,20,"Place d'Affry 1","1762"
+"2026-08-25T07:15:27","PIB:Station:1024","Route des Cliniques - Fribourg/Freiburg",46.793648,7.149981,23,"Route des Cliniques 13","1700"
+"2026-08-25T07:15:27","PIB:Station:1025","Ecoquartier Marly - Fribourg/Freiburg",46.775814,7.1565876,15,"Rte Ancienne Papeteri 697","1723"
+"2026-08-25T07:15:27","PIB:Station:1026","Bourguillon - Fribourg/Freiburg",46.800354,7.175567,12,"Route de Bourguillon 34","1722"
+"2026-08-25T07:15:27","PIB:Station:1027","Marly - La Jonction - Fribourg/Freiburg",46.78051,7.1505804,29,"Rte de Fribourg 15","1723"
+"2026-08-25T07:15:27","PIB:Station:1028","Andermatt Reuss - Andermatt",46.63951,8.590613,25,"Furkagasse 2","6490"
+"2026-08-25T07:15:27","PIB:Station:1029","Andermatt Bahnhof - Andermatt",46.637,8.5937,40,"Bahnhofstrasse 3","6490"
+"2026-08-25T07:15:27","PIB:Station:1030","Andermatt Golfplatz - Andermatt",46.634438,8.5841875,25,"Reussen ","6490"
+"2026-08-25T07:15:27","PIB:Station:1031","Andermatt Dorf - Andermatt",46.633305,8.596462,25,"Gotthardstrasse 91","6490"
+"2026-08-25T07:15:27","PIB:Station:1032","Andermatt Wyler - Andermatt",46.635426,8.601745,25,"Oberalpstrasse 61","6490"
+"2026-08-25T07:15:27","PIB:Station:1033","Hospental Dorf - Andermatt",46.617912,8.567229,25,"Gotthardstrasse 46","6493"
+"2026-08-25T07:15:27","PIB:Station:1034","Realp Dorf - Andermatt",46.598495,8.502542,25,"Furkastrasse 70","6491"
+"2026-08-25T07:15:27","PIB:Station:1035","PIA 2 - PSI - Villigen",47.535473,8.219272,40,"","5234"
+"2026-08-25T07:15:27","PIB:Station:1039","Bahnhof NORD - SBB - Meilen",47.270115,8.644003,30,"Dorfstrasse 103","8706"
+"2026-08-25T07:15:27","PIB:Station:1040","Bahnhof SUD - SBB - Meilen",47.2693,8.644528,30,"Dorfstrasse 103","8706"
+"2026-08-25T07:15:27","PIB:Station:1042","Haltestelle Herrliberg-Feldmeilen - SUD - SBB - Meilen",47.281734,8.612841,30,"General-Wille-Strasse 29","8706"
+"2026-08-25T07:15:27","PIB:Station:1046","Rathaus - Aarau",47.39328,8.043081,25,"Rathausgasse 1","5000"
+"2026-08-25T07:15:27","PIB:Station:1047","Schlossplatz - Aarau",47.393623,8.0462055,25,"Laurenzenvorstadt 7","5000"
+"2026-08-25T07:15:27","PIB:Station:1048","Pulverturm - Aarau",47.391582,8.042232,25,"Asylstrasse 1","5000"
+"2026-08-25T07:15:27","PIB:Station:1049","Werkhof - Aarau",47.401867,8.064682,25,"Neumattstrasse 51","5000"
+"2026-08-25T07:15:27","PIB:Station:1050","Heinerich Wirri-Strasse - Aarau",47.38337,8.051717,25,"Heinerich Wirri-Strasse 4","5000"
+"2026-08-25T07:15:27","PIB:Station:1051","Bahnhofplatz - Aarau",47.39153,8.050356,50,"Bahnhofplatz 2","5000"
+"2026-08-25T07:15:27","PIB:Station:1052","Bleichemattstrasse - Aarau",47.390537,8.052651,35,"Bleichemattstrasse 1","5000"
+"2026-08-25T07:15:27","PIB:Station:1053","Sportanlage Schachen - Aarau",47.391132,8.034101,50,"Schwimmbadstrasse 7","5000"
+"2026-08-25T07:15:27","PIB:Station:1054","Neue Kantonsschule - Aarau",47.386158,8.045069,25,"Schanzmättelistrasse 32","5001"
+"2026-08-25T07:15:27","PIB:Station:1055","Goldernstrasse - Aarau",47.379993,8.055119,25,"Goldernstrasse 28","5000"
+"2026-08-25T07:15:27","PIB:Station:1056","Zwinglihaus - Aarau",47.39908,8.045915,25,"Kirchbergstrasse 31","5000"
+"2026-08-25T07:15:27","PIB:Station:1057","Schwanenest - Aarau",47.39539,8.046951,25,"Mühlemattstrasse 50","5000"
+"2026-08-25T07:15:27","PIB:Station:1058","AXPO - PSI - Döttingen",47.55132,8.229139,40,"Kernkraftwerk Beznau ","5312"
+"2026-08-25T07:15:27","PIB:Station:1059","Grabenstrasse - Aarau",47.39975,8.076559,25,"Grabenstrasse 15","5032"
+"2026-08-25T07:15:27","PIB:Station:1060","Sportanlage Winkel - Aarau",47.401142,8.084708,50,"Rodungsweg 13","5032"
+"2026-08-25T07:15:27","PIB:Station:1061","Telli Treff - Aarau",47.401684,8.061963,25,"Delfterstrasse 35","5004"
+"2026-08-25T07:15:27","PIB:Station:1062","Telli Zentrum - Aarau",47.399055,8.058029,25,"Girixweg 12","5000"
+"2026-08-25T07:15:27","PIB:Station:1063","Buchenhof - Aarau",47.388042,8.049089,25,"Entfelderstrasse 22","5000"
+"2026-08-25T07:15:27","PIB:Station:1064","Eniwa - Aarau",47.393185,8.064267,25,"Industriestrasse 107","5033"
+"2026-08-25T07:15:27","PIB:Station:1065","Boulangerie L'Échappée - Aigle",46.31687,6.968143,6,"Rue du Midi 19","1860"
+"2026-08-25T07:15:27","PIB:Station:1068","Pharmacie du Rhône et du Midi - Aigle",46.31809,6.966287,6,"Rue du Rhône 23","1860"
+"2026-08-25T07:15:27","PIB:Station:1070","Ave. de la gare - Charrat - Martigny",46.121346,7.134736,8,"Avenue de la Gare 3","1906"
+"2026-08-25T07:15:27","PIB:Station:1071","Gare, Impasse des Ruches, Charrat - Martigny",46.125965,7.127654,8,"Impasse des Ruches 6","1906"
+"2026-08-25T07:15:27","PIB:Station:1072","Place des Chênes, Charrat - Martigny",46.119915,7.1318245,10,"Place des Chênes 1A","1906"
+"2026-08-25T07:15:27","PIB:Station:1073","Vison, Charrat - Martigny",46.12444,7.1393886,8,"Avenue de Vison 2","1906"
+"2026-08-25T07:15:27","PIB:Station:1075","Genedis, Vernayaz - Martigny",46.132282,7.04313,6,"Rue du Collège 2","1904"
+"2026-08-25T07:15:27","PIB:Station:1076","Gare, Vernayaz - Martigny",46.138508,7.03824,6,"Rue de la Gare 2","1904"
+"2026-08-25T07:15:27","PIB:Station:1085","Port Franc, Sion - Agglo Valais central - Sion",46.222317,7.3686237,10,"Route de Riddes 77","1950"
+"2026-08-25T07:15:27","PIB:Station:1086","Gare de Saint-Léonard - Agglo Valais central - Saint-Léonard",46.251465,7.419048,10,"Gare 44","1958"
+"2026-08-25T07:15:27","PIB:Station:1087","Mülhauserstrasse 57 - Basel",47.568367,7.5797772,25,"Mülhauserstrasse 55","4056"
+"2026-08-25T07:15:27","PIB:Station:1090","P+R Bahnhof - SBB - Delémont",47.361126,7.3512454,30,"Rue Emile-Boéchat 35","2800"
+"2026-08-25T07:15:27","PIB:Station:1091","Bahnhof NORD - SBB - Solothurn",47.20459,7.5445247,30,"Dornacherstrasse 54","4500"
+"2026-08-25T07:15:27","PIB:Station:1092","Bahnhof WEST  - SBB - Brugg/Windisch",47.48086,8.208508,30,"Bahnhofplatz 1","5200"
+"2026-08-25T07:15:27","PIB:Station:1093","Bahnhof OST  - SBB - Windisch/Brugg",47.48175,8.210583,30,"Bahnhofstrasse 14","5210"
+"2026-08-25T07:15:27","PIB:Station:1100","Birsfelderstrasse 5 - Basel",47.557205,7.6154947,25,"Birsfelderstrasse 5","4052"
+"2026-08-25T07:15:27","PIB:Station:1102","Basel Land - Freizeithaus - Allschwil",47.55539,7.5441093,25,"Hegenheimermattweg 76","4123"
+"2026-08-25T07:15:27","PIB:Station:1104","Comerge - Zürich",47.35867,8.520288,30,"Bubenberg-Strasse 1","8045"
+"2026-08-25T07:15:27","PIB:Station:1105","Lindenplatz - Zürich",47.38764,8.4863,30,"Lindenpl. 1","8048"
+"2026-08-25T07:15:27","PIB:Station:1106","Airgate - Leutschenbach - Zürich",47.41453,8.552773,30,"Hagenholzstrasse 51","8050"
+"2026-08-25T07:15:27","PIB:Station:1107","ETH / Naturhistorisches Museum UZH - Zürich",47.375496,8.54762,60,"Karl-Schmid-Strasse 1","8006"
+"2026-08-25T07:15:27","PIB:Station:1108","Stadthaus - Zürich",47.36918,8.541597,50,"Stadthaus ","8001"
+"2026-08-25T07:15:27","PIB:Station:1109","Kalkbreite - Zürich",47.374977,8.520648,30,"Badenerstrasse 177","8003"
+"2026-08-25T07:15:27","PIB:Station:1110","Bäckeranlage - Zürich",47.376957,8.523079,30,"Bäckeranlage ","8004"
+"2026-08-25T07:15:27","PIB:Station:1111","Freibad Letzigraben - Zürich",47.379627,8.501051,30,"Letzigraben 43","8003"
+"2026-08-25T07:15:27","PIB:Station:1112","Siriuswiese - Zürich",47.3803,8.552311,30,"Siriusstrasse 4","8044"
+"2026-08-25T07:15:27","PIB:Station:1113","Grünau - Zürich",47.39647,8.486951,30,"Grünauring 37","8064"
+"2026-08-25T07:15:27","PIB:Station:1114","Sillon - Aigle",46.31643,6.958079,10,"Chem. du Sillon 12","1860"
+"2026-08-25T07:15:27","PIB:Station:1115","Magasin Amstein - Aigle",46.315094,6.9393277,10,"Rte Industrielle 8","1860"
+"2026-08-25T07:15:27","PIB:Station:1116","OFMA - PSI - Villigen",47.53934,8.227753,40,"PARK innovAARE ","5234"
+"2026-08-25T07:15:27","PIB:Station:1118","Zehntenhausplatz - Zürich",47.418816,8.506473,30,"Wehntalerstrasse 541","8046"
+"2026-08-25T07:15:27","PIB:Station:1119","Riedgraben - Zürich",47.409664,8.5588255,30,"Hallenbad Oerlikon ","8050"
+"2026-08-25T07:15:27","PIB:Station:1120","Bellevue - Zürich",47.366745,8.544988,40,"Bellevue ","8001"
+"2026-08-25T07:15:27","PIB:Station:1121","Bühl - Zürich",47.36766,8.516262,30,"Kirche Bühl ","8055"
+"2026-08-25T07:15:27","PIB:Station:1122","Muggenbühl - Zürich",47.352497,8.52715,30,"Muggenbühl ","8002"
+"2026-08-25T07:15:27","PIB:Station:1123","Tüffenwies - Zürich",47.39855,8.493822,30,"Tüffenwies ","8064"
+"2026-08-25T07:15:27","PIB:Station:1124","Predigerplatz - Zürich",47.373684,8.545488,30,"Predigerplatz ","8001"
+"2026-08-25T07:15:27","PIB:Station:1125","Weststrasse - Zürich",47.372902,8.519558,30,"Weststrasse ","8003"
+"2026-08-25T07:15:27","PIB:Station:1126","Dorfstrasse - Zürich",47.39456,8.522125,30,"Dorfstrasse ","8037"
+"2026-08-25T07:15:27","PIB:Station:1127","Freilager - Zürich",47.381577,8.49042,30,"Freilager ","8047"
+"2026-08-25T07:15:27","PIB:Station:1128","Museum für Gestaltung - Zürich",47.382793,8.535462,30,"Museum für Gestaltung ","8005"
+"2026-08-25T07:15:27","PIB:Station:1129","Pauluskirche - Zürich",47.394012,8.542036,30,"Pauluskirche ","8057"
+"2026-08-25T07:15:27","PIB:Station:1130","Gessnerallee - Zürich",47.375854,8.535401,30,"Gessnerallee ","8001"
+"2026-08-25T07:15:27","PIB:Station:1131","Limmatplatz - Zürich",47.38491,8.531936,30,"Limmatplatz ","8005"
+"2026-08-25T07:15:27","PIB:Station:1132","Aarenau - Aarau",47.400623,8.047805,25,"Aarenaustrasse 3","5000"
+"2026-08-25T07:15:27","PIB:Station:1133","Bahnhof Wiedikon - Zürich",47.370724,8.52359,50,"Bahnhof Wiedikon ","8004"
+"2026-08-25T07:15:27","PIB:Station:1134","Hirzenbachstrasse - Zürich",47.40159,8.588398,30,"Hirzenbachstrasse ","8051"
+"2026-08-25T07:15:27","PIB:Station:1135","Josefwiese - Zürich",47.385983,8.524734,30,"Josefwiese ","8005"
+"2026-08-25T07:15:27","PIB:Station:1136","Goldbrunnenplatz - Zürich",47.370724,8.513966,30,"Goldbrunnenplatz ","8003"
+"2026-08-25T07:15:27","PIB:Station:1137","Utoplatz - Zürich",47.359882,8.523078,30,"Utoplatz ","8045"
+"2026-08-25T07:15:27","PIB:Station:1138","Markthalle - Zürich",47.387527,8.527145,30,"Markthalle ","8005"
+"2026-08-25T07:15:27","PIB:Station:1139","Strandbad Mythenquai - Zürich",47.35538,8.535115,30,"Strandbad Mythenquai ","8002"
+"2026-08-25T07:15:27","PIB:Station:1140","Förrlibuckstrasse - Zürich",47.391785,8.518179,30,"Puls 5","8005"
+"2026-08-25T07:15:27","PIB:Station:1141","Stauffacher - Zürich",47.373886,8.530312,30,"Stauffacher ","8004"
+"2026-08-25T07:15:27","PIB:Station:1142","Ausser Betrieb wegen Baustelle - Stauffachertor - Zürich",47.37271,8.530443,30,"Stauffachertor ","8004"
+"2026-08-25T07:15:27","PIB:Station:1143","Rieterplatz - Zürich",47.356388,8.526163,30,"Rieterplatz ","8002"
+"2026-08-25T07:15:27","PIB:Station:1144","Letzipark - Zürich",47.38571,8.499293,30,"Letzipark ","8048"
+"2026-08-25T07:15:27","PIB:Station:1145","Schiffbau - Zürich",47.387997,8.5203495,30,"Steinfelsareal ","8005"
+"2026-08-25T07:15:27","PIB:Station:1146","Bullingerplatz - Zürich",47.3796,8.51541,30,"Bullingerplatz ","8004"
+"2026-08-25T07:15:27","PIB:Station:1147","Aegerten - Zürich",47.36894,8.523313,30,"Aegerten ","8003"
+"2026-08-25T07:15:27","PIB:Station:1148","Sihlpost - Zürich",47.377365,8.53586,30,"Sihlpost ","8004"
+"2026-08-25T07:15:27","PIB:Station:1149","Römerhof - Zürich",47.368477,8.559978,30,"Römerhof ","8032"
+"2026-08-25T07:15:27","PIB:Station:1150","Grosswiesenstrasse - Zürich",47.403305,8.585629,30,"Glattwiesen ","8051"
+"2026-08-25T07:15:27","PIB:Station:1151","Waffenplatzstrasse - Zürich",47.36157,8.525533,30,"Klopstockwiese ","8002"
+"2026-08-25T07:15:27","PIB:Station:1152","Vulkanplatz - Zürich",47.39235,8.491066,30,"Vulkanpl. 1","8048"
+"2026-08-25T07:15:27","PIB:Station:1153","Jugendherberge - Zürich",47.347702,8.528054,30,"Jugendherberge ","8038"
+"2026-08-25T07:15:27","PIB:Station:1154","Stapferstube - Zürich",47.382595,8.546885,30,"Stapferstube ","8006"
+"2026-08-25T07:15:27","PIB:Station:1155","Sirius-Platz - Zürich",47.418476,8.561754,30,"Sirius-Platz ","8152"
+"2026-08-25T07:15:27","PIB:Station:1156","Boulevard Lilienthal - Zürich",47.424183,8.562369,30,"Boulevard Lilienthal ","8152"
+"2026-08-25T07:15:27","PIB:Station:1157","Bahnhof Glattbrugg - Zürich",47.43116,8.558461,30,"Bahnhof Glattbrugg ","8152"
+"2026-08-25T07:15:27","PIB:Station:1158","Bahnhof Opfikon - Zürich",47.430912,8.562035,30,"Bahnhof Opfikon ","8152"
+"2026-08-25T07:15:27","PIB:Station:1159","Stadthaus Opfikon - Zürich",47.432823,8.566622,30,"Stadthaus Opfikon ","8152"
+"2026-08-25T07:15:27","PIB:Station:1160","Rennweg - Zürich",47.37395,8.539496,30,"Rennweg ","8001"
+"2026-08-25T07:15:27","PIB:Station:1161","ETH Hönggerberg - Zürich",47.407814,8.50683,60,"ETH Hönggerberg ","8049"
+"2026-08-25T07:15:27","PIB:Station:1162","Sihlporte - Zürich",47.37305,8.534491,30,"Sihlstrasse ","8001"
+"2026-08-25T07:15:27","PIB:Station:1163","ETH Zentrum Leonhardstrasse - Zürich",47.377777,8.546181,30,"ETH Zentrum Leonhardstrasse ","8001"
+"2026-08-25T07:15:27","PIB:Station:1164","Stauffacherbrücke - Zürich",47.37136,8.53134,30,"Stauffacherbrücke ","8004"
+"2026-08-25T07:15:27","PIB:Station:1165","Escher-Wyss-Platz - Zürich",47.390785,8.52321,30,"Escher-Wyss-Platz ","8005"
+"2026-08-25T07:15:27","PIB:Station:1166","Albisriederplatz - Zürich",47.37776,8.509267,30,"Zurlindenstrasse ","8003"
+"2026-08-25T07:15:27","PIB:Station:1167","Seebach - Zürich",47.4215,8.55018,30,"Seebach ZüriMobil Station ","8052"
+"2026-08-25T07:15:27","PIB:Station:1168","Lochergut - Zürich",47.376263,8.516198,30,"Lochergut ","8004"
+"2026-08-25T07:15:27","PIB:Station:1171","Wipkingerplatz - Zürich",47.392345,8.523554,30,"Wipkingerplatz ","8037"
+"2026-08-25T07:15:27","PIB:Station:1172","Hottingerplatz - Zürich",47.369015,8.554403,30,"Hottingerplatz ","8032"
+"2026-08-25T07:15:27","PIB:Station:1173","Nordstrasse - Zürich",47.388626,8.535964,30,"Kornhausstrasse ","8006"
+"2026-08-25T07:15:27","PIB:Station:1174","Oberwiesenstrasse - Zürich",47.410275,8.532498,30,"Regensbergstrasse 201","8050"
+"2026-08-25T07:15:27","PIB:Station:1175","Meierhofplatz - Zürich",47.401855,8.49927,30,"Meierhofplatz ","8049"
+"2026-08-25T07:15:27","PIB:Station:1176","Beatenplatz - Zürich",47.375877,8.541284,30,"Beatenplatz ","8001"
+"2026-08-25T07:15:27","PIB:Station:1177","Hunziker-Areal - Zürich",47.41303,8.558102,30,"Hunziker-Areal ","8050"
+"2026-08-25T07:15:27","PIB:Station:1178","Lake Side - Zürich",47.3532,8.553194,30,"Lake Side ","8008"
+"2026-08-25T07:15:27","PIB:Station:1179","Helvetiaplatz - Zürich",47.376484,8.527275,30,"Helvetiaplatz ","8004"
+"2026-08-25T07:15:27","PIB:Station:1180","Bucheggplatz - Zürich",47.398075,8.5336485,30,"Bucheggplatz ","8057"
+"2026-08-25T07:15:27","PIB:Station:1181","Binz Center - Zürich",47.362206,8.510794,30,"Grubenstrasse 55","8045"
+"2026-08-25T07:15:27","PIB:Station:1182","Schaffhauserplatz - Zürich",47.391777,8.538275,30,"Schaffhauserplatz ","8006"
+"2026-08-25T07:15:27","PIB:Station:1183","General-Guisan-Quai - Zürich",47.364872,8.537976,30,"General-Guisan-Quai ","8002"
+"2026-08-25T07:15:27","PIB:Station:1184","Hardau - Zürich",47.3808,8.512013,30,"Hardau ","8004"
+"2026-08-25T07:15:27","PIB:Station:1185","Hegibachplatz - Zürich",47.36243,8.560535,30,"Hegibachplatz ","8032"
+"2026-08-25T07:15:27","PIB:Station:1186","Rigiplatz - Zürich",47.384903,8.547909,30,"Rigiplatz ","8006"
+"2026-08-25T07:15:27","PIB:Station:1187","Wahlenpark - Zürich",47.416176,8.541786,30,"Wahlenpark ","8050"
+"2026-08-25T07:15:27","PIB:Station:1188","Stauffacher-Strasse - Zürich",47.37829,8.52063,30,"Hermann-Greulich-Strasse ","8004"
+"2026-08-25T07:15:27","PIB:Station:1189","Kreuzplatz - Zürich",47.365044,8.553927,30,"Kreuzplatz ","8032"
+"2026-08-25T07:15:27","PIB:Station:1190","Kunsthaus - Zürich",47.370865,8.548051,30,"Kunsthaus ","8001"
+"2026-08-25T07:15:27","PIB:Station:1191","Bahnhof Stadelhofen - Zürich",47.36643,8.5481415,30,"Stadelhoferstrasse 8","8001"
+"2026-08-25T07:15:27","PIB:Station:1192","Dorflinde - Zürich",47.4071,8.550335,30,"Dorflinde ","8050"
+"2026-08-25T07:15:27","PIB:Station:1193","Werd - Zürich",47.372505,8.526394,30,"Werd ","8004"
+"2026-08-25T07:15:27","PIB:Station:1194","Bürkliplatz - Zürich",47.36697,8.541695,50,"Stadthausquai 1","8001"
+"2026-08-25T07:15:27","PIB:Station:1195","Sternenstrasse - Zürich",47.360203,8.533598,30,"Mythenschloss ","8002"
+"2026-08-25T07:15:27","PIB:Station:1196","Bezirksgebäude - Zürich",47.374645,8.525578,30,"Bezirksgebäude ","8004"
+"2026-08-25T07:15:27","PIB:Station:1197","Bahnhof Tiefenbrunnen - Zürich",47.34998,8.561211,30,"Bahnhof Tiefenbrunnen ","8008"
+"2026-08-25T07:15:27","PIB:Station:1198","Zollstrasse - Zürich",47.381153,8.532409,30,"Zollstrasse ","8005"
+"2026-08-25T07:15:27","PIB:Station:1199","Toni-Areal - Zürich",47.389935,8.510409,30,"Herdern ","8005"
+"2026-08-25T07:15:27","PIB:Station:1200","Schwamendingerplatz - Zürich",47.40481,8.57266,30,"Schwamendingerplatz ","8051"
+"2026-08-25T07:15:27","PIB:Station:1201","CERM - Martigny",46.097137,7.077905,10,"Rue du Levant 66","1920"
+"2026-08-25T07:15:27","PIB:Station:1202","Zwinglihaus - Zürich",47.371933,8.515069,30,"Zwinglihaus ","8003"
+"2026-08-25T07:15:27","PIB:Station:1203","Gasometerstrasse - Zürich",47.383865,8.528827,30,"Gasometerstrasse ","8005"
+"2026-08-25T07:15:27","PIB:Station:1204","Mühlebachstrasse - Zürich",47.359085,8.556951,30,"Mühlebachstrasse ","8008"
+"2026-08-25T07:15:27","PIB:Station:1205","Landesmuseum - Zürich",47.378986,8.541254,30,"Zürich Landesmuseum ",NA
+"2026-08-25T07:15:27","PIB:Station:1206","Bahnhof Enge - Zürich",47.365143,8.53092,30,"Bederbrücke ","8002"
+"2026-08-25T07:15:27","PIB:Station:1207","Am Wasser - Zürich",47.396164,8.503723,30,"Am Wasser ","8049"
+"2026-08-25T07:15:27","PIB:Station:1208","Bahnhof Oerlikon Nord - Zürich",47.412735,8.544181,30,"Max-Frisch-Platz ","8050"
+"2026-08-25T07:15:27","PIB:Station:1209","Luggweg - Zürich",47.38982,8.491636,30,"Luggweg ","8048"
+"2026-08-25T07:15:27","PIB:Station:1210","Schweizer Rück - Zürich",47.359673,8.53573,30,"Hafen Enge ","8002"
+"2026-08-25T07:15:27","PIB:Station:1211","Hardplatz - Zürich",47.381916,8.515247,30,"Hardplatz ","8004"
+"2026-08-25T07:15:27","PIB:Station:1212","Pelikanstrasse - Zürich",47.37191,8.536897,30,"Pelikanplatz ","8001"
+"2026-08-25T07:15:27","PIB:Station:1213","Schürgistrasse - Zürich",47.407597,8.577579,30,"Luegisland ","8051"
+"2026-08-25T07:15:27","PIB:Station:1214","Bad Allenmoos - Zürich",47.405754,8.539021,30,"Freibad Allenmoos ","8057"
+"2026-08-25T07:15:27","PIB:Station:1215","Hallwylstrasse - Zürich",47.37014,8.527303,30,"Hallwylstrasse ","8004"
+"2026-08-25T07:15:27","PIB:Station:1216","Max Bill Platz - Center Eleven - Zürich",47.41374,8.5415535,30,"Center Eleven ","8050"
+"2026-08-25T07:15:27","PIB:Station:1217","Lamprechtweg - Zürich",47.413513,8.537821,30,"Lamprechtweg ","8050"
+"2026-08-25T07:15:27","PIB:Station:1218","Dolderstrasse - Zürich",47.370842,8.559539,30,"Kinderspital ","8032"
+"2026-08-25T07:15:27","PIB:Station:1219","Sackzelg - Zürich",47.375263,8.496462,30,"Sackzelg ","8047"
+"2026-08-25T07:15:27","PIB:Station:1220","GZ Wollishofen - Zürich",47.345295,8.535775,30,"GZ Wollishofen ","8038"
+"2026-08-25T07:15:27","PIB:Station:1221","Kantonalbank - Zürich",47.368027,8.540409,30,"Talstrasse 9","8001"
+"2026-08-25T07:15:27","PIB:Station:1222","Sihlquai / HB - Zürich",47.379303,8.537757,30,"Sihlquai ","8005"
+"2026-08-25T07:15:27","PIB:Station:1223","Gutstrasse - Zürich",47.371452,8.507062,30,"Gutstrasse ","8055"
+"2026-08-25T07:15:27","PIB:Station:1224","Leutschenpark - Zürich",47.416874,8.555639,30,"Leutschenpark ","8050"
+"2026-08-25T07:15:27","PIB:Station:1225","Berninaplatz - Zürich",47.40382,8.546459,30,"Berninaplatz ","8057"
+"2026-08-25T07:15:27","PIB:Station:1226","Central - Zürich",47.37557,8.543521,30,"Central ","8001"
+"2026-08-25T07:15:27","PIB:Station:1227","Röntgenstrasse - Zürich",47.382336,8.528588,30,"Röntgenstrasse ","8005"
+"2026-08-25T07:15:27","PIB:Station:1228","Sportweg - Zürich",47.39187,8.505748,30,"Sportweg 25","8005"
+"2026-08-25T07:15:27","PIB:Station:1229","Bahnhof Altstetten - Zürich",47.391365,8.488109,50,"Bahnhof Altstetten ","8048"
+"2026-08-25T07:15:27","PIB:Station:1230","Emil-Oberhänsli - Zürich",47.41771,8.545605,30,"Emil-Oberhänsli ","8052"
+"2026-08-25T07:15:27","PIB:Station:1231","Binzallee - Zürich",47.36621,8.513994,30,"Binzallee ","8055"
+"2026-08-25T07:15:27","PIB:Station:1232","Schmiede Wiedikon - Zürich",47.370037,8.518186,30,"Schmiede Wiedikon ","8003"
+"2026-08-25T07:15:27","PIB:Station:1233","Villa Bleuler - Zürich",47.361927,8.554456,30,"Villa Bleuler ","8008"
+"2026-08-25T07:15:27","PIB:Station:1234","Utogrund - Zürich",47.37852,8.496732,30,"Utogrund ","8047"
+"2026-08-25T07:15:27","PIB:Station:1235","Rentenanstalt - Zürich",47.36259,8.534845,40,"Rentenanstalt ","8002"
+"2026-08-25T07:15:27","PIB:Station:1236","Werdmühleplatz - Zürich",47.374912,8.540027,40,"Werdmühleplatz ","8001"
+"2026-08-25T07:15:27","PIB:Station:1237","Heuried - Zürich",47.36892,8.506013,30,"Heuried ZüriMobil Station ","8055"
+"2026-08-25T07:15:27","PIB:Station:1238","Bahnhof Oerlikon - Zürich",47.41106,8.543765,50,"Hofwiesenstrasse 360","8050"
+"2026-08-25T07:15:27","PIB:Station:1239","Fischerweg - Zürich",47.393364,8.512553,30,"Fischerweg ","8005"
+"2026-08-25T07:15:27","PIB:Station:1240","Louis-Häfliger-Park - Zürich",47.412872,8.533265,30,"Louis-Häfliger-Park ","8050"
+"2026-08-25T07:15:27","PIB:Station:1241","Bahnhof Hardbrücke - Zürich",47.386303,8.518467,50,"Bahnhof Hardbrücke ","8005"
+"2026-08-25T07:15:27","PIB:Station:1242","Seebad Utoquai - Zürich",47.361343,8.547773,30,"Seebad Utoquai ","8008"
+"2026-08-25T07:15:27","PIB:Station:1243","Bahnhof Stettbach - Zürich",47.39723,8.5956135,50,"Bahnhof Stettbach ","8600"
+"2026-08-25T07:15:27","PIB:Station:1244","Gustav-Gull-Platz - Zürich",47.379234,8.530613,30,"Gustav-Gull-Platz ","8004"
+"2026-08-25T07:15:27","PIB:Station:1245","Binz - Zürich",47.363457,8.517694,30,"Binz ","8045"
+"2026-08-25T07:15:27","PIB:Station:1246","Künzlistrasse - Zürich",47.406998,8.532487,30,"Birchdörfli ","8057"
+"2026-08-25T07:15:27","PIB:Station:1247","Milchbuck - Zürich",47.397293,8.541351,30,"Milchbuck ","8057"
+"2026-08-25T07:15:27","PIB:Station:1248","Blatterwiese - Zürich",47.355938,8.549857,30,"Blatterwiese ","8008"
+"2026-08-25T07:15:27","PIB:Station:1249","Oerliker Park - Zürich",47.415718,8.538073,30,"Oerliker Park ","8050"
+"2026-08-25T07:15:27","PIB:Station:1250","Turbinenplatz - Zürich",47.38978,8.516697,30,"Turbinenplatz ","8005"
+"2026-08-25T07:15:27","PIB:Station:1251","Furkastrasse - Zürich",47.386593,8.490842,30,"Luggwegstrasse VBZ ","8048"
+"2026-08-25T07:15:27","PIB:Station:1252","Röschibachplatz - Zürich",47.39331,8.528078,30,"Röschibachplatz ","8037"
+"2026-08-25T07:15:27","PIB:Station:1253","Dennlerstrasse - Zürich",47.38145,8.497956,30,"Dennlerstrasse ","8048"
+"2026-08-25T07:15:27","PIB:Station:1254","Flurpark - Zürich",47.383595,8.494071,30,"Flurstrasse 64","8048"
+"2026-08-25T07:15:27","PIB:Station:1255","Hürlimannplatz - Zürich",47.365158,8.525779,80,"Hürlimannplatz ","8002"
+"2026-08-25T07:15:27","PIB:Station:1257","Bahnhof Affoltern - Zürich",47.420753,8.508136,30,"Bahnhof Affoltern ","8046"
+"2026-08-25T07:15:27","PIB:Station:1258","Manesseplatz - Zürich",47.364895,8.52167,30,"Manesseplatz ","8045"
+"2026-08-25T07:15:27","PIB:Station:1259","Messe/Hallenstadion - Zürich",47.410664,8.551919,30,"Messe/Hallenstadion ","8050"
+"2026-08-25T07:15:27","PIB:Station:1260","Idaplatz - Zürich",47.37419,8.51411,30,"Idaplatz ","8003"
+"2026-08-25T07:15:27","PIB:Station:1261","Stampfenbachplatz - Zürich",47.38015,8.542381,30,"Stampfenbachplatz ","8006"
+"2026-08-25T07:15:27","PIB:Station:1262","Brunnenhof - Zürich",47.402134,8.534874,30,"Radiostudio ","8057"
+"2026-08-25T07:15:27","PIB:Station:1263","Kirche Unterstrass - Zürich",47.38728,8.542349,30,"Kirche Unterstrass ","8006"
+"2026-08-25T07:15:27","PIB:Station:1264","Bahnhof Balsberg - Zürich",47.441727,8.568795,30,"Bahnhof Balsberg ","8302"
+"2026-08-25T07:15:27","PIB:Station:1265","Schluefweg - Zürich",47.444515,8.58211,30,"Schluefweg ","8302"
+"2026-08-25T07:15:27","PIB:Station:1266","Bahnhof Kloten - Zürich",47.448814,8.583148,30,"Bahnhof Kloten ","8302"
+"2026-08-25T07:15:27","PIB:Station:1267","Stadtplatz Kloten - Zürich",47.45135,8.582066,30,"Stadtplatz Kloten ","8302"
+"2026-08-25T07:15:27","PIB:Station:1268","TEST - Flughafen Kloten - Zürich",47.450413,8.563064,30,"Flughafen Kloten ","8302"
+"2026-08-25T07:15:27","PIB:Station:1269","Bahnhof Wallisellen - Zürich",47.4121,8.592148,30,"Bahnhof Wallisellen ","8304"
+"2026-08-25T07:15:27","PIB:Station:1270","Schwimmbad Wallisellen - Zürich",47.41766,8.5936,30,"Schwimmbad Wallisellen ","8304"
+"2026-08-25T07:15:27","PIB:Station:1271","Glattzentrum - Zürich",47.40941,8.596069,30,"Glattzentrum ","8304"
+"2026-08-25T07:15:27","PIB:Station:1272","Zwicky-Areal - Zürich",47.40462,8.604653,30,"Zwicky-Areal ","8600"
+"2026-08-25T07:15:27","PIB:Station:1273","Eawag - Zürich",47.403126,8.609247,30,"Eawag ","8600"
+"2026-08-25T07:15:27","PIB:Station:1274","Sonnental - Zürich",47.39537,8.60392,30,"Sonnental ","8600"
+"2026-08-25T07:15:27","PIB:Station:1275","Stadthaus Dübendorf - Zürich",47.39733,8.618654,30,"Stadthaus Dübendorf ","8600"
+"2026-08-25T07:15:27","PIB:Station:1276","Oberdorf - Zürich",47.39572,8.623284,30,"Oberdorf ","8600"
+"2026-08-25T07:15:27","PIB:Station:1277","Bahnhof Dübendorf - Zürich",47.40039,8.622373,30,"Bahnhof Dübendorf ","8600"
+"2026-08-25T07:15:27","PIB:Station:1278","Flugplatz Dübendorf - Zürich",47.402454,8.627264,30,"Flugplatz Dübendorf ","8600"
+"2026-08-25T07:15:27","PIB:Station:1279","Skyguide - Zürich",47.407433,8.639153,30,"Flugsicherungsstrasse 2","8602"
+"2026-08-25T07:15:27","PIB:Station:1280","ZSC Lions - Zürich",47.394684,8.478463,30,"ZSC Lions ","8048"
+"2026-08-25T07:15:27","PIB:Station:1281","Briefzentrum Zürich-Mülligen - Zürich",47.39526,8.469135,30,"Briefzentrum Zürich-Mülligen ","8952"
+"2026-08-25T07:15:27","PIB:Station:1282","Frankental - Zürich",47.40548,8.481076,30,"Frankental ","8049"
+"2026-08-25T07:15:27","PIB:Station:1283","Forch - Zürich",47.325138,8.647927,30,"Bahnhof ","8127"
+"2026-08-25T07:15:27","PIB:Station:1285","Fahy - Aigle",46.316483,6.986676,10,"Grand'Aire ",NA
+"2026-08-25T07:15:27","PIB:Station:1286","Kronwiesen - Zürich",47.404007,8.578835,30,"Kronwiesen ","8051"
+"2026-08-25T07:15:27","PIB:Station:1287","Marktplatz - Zürich",47.40996,8.5453,30,"Marktplatz ","8050"
+"2026-08-25T07:15:27","PIB:Station:1288","Werdstrasse, TX Group AG - Zürich",47.371742,8.52925,30,"Werdstrasse ",NA
+"2026-08-25T07:15:27","PIB:Station:1289","Bleicherweg - Zürich",47.36686,8.534069,30,"Bleicherweg ","8002"
+"2026-08-25T07:15:27","PIB:Station:1291","Dufourstrasse - Zürich",47.35901,8.551449,30,"Feldeggstrasse ","8008"
+"2026-08-25T07:15:27","PIB:Station:1292","Hotel – St. Petersinsel - Erlach",47.06977,7.142731,40,"Heidenweg 26","3235"
+"2026-08-25T07:15:27","PIB:Station:1293","Erlach Heidenweg-Brücke – St. Petersinsel - Erlach",47.046597,7.100517,40,"Heidenweg 5","3235"
+"2026-08-25T07:15:27","PIB:Station:1295","BVZ Unterentfelden - Aarau",47.36205,8.049911,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1296","Ziemer - Port - Biel/Bienne",47.118206,7.2532835,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1297","Ziemer - Brügg - Biel/Bienne",47.119312,7.2633324,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1299","Station du Technicum - Le Locle",47.054043,6.742664,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1300","Station du Progrès - Le Locle",47.061634,6.756717,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1301","Station de la Piscine - Le Locle",47.050476,6.757628,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1302","Station de Gérardmer - Le Locle",47.064247,6.7631836,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1303","Station du Col-des-Roches - Le Locle",47.049145,6.72239,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1304","Station de Beau-Site - Le Locle",47.056877,6.75409,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1305","Station de l’Hôtel-de-Ville - Le Locle",47.055706,6.745207,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1306","Station de la Place Bournot - Le Locle",47.05786,6.751087,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1307","Station du 1er Août - Le Locle",47.05699,6.746828,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1308","Station Gare des Brenets - Le Locle",47.0673,6.707095,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1309","Fondli - Dietikon - Zürich",47.405613,8.390126,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1310","Bahnhof Dietikon - Zürich",47.405704,8.403936,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1314","Bahnhof Urdorf - Zürich",47.39006,8.432174,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1315","Bahnhof Weihermatt - Urdorf - Zürich",47.37979,8.430678,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1316","Spitzacker - Urdorf - Zürich",47.38441,8.421924,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1317","Urdorf  Nord - Zürich",47.393757,8.417557,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1318","Bergermoos  - Heinrich Stutz Strasse - Urdorf - Zürich",47.37057,8.424959,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:1319","Regensdorf - Watt - Zürich",47.44271,8.481651,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1320","Regensdorf - Adlikon - Zürich",47.44485,8.46625,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1321","Regensdorf - Obstgartenstrasse - Zürich",47.428318,8.466347,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1322","Regensdorf - Zentrum - Zürich",47.431774,8.467212,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1323","Regensdorf - Wiesacher - Zürich",47.437763,8.461339,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1324","Regensdorf - Bahnhof Süd - Zürich",47.4363,8.472556,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1325","Regensdorf - Bahnhof Nord - Zürich",47.43712,8.472112,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1326","Regensdorf - Sonnhalde - Zürich",47.45204,8.4623,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1329","Station Parking les Pargots - Le Locle",47.066837,6.6976576,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1333","Arte e Cultura LAC - Ticino - Lugano",45.998573,8.948465,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1334","Arzo Scuole - Ticino - Arzo",45.874863,8.937686,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1335","Balerna Ossario - Ticino - Balerna",45.849846,9.007773,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1336","Balerna Stazione FFS - Ticino - Balerna",45.846966,9.005099,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1337","Besazio Nucleo - Ticino - Besazio",45.872635,8.9533415,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1338","Bigogno - Campo sportivo - Ticino - Collina d'Oro",45.97221,8.915571,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1339","Via Industria - Ticino - Bioggio",46.020405,8.916166,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1340","Besso - Ticino - Lugano",46.006256,8.942773,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1341","Bissone - Ticino - Bissone",45.952946,8.965226,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1342","Brusino Arsizio – Debarcadero - Ticino - Brusino Arsizio",45.929893,8.93819,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1343","Campo Marzio - Ticino - Lugano",46.006096,8.961367,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1344","Campus Est - Ticino - Lugano",46.011333,8.960621,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1345","Capolago Stazione FFS - Ticino - Capolago",45.902733,8.978656,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1346","Cappella-Agnuzzo FLP - Ticino - Collina d'Oro",45.993317,8.924427,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1347","Casa Serena - Ticino - Lugano",46.01403,8.959088,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1348","Caslano FLP - Ticino - Caslano",45.97729,8.875469,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1349","Cassarate Via del Tiglio - Ticino - Lugano",46.008076,8.96893,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1350","Casserina - Ticino - Lugano",45.99466,8.943236,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1351","Castel S. Pietro Posta - Ticino - Castel S. Pietro",45.86167,9.009012,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1352","Centro Giovanile - Ticino - Lugano",46.009407,8.931647,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1353","Centro Lugano Sud - Ticino - Grancia",45.973312,8.927362,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1354","Chiasso Boffalora - Ticino - Chiasso",45.83779,9.022247,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1355","Chiasso Municipio - Ticino - Chiasso",45.835037,9.027937,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1356","Chiasso Scuole/Piscine - Ticino - Chiasso",45.838062,9.0269,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1357","Chiasso Soldini - Ticino - Chiasso",45.834724,9.01816,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1358","ColdreBike - Ticino - Coldrerio",45.856487,8.988715,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1359","Cornèr Arena - HC Lugano - Ticino - Lugano",46.025234,8.9636755,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1360","CSIA - Ticino - Lugano",46.01876,8.962004,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1361","Ecocentro Pregassona - Ticino - Lugano",46.029076,8.96982,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1362","Davesco - Ticino - Davesco",46.036835,8.979464,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1363","FFS Mezzovico-Vira - Ticino - Mezzovico-Vira",46.09466,8.928131,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1364","Foce - Ticino - Lugano",46.004272,8.9613285,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1365","Fornaci - Ticino - Lugano",45.9848,8.932414,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1366","Genestrerio Nucleo - Ticino - Genestrerio",45.854797,8.960795,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1367","Gentilino - Ticino - Collina d'Oro",45.991226,8.936372,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1368","IBSA - Ticino - Collina d'Oro",45.97753,8.926809,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1369","Incrocio via Torraccia - via Cereda - Ticino - Novazzano",45.84021,8.997638,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1370","Lambertenghi - Ticino - Lugano",46.00807,8.957456,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1371","Lamone - Cadempino FFS - Ticino - Lamone",46.040337,8.932417,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1372","Lanchetta - Ticino - Lugano",46.005962,8.966789,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1373","Ligornetto Nucleo - Ticino - Ligornetto",45.86142,8.9546795,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1374","Lugano Cortivo - Ticino - Lugano",46.001198,8.985321,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1375","Magliaso FLP - Ticino - Magliaso",45.98199,8.883627,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1377","Manno Parco Giova - Ticino - Manno",46.032867,8.921813,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1378","Massagno - Ticino - Massagno",46.01254,8.943474,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1379","Melide - Ticino - Melide",45.95386,8.949716,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1380","Mendrisio Cantine - Ticino - Mendrisio",45.87602,8.987091,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1381","LIGHT - Mendrisio Centro - Ticino - Mendrisio",45.870247,8.987328,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1382","Mendrisio Comparto Scuole - Ticino - Mendrisio",45.862988,8.980828,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1383","Mendrisio CPI - Ticino - Mendrisio",45.872154,8.983503,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1384","Mendrisio Fox Town - Ticino - Mendrisio",45.87619,8.981294,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1385","Mendrisio La Filanda - Ticino - Mendrisio",45.86962,8.989597,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1386","Mendrisio Mercato Coperto - Ticino - Mendrisio",45.865536,8.977704,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1387","LIGHT - Mendrisio Municipio - Ticino - Mendrisio",45.87127,8.98674,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1388","Mendrisio Museo - Ticino - Mendrisio",45.87256,8.987301,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1389","Mendrisio Ospedale - Ticino - Mendrisio",45.866936,8.983669,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1390","Mendrisio Piscine - Ticino - Mendrisio",45.883656,8.980121,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1391","Mendrisio Stazione FFS - Ticino - Mendrisio",45.86837,8.977994,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1392","Mezzovico Piazza Vira - Ticino - Mezzovico-Vira",46.09706,8.922301,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1393","Molinazzo - Ticino - Bioggio",46.012764,8.914717,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1394","Montagnola Piazza Brocchi - Ticino - Montagnola",45.982056,8.918164,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1395","Morbio Municipio - Ticino - Morbio Inferiore",45.851936,9.016459,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1396","Morbio Serfontana - Ticino - Morbio Inferiore",45.84572,9.014925,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1397","Morcote - Ticino - Morcote",45.924213,8.919275,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1398","Muzzano Industria - Ticino - Muzzano",46.00095,8.912808,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1399","Novazzano Centro Paese - Ticino - Novazzano",45.841255,8.981384,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1400","Ospedale Civico - Ticino - Lugano",46.01834,8.952582,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1401","Ospedale Italiano di Lugano - Ticino - Lugano",46.0097,8.960105,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1402","Paradiso Centro - Ticino - Lugano",45.99072,8.943745,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1403","Paradiso Stazione FFS - Ticino - Lugano",45.9891,8.946651,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1404","Parco Ciani - Ticino - Lugano",46.00581,8.957383,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1405","LIGHT - Pedrinate - Ticino - Pedrinate",45.82608,9.013058,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1406","Piaza du Buteghin - Ticino - Mezzovico-Vira",46.088177,8.915091,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1407","Piazza Manzoni - Ticino - Lugano",46.00362,8.952603,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1408","Piazza Mercato/Contrada di Verla - Ticino - Lugano",46.00571,8.95184,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1409","Piazza Molino Nuovo - Ticino - Lugano",46.012238,8.955127,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1410","Piscina Valgersa - Ticino - Savosa",46.016167,8.941009,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1411","Porza Sant'Elena - Ticino - Porza",46.027966,8.954558,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1412","Pregassona - Ticino - Lugano",46.02399,8.968235,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1413","Quartiere 9 - Ticino - Lugano",46.02084,8.964897,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1414","Quartiere di Meride - Ticino - Meride",45.890068,8.9507475,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1415","Rancate Nucleo - Ticino - Rancate",45.87146,8.968428,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1416","Posteggio Piazzale al Lago - Ticino - Riva San Vitale",45.905937,8.972721,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1417","Salorino Nucleo - Ticino - Mendrisio",45.87209,8.994424,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1418","San Siro - Ticino - Viganello",46.01568,8.9717455,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1419","Scuole Via Franscini - Ticino - Vacallo",45.844593,9.03087,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1420","Seseglio - Ticino - Seseglio",45.830334,8.996981,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1421","Sorengo Gemmo - Ticino - Sorengo",46.006752,8.936097,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1422","Sorengo Parco Sportivo - Ticino - Sorengo",46.001205,8.934144,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1423","Sorengo San Grato - Ticino - Sorengo",45.996574,8.935165,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1424","Sorengo, via Ponte Tresa - Ticino - Sorengo",45.998802,8.939251,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1425","Stabio Stazione FFS - Ticino - Stabio",45.849762,8.945027,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1426","Stabio Via Luvee - Ticino - Stabio",45.855713,8.942503,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1427","Stabio Via Segeno - Ticino - Stabio",45.858624,8.940123,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1429","Lugano Stazione FFS - Ticino - Lugano",46.004536,8.947083,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1430","Tesserete - Ticino - Tesserete",46.06602,8.96662,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1431","USI - Ticino - Lugano",46.01058,8.958214,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1432","Piazza Municipio - Ticino - Vacallo",45.847427,9.034183,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1433","Via Beltramina - Ticino - Lugano",46.016663,8.959587,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1434","Via Ceresio - Ticino - Lugano",46.018757,8.964288,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1435","Via Ciani - Ticino - Lugano",46.02191,8.962873,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1436","Via Crocetta - Ticino - Lugano",46.015945,8.966815,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1437","Via Dei Faggi - Ticino - Lugano",46.00924,8.963981,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1438","Via Ginevra - Ticino - Lugano - geschlossen",46.00829,8.951189,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1439","Via Loco - Ticino - Lugano",46.020187,8.971661,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1440","Via Maraini - Ticino - Lugano",45.999092,8.945115,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1441","Via Vignola - Ticino - Lugano",46.01662,8.955927,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1442","Viganello - Ticino - Lugano",46.01215,8.965692,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1444","LIGHT - Zandone - Ticino - Losone",46.177246,8.735043,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1445","LIGHT - SM/Ecocentro - Ticino - Giubiasco",46.18057,9.018728,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1446","Station FFS - Ticino - Muralto",46.172245,8.800842,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1447","Largo Zorzi - Autosilo - Ticino - Locarno",46.17008,8.799213,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1448","Piazza Grande - SES - Ticino - Locarno",46.169075,8.796166,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1449","Palazzo del Cinema - Ticino - Locarno",46.167786,8.79506,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1450","Clinica S. Chiara - Ticino - Locarno",46.16686,8.800187,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1451","Via Frascini - Migros - Ticino - Locarno",46.16581,8.795635,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1452","Bosco Isolino - Schindler - Ticino - Locarno",46.16393,8.800279,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1453","Via Varesi - Ticino - Locarno",46.16349,8.795741,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1454","Viale Respini - Ticino - Locarno",46.16103,8.80287,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1455","Via Balestra - Novartis - Ticino - Locarno",46.162018,8.798409,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1456","Chiesa S. Antonio - Ticino - Locarno",46.16964,8.790651,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1457","Ospedale La Carità - Ticino - Locarno",46.168777,8.791671,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1458","Posteggio FEVI - Ticino - Locarno",46.164314,8.7896805,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1459","Posteggio FART S. Antonio - Ticino - Locarno",46.16885,8.7864895,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1460","Piazza Solduno - Ticino - Locarno",46.169857,8.778557,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1461","Porto Regionale - Ticino - Locarno",46.165806,8.803614,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1462","LIGHT - Viale Respini Campeggio - Ticino - Locarno",46.156525,8.801024,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1463","LIGHT - Scuole Saleggi - Posteggio - Ticino - Locarno",46.16099,8.794294,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1464","Posteggio Morettina - Tennis - Ticino - Locarno",46.164734,8.783648,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1465","LIGHT - Via Rovedo - 5 Vie - Ticino - Locarno",46.16741,8.788893,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1466","Via Varenna - Via del Passetto - Ticino - Locarno",46.16723,8.78092,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1467","LIGHT - Via Galli - Migros - Ticino - Locarno",46.16886,8.782,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1468","Parco giochi Solduno - Ticino - Locarno",46.169895,8.774706,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1469","Solduno S. Martino - Ticino - Locarno",46.17186,8.770832,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1470","Ponte Brolla - Ticino - Locarno",46.18706,8.752198,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1471","Via ai Monti - Chiesa - Ticino - Locarno",46.173565,8.788418,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1472","Stazione FFS Riazzino - Ticino - Locarno",46.17509,8.886123,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1473","Via Sassariente - Ticino - Locarno",46.17228,8.912107,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1474","LIGHT - Aerodromo - Ticino - Locarno",46.16288,8.880487,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1475","Municipio - Ticino - Ronco s/Ascona",46.1449,8.727465,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1476","Intragna - Centovalli - Ticino - Intragna",46.17761,8.702078,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1477","Golino - Centovalli - Ticino - Golino",46.1783,8.714672,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1478","Cavigliano Stazione - Ticino - Terre di Pedemonte",46.1838,8.72096,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1479","Verscio Piazza - Ticino - Terre di Pedemonte",46.186188,8.731606,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1480","Tegna Stazione - Ticino - Terre di Pedemonte",46.186142,8.742522,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1481","Via Pezza Venerdì - Ticino - Losone",46.17417,8.758653,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1482","Arcegno - Losone - Ticino - Arcegno",46.162693,8.742685,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1483","Arbigo - Ticino - Losone",46.170155,8.757242,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1484","Via Mezzana - Ticino - Losone",46.167877,8.762471,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1485","Via Locarno - Posta - Ticino - Losone",46.165035,8.762323,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1486","Via Saleggi - Scuole - Ticino - Losone",46.16794,8.768088,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1487","Via Emmaus - Ticino - Losone",46.16437,8.768179,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1488","LIGHT - Via Balzago - Posteggio - Ticino - Losone",46.162975,8.763909,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1489","Municipio - Ticino - Losone",46.166706,8.758361,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1490","LIGHT - Meriggio - Ticino - Losone",46.178062,8.757204,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1491","Parco Parsifal - Ticino - Ascona",46.1581,8.761331,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1492","Posteggio Manor - Ticino - Ascona",46.16317,8.775894,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1493","Posteggio Cimitero - Ticino - Ascona",46.159954,8.774019,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1494","Polizia comunale - Ticino - Ascona",46.15568,8.770209,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1495","Posteggio degli Angioli - Ticino - Ascona",46.15188,8.771689,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1496","Posteggio Palestre - Ticino - Ascona",46.1561,8.77715,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1497","Tennis - Ticino - Ascona",46.15828,8.7832,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1498","LIGHT - Via del Sole - Posteggio - Ticino - Ascona",46.154003,8.781868,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1499","Lido - Ticino - Ascona",46.147675,8.781936,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1500","Porto patriziale - Ticino - Ascona",46.147953,8.791286,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1501","LIGHT - Via Bacilieri - Acquasana - Ticino - Muralto",46.175835,8.80516,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1502","Municipio - Ticino - Muralto",46.172993,8.805957,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1503","Burbaglio - Ticino - Muralto",46.171555,8.806867,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1504","Via Contra - Paese - Ticino - Brione sopra Minusio",46.1831,8.815113,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1505","Municipio - Ticino - Minusio",46.175995,8.812393,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1506","Via Verbano - Posteggio - Ticino - Minusio",46.177605,8.815036,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1507","LIGHT - Via S. Gottardo - Posteggio Jolly - Ticino - Minusio",46.178825,8.824447,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1508","Via R. Simen - Posteggio Elisarion - Ticino - Minusio",46.17342,8.81025,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1509","Via Mezzaro - Via dei Paoli - Ticino - Minusio",46.17605,8.815509,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1510","LIGHT - Posteggio Cimitero - Ticino - Minusio",46.17612,8.82088,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1511","Porticciolo Rivapiana - Ticino - Minusio",46.173367,8.819711,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1512","Rivapiana - Posteggio  Vignascia - Ticino - Minusio",46.17534,8.825971,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1513","Porto Comunale - Centro Sportivo - Ticino - Minusio",46.178295,8.841667,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1514","Piazza - Ticino - Tenero",46.18121,8.850735,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1515","Stazione FFS - Ticino - Tenero",46.1775,8.851119,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1516","Posteggio Brere - Ticino - Tenero",46.17094,8.856623,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1517","Stazione FFS - Ticino - Gordola",46.179153,8.865692,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1518","Centro Sportivo - Scuole - Ticino - Gordola",46.174408,8.864257,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1519","LIGHT - Via Francesca - Ticino - Gordola",46.178883,8.878559,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1520","Montedato - Ticino - Lavertezzo-Piano",46.17854,8.887039,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1521","Riazzino - Scuole - Ticino - Lavertezzo-Piano",46.176342,8.895165,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1522","Centro Professionale e Sociale - Ticino - Cugnasco-Gerra",46.174274,8.906346,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1523","Via Centrale - Posteggio Chiesa - Ticino - Cugnasco-Gerra",46.175045,8.910745,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1524","Municipio - Ticino - Cugnasco-Gerra",46.175438,8.917954,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1525","LIGHT - Cugnasco - Massarescio - Ticino - Cugnasco-Gerra",46.17493,8.927807,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1526","Stazione FFS - Ticino - Cadenazzo",46.152344,8.94138,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1528","Contone - Via Cimitero - Ticino - Gambarogno",46.15012,8.926166,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1529","Quartino - Luserte - Ticino - Gambarogno",46.15258,8.912022,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1531","Cadepezzo - Scuole - Ticino - Gambarogno",46.154922,8.8985815,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1532","LIGHT - Quartino - Paese - Ticino - Gambarogno",46.15062,8.896624,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1534","LIGHT - Magadino - Centro Sportivo - Ticino - Gambarogno",46.15182,8.881713,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1536","Agarone - Ticino - Cugnasco-Gerra",46.178448,8.906641,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1537","In Piazza - Ticino - Camorino",46.163567,9.00647,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1538","LIGHT - Fondazione Parco del Piano - Ticino - Gudo",46.1743,8.943361,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1539","Via al Ticino - Ticino - Sementina",46.184284,8.990417,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1540","El Cunvent - Ticino - Monte Carasso",46.187088,8.995757,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1541","Piazza Rinaldo Simen - Ticino - Bellinzona",46.19413,9.024075,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1542","Stazione FFS - Ticino - Giubiasco",46.174244,9.004599,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1543","LIGHT - Piazza Respini - Ticino - Locarno",46.169243,8.793791,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1551","Stazione FFS - Ticino - Bellinzona",46.19544,9.029058,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1552","LIGHT - AET - Ticino - Monte Carasso",46.190662,9.005499,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1553","SIC - Ticino - Bellinzona",46.204765,9.027929,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1554","EOC S. Giovanni - Ticino - Bellinzona",46.183544,9.026783,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1555","LIGHT - S. Carlo - Ticino - Locarno",46.170216,8.783923,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1556","LIGHT - Moscia - Ticino - Ascona",46.15282,8.751649,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1557","Porto-Ronco - Ticino - Ronco s/Ascona",46.141315,8.727701,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1559","LIGHT - Contra - Ticino - Tenero",46.188644,8.839944,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1560","FFS - Ticino - S. Antonino",46.15888,8.9696455,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1561","Ex Onderka - Ticino - S. Antonino",46.15479,8.977237,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1562","San Giulio - Ticino - S. Antonino",46.15406,8.994502,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1563","Via Serrai - Ticino - S. Antonino",46.155422,8.966762,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1564","LIGHT - Tegna - Parco giochi - Ticino - Terre di Pedemonte",46.184185,8.746616,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1565","LIGHT - Verscio - Via Longoi - Ticino - Terre di Pedemonte",46.181984,8.729846,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1566","LIGHT - Via Romerio - Ticino - Locarno",46.16591,8.788621,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1567","LIGHT - Stazione FFS - Ticino - Arbedo-Castione",46.224937,9.04165,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1568","Casa Comunale - Ticino - Lumino",46.22942,9.065892,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1569","LIGHT - Caserma - Ticino - Losone",46.172913,8.754412,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1570","Municipio - Ticino - Cadenazzo",46.14926,8.952304,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1571","LIGHT - Robasacco - Ticino - Cadenazzo",46.142796,8.94406,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1572","Ponte Maggia - Ticino - Losone",46.165966,8.772627,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1573","Costa di Fuori - Piodina - Ticino - Brissago",46.112045,8.700186,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1574","Posteggio Lido - Ticino - Brissago",46.11306,8.7058935,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1575","Costa di Mezzo - Incella - Ticino - Brissago",46.11631,8.703402,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1576","Piazzale Posta - Ticino - Brissago",46.118042,8.708982,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1577","LIGHT - Costa di Dentro - Rossorino - Ticino - Brissago",46.123447,8.709826,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1578","Casa comunale - Ticino - Brissago",46.12014,8.711435,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1580","Casa comunale - Ticino - Bellinzona",46.190647,9.0218935,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1581","LIGHT - S. Biagio - Ticino - Bellinzona",46.185726,9.020478,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1582","Scuole Semine - Ticino - Bellinzona",46.184586,9.012536,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1583","LIGHT - Carasso - Ticino - Bellinzona",46.202744,9.014871,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1584","LIGHT - Galbisio - Fermata TP - Ticino - Bellinzona",46.212227,9.031747,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1585","LIGHT - Gerretta - Ticino - Bellinzona",46.202194,9.031398,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1586","LIGHT - Parcheggio Stadio - Ticino - Bellinzona",46.19874,9.022921,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1587","Bagno Pubblico - Ticino - Bellinzona",46.19763,9.019275,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1588","LIGHT - Parcheggio Tennis - Ticino - Bellinzona",46.200813,9.016841,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1589","LIGHT - Molinazzo - Fermata TP - Ticino - Bellinzona",46.212673,9.039627,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1590","LIGHT - Scuole Elementari - Ticino - Camorino",46.163414,8.998838,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1591","LIGHT - Stabile Al Mai - Ticino - Camorino",46.167423,9.006856,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1592","Scuola dell'Infanzia - Ticino - Claro",46.253345,9.02302,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1593","LIGHT - Cassero - Ticino - Claro",46.250183,9.026794,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1594","LIGHT - AMB - Ticino - Giubiasco",46.172676,8.999715,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1595","Casa comunale - Ticino - Giubiasco",46.171604,9.010947,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1596","LIGHT - Scuole Palasio - Ticino - Giubiasco",46.176796,9.016336,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1597","LIGHT - Viale 1814 - Ticino - Giubiasco",46.17433,9.009129,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1598","Chiasso Stazione FFS - Ticino - Chiasso",45.831814,9.032714,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1599","LIGHT - Casa comunale - Ticino - Gnosca",46.232582,9.021237,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1600","LIGHT - Via Cantonale - Fermata TP - Ticino - Gorduno",46.217762,9.033985,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1601","LIGHT - Casa comunale - Ticino - Moleno",46.267918,8.994498,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1602","LIGHT - Pianezzo Parcheggio - Ticino - Pianezzo",46.16899,9.031284,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1603","LIGHT - Parco Incontri - Ticino - Sementina",46.182335,8.995224,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1604","LIGHT - Sezione circolazione - Ticino - Camorino",46.165977,8.995043,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1605","Scuole di commercio - Ticino - Bellinzona",46.195274,9.014207,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1606","Posteggio Tatti/Amministrativo 3 - Ticino - Bellinzona",46.189,9.016198,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1607","LIGHT - Nucleo - Ticino - Preonzo",46.26252,9.002077,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1608","LIGHT - 125 Brissago - Costa di Dentro - Ticino - Gadero",46.125023,8.706395,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1609","Centro Migros - Ticino - S. Antonino",46.15391,8.96291,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1610","LIGHT - Ristorante La Monda - Ticino - Cugnasco-Gerra",46.16259,8.913637,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1611","Sciarana - Ticino - Cugnasco-Gerra",46.17868,8.920846,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1612","LIGHT - Posteggio Tatti - Ticino - Bellinzona",46.189724,9.013766,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1617","Pôle Musique, Sion - Agglo Valais Central - Sion",46.241005,7.360532,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:1619","UZH Campus Irchel - Zürich",47.397827,8.54724,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1621","Grenchen Nord, Westausgang –  BLS - Grenchen",47.19211,7.3890586,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1629","Bahnhof SUD - SBB - Grenchen",47.189163,7.3993983,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1630","Albanteich Promenade - Basel",47.546192,7.6206326,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1631","Ecoparc de Daval, Sierre,  Agglo Valais central - Sierre",46.273666,7.517544,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1632","Théâtre Les Halles, Sierre, Agglo Valais central - Sierre",46.285515,7.529755,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:1633","Glariers, Sierre, Agglo Valais central - Sierre",46.28509,7.520348,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1634","Glarey, Sierre, Agglo Valais central - Sierre",46.296505,7.542461,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1635","Collège de La Charrière - La-Chaux- de-Fonds",47.109722,6.8330803,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1637","Dangelstrasse - Zürich",47.334854,8.530677,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1638","Leimbach Rebenstrasse - Zürich",47.33457,8.516592,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1639","Ankenweid in Marbachweg - Zürich",47.3299,8.514924,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1640","Lettenholzstrasse - Zürich",47.33966,8.528823,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1641","Bellariastrasse - Zürich",47.351795,8.530373,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1642","Brunaustrasse - Zürich",47.356262,8.531696,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1643","Morgental - Zürich",47.344353,8.530272,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1644","Stadtgrenze - Zürich",47.33568,8.540393,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1645","Saalsporthalle - Zürich",47.35641,8.521605,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1647","Collège des Gentianes - La Chaux-de-Fonds",47.09451,6.826399,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1648","Collège de Bellevue - La Chaux-de-Fonds",47.102222,6.8378596,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:1649","Schaufelbergerstrasse - Zürich",47.3699,8.502291,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1650","Friesenberg - Zürich",47.365406,8.5084095,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1651","Uetlihof - Zürich",47.35759,8.51363,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1652","Höfliweg - Zürich",47.368187,8.510523,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1653","Saumstrasse - Zürich",47.37251,8.51132,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1654","Schweighof - Zürich",47.365425,8.502952,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1655","Brahmsstrasse - Zürich",47.378525,8.504051,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1657","ETH-SSA - Schlieren - Zürich",47.399776,8.465049,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1658","Trichtenhausenfussweg - Zürich",47.354053,8.599489,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1659","Zentrum Witikon - Zürich",47.358017,8.585376,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1660","Lengg - Zürich",47.349335,8.570348,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1661","Balgrist - Zürich",47.35446,8.573443,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1662","Buchholz - Zürich",47.360077,8.590583,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1663","Oetlisbergstrasse - Zürich",47.35851,8.59688,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1664","Schule Kappeli - Zürich",47.386864,8.4939375,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1665","Mühlezelgstrasse - Zürich",47.377457,8.492459,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1666","Wydäckerring - Zürich",47.37098,8.493782,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1667","Zwyssigstrasse - Zürich",47.383392,8.484665,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1668","Norastrasse - Zürich",47.38004,8.507512,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1675","Manegg - Zürich",47.33858,8.519756,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1676","Friesenbergplatz - Zürich",47.36135,8.506274,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1677","Rötelstrasse - Zürich",47.393658,8.533187,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1678","Open Mon-Fre 07:00 - 18:00 In der Velostation Schanzenbrücke - Bern",46.949234,7.436812,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1679","Speichergasse - Bern",46.9497,7.4444094,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1680","Waisenhausplatz - Bern",46.94908,7.444436,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1681","Bundesgasse - Bern",46.946606,7.441624,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1682","Casinoplatz - Bern",46.946518,7.448146,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1683","Theaterplatz - Bern",46.947598,7.44735,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1684","Kornhausplatz - Bern",46.94881,7.447638,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1685","Simsonbrunnen - Bern",46.948044,7.4502387,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1686","Postgasse - Bern",46.948677,7.4532714,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1687","Münster - Bern",46.947433,7.4522824,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1688","Mattelift - Bern",46.946465,7.452518,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1689","Schifflaube - Bern",46.94651,7.4550486,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1690","Nydegg - Bern",46.948635,7.4567423,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1691","Bahnhofplatz - Bern",46.94835,7.440534,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1692","Velostation PostParc - Bern",46.94794,7.438115,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1693","Wallgasse - Bern",46.94626,7.438039,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1694","Predigergasse - Bern",46.94917,7.4459267,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1695","Junkerngasse - Bern",46.947792,7.454057,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1696","Bollwerk - Bern",46.951706,7.442115,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1697","Inselgasse - Bern",46.946884,7.4458294,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1698","Rathausgasse - Bern",46.948475,7.450536,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1703","Depotstrasse - Bern",46.950104,7.4283705,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1704","Bühlstrasse Uni - Bern",46.95148,7.430385,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1705","Pauluskirche - Bern",46.952686,7.4299874,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1706","Muesmatt Uni - Bern",46.953403,7.4285574,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1707","Waldheimstrasse - Bern",46.953915,7.4267397,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1708","Hochschulzentrum von Roll - Bern",46.953438,7.4239297,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1710","Hauptgebäude Uni - Bern",46.95066,7.437039,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1711","UniS - Bern",46.950336,7.4352927,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1712","Erlachstrasse - Bern",46.95155,7.4345326,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1713","Hallerstrasse - Bern",46.952454,7.4354215,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1714","Mittelstrasse Süd - Bern",46.95342,7.432825,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1715","Mittelstrasse - Bern",46.95473,7.433391,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1716","Unitobler Ost - Bern",46.954144,7.430703,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1717","Unitobler West - Bern",46.954514,7.4294934,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1718","Neufeldstrasse - Bern",46.956543,7.431772,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1719","Hochfeldstrasse - Bern",46.955605,7.428041,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1720","Fabrikstrasse - Bern",46.956024,7.425828,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1721","Zähringerstrasse - Bern",46.953648,7.4372435,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1722","Mittelstrasse Uni - Bern",46.95578,7.435263,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1723","Neubrückstrasse - Bern",46.95691,7.437657,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1724","Post CH AG – IT Services - Bern",46.957527,7.4405737,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1725","Neufeldstrasse Ost - Bern",46.958145,7.4349813,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1726","Freies Gymnasium - Bern",46.95933,7.4349074,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1727","Innere Enge - Bern",46.961685,7.439614,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1728","Murtenstrasse Forsthaus - Bern",46.95168,7.416571,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1729","Rossfeldstrasse - Bern",46.97178,7.4456005,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1730","Bahnhof Tiefenau - Bern",46.972908,7.4507337,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1731","Tiefenau - Bern",46.974842,7.453274,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1732","Stadtbachstrasse - Bern",46.9491,7.4332767,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1733","Studerstrasse - Bern",46.965935,7.4416056,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1734","Felsenaustrasse - Bern",46.972366,7.4420824,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1735","Fährstrasse - Bern",46.975506,7.4416814,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1736","Gymnasium Neufeld - Bern",46.958847,7.429207,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1739","Schwimmhalle Neufeld - Bern",46.960796,7.433963,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1743","Engehalde - Bern",46.9566,7.4402156,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1744","Marzilibahn - Bern",46.94467,7.443264,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1745","Brückenstrasse BFH - Bern",46.94272,7.441027,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1746","Marzilibad - Bern",46.942142,7.442515,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1747","Dampfzentrale - Bern",46.94069,7.4431486,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1748","Maulbeerstrasse - Bern",46.94654,7.4356613,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1749","Kocherpark - Bern",46.946026,7.4332137,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1750","Kapellenstrasse BFF - Bern",46.944218,7.436674,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1751","Monbijoustrasse - Bern",46.941032,7.4359164,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1752","Monbijoubrücke - Bern",46.93965,7.440236,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1753","Wabernstrasse - Bern",46.938953,7.4375334,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1754","Wander - Bern",46.93719,7.4360867,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1755","Landoltstrasse - Bern",46.93718,7.439398,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1756","Friedheimweg - Bern",46.936443,7.437876,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1757","Schöneggweg - Bern",46.93454,7.44193,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1758","Haslerstrasse - Bern",46.94508,7.432452,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1759","Eigerplatz Nord - Bern",46.94166,7.431887,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1760","Eigerplatz Süd - Bern",46.940014,7.431781,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1761","Beaumontweg - Bern",46.939087,7.428638,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1762","Beaumont - Bern",46.937107,7.432238,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1763","Bahnhof Weissenbühl - Bern",46.936016,7.4300632,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1764","Zieglerspital - Bern",46.93202,7.4330454,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1765","Schule Brunnmatt - Bern",46.945805,7.4270434,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1766","Cäcilienplatz - Bern",46.94167,7.425978,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1767","Fischermätteli - Bern",46.940598,7.4187355,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1768","Kirchbergerstrasse - Bern",46.938847,7.4210806,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1769","Sporthalle Weissenstein - Bern",46.937103,7.4178247,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1770","Friedbühlstrasse - Bern",46.94801,7.4218926,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1771","Loryplatz - Bern",46.94467,7.4223027,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1772","Schenkstrasse - Bern",46.945877,7.4154887,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1773","Stämpflistrasse - Bern",46.94325,7.4146013,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1774","Steigerhubel - Bern",46.944027,7.412034,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1775","Europaplatz Süd - Bern",46.9436,7.407175,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1776","Zieglerstrasse - Bern",46.94297,7.430233,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1777","Murtenstrasse Sanpol - Bern",46.950302,7.4145646,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1778","Schwarztorstrasse - Bern",46.944607,7.429096,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1779","Seilerstrasse - Bern",46.945595,7.434686,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1780","Insel Haupteingang - Bern",46.947556,7.426697,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1781","Kleine Schanze - Bern",46.945976,7.4394174,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1782","Insel West - Bern",46.946545,7.420781,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1783","Lettenstrasse - Zürich",47.389893,8.531508,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1784","Weberstrasse - Bern",46.939865,7.425097,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1785","Güterstrasse - Bern",46.947525,7.4168797,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1786","Velostation Welle 7 - Bern",46.94779,7.4363356,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1787","Buchlern - Zürich",47.384857,8.476772,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1789","Dunkelhölzli - Zürich",47.389156,8.470463,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1790","Lorystrasse - Bern",46.945095,7.418358,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1791","Dübystrasse - Bern",46.936436,7.4247994,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1792","Landhausweg - Bern",46.935837,7.4327044,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1793","Roschistrasse - Bern",46.93498,7.438808,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1794","Hallenbad Altstetten - Zürich",47.388714,8.480072,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1795","Farbhof - Zürich",47.390896,8.47833,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1796","Michelstrasse - Zürich",47.405525,8.495262,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1797","Rütihof - Zürich",47.413483,8.477745,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1798","Wartau - Zürich",47.402348,8.493481,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1799","Steigerhubelstrasse - Bern",46.946167,7.4114184,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1800","Goumoensstrasse - Bern",46.93465,7.4313188,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1801","Los Lorentes Residences - Bern",46.948677,7.4081635,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1803","Guisanplatz - Bern",46.958717,7.4646416,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1804","Rosengarten Ost - Bern",46.95206,7.4615755,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1805","Ostermundigerstrasse - Bern",46.952507,7.467395,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1806","Zentweg - Bern",46.95548,7.4769044,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1807","Bärenpark - Bern",46.94787,7.4598913,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1808","Schule Laubegg - Bern",46.94713,7.465731,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1809","Giacomettistrasse - Bern",46.94581,7.4729347,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1810","Egelgasse-Ostring - Bern",46.943806,7.469424,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1811","Spital Sonnenhof - Bern",46.9432,7.4735436,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1812","Helvetiaplatz - Bern",46.943993,7.449697,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1813","Museen Bernastrasse - Bern",46.94138,7.448788,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1814","Nationalbibliothek - Bern",46.941257,7.45071,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1815","Anshelmstrasse - Bern",46.938965,7.4476523,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1816","Jubiläumsplatz - Bern",46.940178,7.453041,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1817","Ka-We-De - Bern",46.935627,7.44591,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1818","Dählhölzli - Bern",46.933643,7.4482503,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1819","Luisenstrasse - Bern",46.94235,7.4527755,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1820","Seminarstrasse - Bern",46.94273,7.4595447,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1821","Böcklinstrasse - Bern",46.941624,7.463198,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1822","Jolimontstrasse - Bern",46.94155,7.4708853,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1823","Ringoltingenstrasse - Bern",46.93667,7.467993,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1824","Egghölzli - Bern",46.936634,7.4758286,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1825","Elfenau - Bern",46.93336,7.4663825,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1826","Zentrum Paul Klee - Bern",46.95099,7.472621,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1827","Egelsee - Bern",46.943535,7.46329,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1828","Thunplatz - Bern",46.9403,7.458606,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1829","Wittigkofen - Bern",46.938446,7.4807897,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1830","Burgernziel - Bern",46.941475,7.46644,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1831","Elfenauweg - Bern",46.939457,7.4697275,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1832","Mittelholzerstrasse - Bern",46.95907,7.4777536,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1833","Weltistrasse - Bern",46.94612,7.475814,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1834","Obere Zollgasse - Bern",46.946857,7.483653,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1835","Swiss Prime Site Immobilien AG - Bern",46.938747,7.4752083,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1840","Liebeggweg - Bern",46.94475,7.4606833,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1841","Kollerweg - Bern",46.943863,7.455008,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1842","Brunnadernstrasse - Bern",46.940506,7.4631896,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1844","Bernexpo - Bern",46.961052,7.465428,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1845","Manuelstrasse - Bern",46.93333,7.471794,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1846","UPZ Restaurant - Bern",46.96629,7.4831877,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1847","UPZ - Bern",46.965282,7.481025,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1848","Libellenweg - Bern",46.95453,7.4742894,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1849","Lorrainebrücke - Bern",46.95434,7.4453483,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1850","Dammweg TX Group AG - Bern",46.955917,7.4467797,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1851","Quartiergasse - Bern",46.95801,7.4449573,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1852","Römerweg - Bern",46.958252,7.4475737,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1853","SBB Wylerpark - Bern",46.96131,7.4466596,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1854","Wyleregg - Bern",46.960354,7.448583,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1855","Wylerbad - Bern",46.96503,7.4514623,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1856","Breitfeld - Bern",46.961964,7.4529624,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1857","Markuskirche - Bern",46.96351,7.4555163,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1858","Wankdorffeldstrasse - Bern",46.965027,7.4589906,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1859","Kursaal - Bern",46.952526,7.4498353,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1860","Viktoriaplatz - Bern",46.955166,7.4518366,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1861","Schule Spitalacker - Bern",46.95583,7.452994,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1862","Breitenrainstrasse  - Bern",46.957348,7.4514375,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1863","Breitenrainplatz - Bern",46.95793,7.45376,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1864","Allmendstrasse - Bern",46.959347,7.4518027,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1865","Stauffacherplatz - Bern",46.960117,7.454339,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1866","Tellplatz - Bern",46.961857,7.459266,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1867","Schönburg - Bern",46.95382,7.45818,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1868","Kasernenstrasse - Bern",46.95495,7.4598145,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1869","Kasernenwiese - Bern",46.958595,7.4569297,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1870","Tellstrasse - Bern",46.960327,7.4614544,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1871","Stadion Wankdorf - Bern",46.962734,7.462758,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1872","Sporthalle Wankdorf - Bern",46.96448,7.466948,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1873","Bahnhof Wankdorf Süd  - Bern",46.966583,7.4639626,80,"",NA
+"2026-08-25T07:15:27","PIB:Station:1874","Bahnhof Wankdorf Nord - Bern",46.9679,7.4652033,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1875","Stauffacherstrasse - Bern",46.966248,7.455832,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1876","Altenbergstrasse - Bern",46.95052,7.4515915,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1877","Salem-Spital - Bern",46.952698,7.454582,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1878","Dändlikerweg - Bern",46.964798,7.44842,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1879","Greyerzstrasse - Bern",46.955406,7.448853,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1880","Wyttenbachstrasse - Bern",46.95401,7.446931,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1882","Wylerringstrasse - Bern",46.963005,7.4498057,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1883","Jaunweg - Bern",46.967163,7.450031,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1885","Rabbentalstrasse - Bern",46.9522,7.4474373,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1886","Lagerweg - Bern",46.956493,7.4454317,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1887","Grimselstrasse - Bern",46.963017,7.4454265,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1888","SBB Hilfikerstrasse - Bern",46.96845,7.4624267,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1889","Weyermannshaus Bad - Bern",46.947742,7.4035697,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1890","Bahnhof Stöckacker - Bern",46.946663,7.400752,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1891","Bethlehem Säge - Bern",46.947063,7.3957644,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1892","Bethlehem Kirche - Bern",46.949066,7.3933387,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1893","Melchiorstrasse - Bern",46.952374,7.3914895,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1894","Tscharnergut - Bern",46.948975,7.3882294,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1895","Fellerstrasse - Bern",46.946945,7.388947,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1896","Holenacker - Bern",46.94862,7.3827505,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1897","Holenackerstrasse - Bern",46.94941,7.381449,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1898","Gäbelbach - Bern",46.947826,7.3778143,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1899","Riedbachstrasse - Bern",46.94503,7.3791685,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1900","Westside - Bern",46.94396,7.3746104,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1901","Bethlehemstrasse  - Bern",46.94425,7.399471,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1902","Schwabstrasse - Bern",46.943817,7.3955793,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1903","Schwabgut - Bern",46.94547,7.3928075,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1904","Bahnhof Bümpliz Nord - Bern",46.94564,7.390081,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1905","Brünnenstrasse - Bern",46.942787,7.3870745,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1906","Stapfenacker - Bern",46.943924,7.385305,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1907","Kirche St. Antonius - Bern",46.93992,7.3950324,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1908","Bümpliz Post - Bern",46.941723,7.3930044,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1909","Bümplizstrasse Fussgängerzone - Bern",46.94179,7.390651,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1910","Bachmätteli - Bern",46.939484,7.389994,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1911","Statthalterstrasse - Bern",46.939358,7.3863864,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1912","Kleefeld - Bern",46.937206,7.3872266,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1913","Waldmeisterstrasse - Bern",46.939934,7.382509,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1914","Bahnhof Bümpliz Süd - Bern",46.937897,7.3954725,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1915","Weidgasse - Bern",46.935852,7.390351,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1916","Waldmannstrasse - Bern",46.9473,7.393213,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1917","Oberbottigen - Bern",46.93538,7.350089,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1918","Bahnhof Riedbach - Bern",46.941273,7.3351555,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1919","Weidmattweg - Bern",46.936584,7.3954744,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1920","Stöckacker Süd - Bern",46.94304,7.401625,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1921","Burgunderstrasse - Bern",46.940945,7.3981967,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1922","Tram-Endstation Bümpliz - Bern",46.93744,7.3808427,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1926","Freiburgstrasse - Bern",46.94228,7.404589,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1928","Abendstrasse - Bern",46.9465,7.385427,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1929","Wangenmatt - Bern",46.932426,7.382477,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1932","Eymatt - Bern",46.962902,7.38379,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1936","Unteraffoltern - Zürich",47.42352,8.510943,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1937","Robert-Seidel-Hof - Zürich",47.39054,8.484217,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1938","Appenzellerstrasse - Zürich",47.400257,8.508625,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1939","Waidspital / Rebbergstrasse - Zürich",47.398575,8.517865,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1940","Lehenstrasse - Zürich",47.396667,8.518604,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1941","Tobeleggstrasse - Zürich",47.39945,8.502842,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1942","Looächer / Holzerhurd - Zürich",47.42413,8.497068,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1943","Quadro - Zürich",47.413113,8.550486,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1944","Schärenmoosstrasse - Zürich",47.41922,8.556804,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1945","Arnikahof - Zürich",47.416065,8.530682,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1946","Gubelstrasse - Zürich",47.408306,8.544361,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1947","Viktoriastrasse - Zürich",47.403088,8.550489,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1949","Grenchen Nord, Mobility Parkplatz – BLS - Grenchen",47.19219,7.3900256,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1950","Magadino - Casa comunale - Ticino - Gambarogno",46.148857,8.855728,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:1952","Neuaffoltern - Zürich",47.412056,8.526151,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1953","Kolbenacker - Zürich",47.42622,8.54757,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1954","Leimgrübelstrasse - Zürich",47.428795,8.543935,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:1955","Hertensteinstrasse - Zürich",47.423203,8.5430765,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1956","Mattenhof - Zürich",47.399605,8.592621,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1957","Luchswiesen - Zürich",47.405735,8.584826,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1958","Überlandpark - Zürich",47.406578,8.5628805,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1959","Am Glattbogen - Zürich",47.412064,8.563481,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1960","Altried - Zürich",47.405605,8.592464,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1961","Waldgarten - Zürich",47.404133,8.556984,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1962","UPD Neuhaus - Ittigen - Bern",46.969498,7.4858007,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1963","GVB - Ittigen - Bern",46.970993,7.472098,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1964","Ittigen Bahnhof  - Ittigen - Bern",46.97332,7.484835,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1965","Papiermühle Bahnhof - Ittigen - Bern",46.97422,7.476824,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1966","Worblaufen RBS Bahnhof - Ittigen - Bern",46.97945,7.457144,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1967","Bundesamt für Energie  - Ittigen - Bern",46.976025,7.4726787,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1968","Wabern Bahnhof - Köniz - Bern",46.928776,7.4460897,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1969","Steinhölzli - Köniz - Bern",46.93039,7.4281893,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1970","Liebefeld Park - Köniz - Bern",46.92965,7.4209533,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1971","Neuhausplatz - Köniz - Bern",46.92905,7.41723,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1972","Köniz Zentrum - Köniz - Bern",46.922974,7.414112,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1973","Jägerweg - Köniz - Bern",46.933697,7.4234095,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1974","Tram-Endstation - Köniz  - Bern",46.92794,7.452766,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1975","Vidmar - Köniz  - Bern",46.935623,7.416583,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1976","Wabern Zentrum - Köniz  - Bern",46.928993,7.450259,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1977","Bellevuestrasse - Köniz - Bern",46.92665,7.435955,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1978","Niederwangen Bahnhof - Köniz  - Bern",46.92607,7.3774567,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1979","Brühlplatz - Köniz  - Bern",46.9262,7.4172397,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1982","Sandrain - Köniz - Bern",46.931347,7.446041,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1983","Entsorgungshof Werkhof - Köniz - Bern",46.91608,7.41861,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1984","Camping Eichholz - Bern - Köniz",46.933125,7.455942,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1985","Bahnhof Gümligen - Bern - Muri",46.93358,7.5050693,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1986","Sternen Muri - Bern - Muri",46.931664,7.485394,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1987","Waldheimstrasse - Bern - Ostermundigen",46.951233,7.487047,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1988","Zollgasse - Bern - Ostermundigen",46.958103,7.48795,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1989","Oberfeld - Bern - Ostermundigen",46.95611,7.4983077,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1990","Wegmühlegässli - Bern - Ostermundigen",46.958153,7.492629,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1991","Bahnhof - Bern - Ostermundigen",46.956593,7.4829803,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1992","Geisshubel - Bern - Zollikofen",46.999966,7.4420843,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1993","Zollikofen Bahnhof - Bern - Zollikofen",46.99987,7.4618397,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1994","Ziegelei Märit - Bern - Zollikofen",46.99731,7.4587965,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1995","Unterzollikofen Bahnhof - Bern - Zollikofen",46.99209,7.457338,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1996","Gurten Kulm - Bern - Köniz",46.919144,7.4383883,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1997","Gasel BLS SwissBikePark - Bern - Köniz",46.900818,7.4010544,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1998","SwissBikePark Oberried - Bern - Köniz",46.8892,7.367123,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:1999","Thörishaus Dorf SBB SwissBikePark - Bern - Köniz",46.89372,7.351743,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2000","Bodelenweg - Bern - Köniz",46.927734,7.369732,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2001","Bauhaus Fachcentren AG - Bern - Köniz",46.93153,7.378906,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2002","INFORAMA - Bern - Zollikofen",46.98837,7.4633174,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2003","BFH-HAFL, Zollikofen - Bern - Zollikofen",46.991333,7.4674635,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2004","RBS-Station - Bern - Moosseedorf",47.01538,7.483209,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2005","Marti AG/Prodega - Bern - Moosseedorf",47.012806,7.470061,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2006","Cinedome Muri - Bern - Muri",46.92693,7.5034904,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2007","Freibad - Bern - Ostermundigen",46.9465,7.4914618,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2008","Riedhof - Zürich",47.408092,8.485273,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2009","Brüggbühlstrasse Papillon - Köniz - Bern",46.92809,7.386135,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2010","Talbodenstrasse - Köniz - Bern",46.911064,7.4101624,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2011","Fuhrenstrasse - Köniz  - Bern",46.90664,7.415389,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2012","Adlerweg - Köniz  - Bern",46.921364,7.423917,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2013","Könizbergstrasse - Köniz - Bern",46.928123,7.4106946,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2014","Lilienweg - Köniz - Bern",46.92239,7.4081717,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2015","Gartenstadtstrasse  - Köniz - Bern",46.926586,7.4140363,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2016","Lerbermattstrasse - Köniz - Bern",46.930206,7.438071,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2017","Balsigerrain - Köniz  - Bern",46.925606,7.433355,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2018","Gossetstrasse - Köniz  - Bern",46.93109,7.4573746,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2019","Nesslerenweg - Bern - Köniz",46.923195,7.461752,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2020","Eichmatt - Bern - Köniz",46.912807,7.4158354,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2021","Wangentalstrasse - Bern - Köniz",46.925835,7.3733263,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2022","Sportweg - Köniz - Bern",46.93344,7.4169717,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2023","Beckenhof - Zürich",47.383743,8.540433,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2024","Hirschwiesenstrasse - Zürich",47.399815,8.543268,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2025","Letzistrasse - Zürich",47.391113,8.545758,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2026","Kirche Fluntern - Zürich",47.376904,8.560372,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2027","Eidmattstrasse - Zürich",47.365204,8.560128,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2028","Kantonsschule - Zürich",47.373238,8.55182,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2029","Stodolastrasse - Zürich",47.35644,8.591912,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2030","Wildbachstrasse - Zürich",47.354958,8.558265,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2031","Giessenbad - Bern - Belp",46.909973,7.5058103,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2032","Station Steinbach - Bern - Belp",46.895332,7.4931717,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2033","Bahnhof Belp - Bern - Belp",46.889057,7.4988666,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2034","Riedli - Bern - Belp",46.8798,7.5065145,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2037","Eissel - Bern - Belp",46.896458,7.505367,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2038","Mingerstrasse - Bern",46.956745,7.467898,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2039","RBS Deisswil - Bern - Deisswil",46.957508,7.5140076,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2040","RBS Stettlen - Bern - Stettlen",46.956932,7.523765,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2041","RBS Boll - Bern - Boll",46.95313,7.54743,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2042","Zehendermätteli - Bern",46.97977,7.4439344,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2043","Ufficio tecnico - Ticino - Losone",46.163654,8.757405,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2044","Migros Taverne - Ticino - Taverne",46.06088,8.932005,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2045","Rathausparking - Bern",46.94896,7.451715,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2046","Amandiers, Sion - Agglo Valais central - Sion",46.231808,7.345587,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2048","Thoracker - Bern - Muri",46.9357,7.486588,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2049","Seidenberg - Bern - Muri",46.93284,7.492246,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2050","Aarebad Muri - Bern - Muri",46.92541,7.4873934,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2051","Kräyigen / Waldried - Bern - Muri",46.927074,7.4956565,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2052","Gümligen Dorf - Bern - Muri",46.934875,7.511245,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2053","Sonnenfeld - Bern - Muri",46.92781,7.510392,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2054","Siloah - Bern - Muri",46.932682,7.516903,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2055","Melchenbühl - Bern - Muri",46.935757,7.4993343,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2056","Event Station - Theater Spektakel 2026 - Zürich",47.35162,8.534467,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2059","Oberdorf - Bern - Zollikofen",46.998043,7.451261,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2060","Hirzenfeld - Bern - Zollikofen",47.002872,7.4441195,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2062","Kehrsatz Bahnhof Nord - Bern - Kehrsatz",46.914734,7.4674125,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2063","Kehrsatz Bahnhof - Bern - Kehrsatz",46.909016,7.4718585,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2065","LIGHT - SUPSI - Ticino - Mendrisio",45.869778,8.978463,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2066","LIGHT Mendrisio OSC - Ticino - Mendrisio",45.86241,8.975028,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2067","LIGHT - Mendrisio Accademia - Ticino - Mendrisio",45.86651,8.984669,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2068","Bedano - Ticino - Bedano",46.050766,8.918865,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2070","LIGHT - Liceo Mendrisio - Ticino - Mendrisio",45.86238,8.980609,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2072","Kantonsspital - Aarau",47.388783,8.058542,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2074","LIGHT - Tremona - Ticino - Tremona",45.88058,8.955665,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2075","Bahnhof Wollishofen - Zürich",47.347313,8.532323,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2076","Gattikerstrasse - Zürich",47.360565,8.566745,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2077","Pfingstweid - Zürich",47.389072,8.513799,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2078","Triemliplatz - Zürich",47.36778,8.496378,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2079","Frauentalweg - Zürich",47.354893,8.510851,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2080","Flurweg - Bern - Ostermundigen",46.953876,7.49403,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2081","Hardhof - Zürich",47.39645,8.497379,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2082","Bethanien - Zürich",47.380295,8.557627,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2084","Klusplatz - Zürich",47.36403,8.56649,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2085","Zoo - Zürich",47.383717,8.573714,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2086","Gloriastrasse - Zürich",47.377003,8.552406,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2087","Greblerweg - Zürich",47.377743,8.482664,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2088","Ettenfeld - Zürich",47.42592,8.553106,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2089","Schönauring - Zürich",47.426506,8.536746,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2090","Glaubten - Zürich",47.414806,8.518879,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2091","Lerchenrain - Zürich",47.413506,8.509806,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2092","Affolternstrasse - Zürich",47.41037,8.537449,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2095","Tulpenstrasse - Zürich",47.4065,8.567675,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2096","Stiftung Battenberg / Fondation Battenberg - Biel/Bienne",47.142235,7.2775097,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2098","Ambassador House - Zürich",47.420765,8.555339,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2099","Hilton Zürich Airport - Zürich",47.437126,8.572201,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2100","Gemeindehaus Wohlen - Wohlen - Bern",46.970936,7.35682,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2101","Wohlei - Wohlen - Bern",46.96755,7.358483,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2102","Hinterkappelen (Bernstrasse) - Wohlen - Bern",46.968132,7.376824,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2103","Uettligen (Dorf) - Wohlen - Bern",46.987415,7.386673,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2104","Dorfmatt - Münsingen - Bern",46.873165,7.558999,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2105","Sandreutenen - Bern - Münsingen",46.866962,7.5502067,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2106","Südstrasse Biral AG - Münsingen - Bern",46.866753,7.563399,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2107","Schwand - Münsingen - Bern",46.889168,7.556963,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2108","Pampigny–Sévery – MBC - Pampigny",46.577362,6.4318066,12,"",NA
+"2026-08-25T07:15:27","PIB:Station:2109","L’Isle – MBC - L'Isle",46.61727,6.411179,12,"",NA
+"2026-08-25T07:15:27","PIB:Station:2110","Montricher – MBC - Montricher",46.59631,6.3930016,12,"",NA
+"2026-08-25T07:15:27","PIB:Station:2114","Mobilitätshub 1 - Eisenbahnweg - Basel",47.559566,7.614285,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2115","Mobilitätshub 2 - Eisenbahnweg - Basel",47.56022,7.614905,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2116","Place de la Gare - SBB - Delémont",47.36235,7.3496494,20,"",NA
+"2026-08-25T07:15:27","PIB:Station:2118","Bächtelenweg - Köniz - Bern",46.92571,7.4552555,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2119","Zentrum Bremgarten - Bremgarten - Bern",46.97549,7.4366727,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2120","LIGHT - Chiasso Indipendenza - Ticino - Chiasso",45.833546,9.030228,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2121","LIGHT - Chiasso Cattaneo - Ticino - Chiasso",45.831318,9.027444,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2122","LIGHT - Centro giovani - Ticino - Chiasso",45.832886,9.022224,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2123","LIGHT - Centro Ovale - Ticino - Chiasso",45.838017,9.031219,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2125","LIGHT - Municipio - Ticino - Stabio",45.852833,8.939629,2,"",NA
+"2026-08-25T07:15:27","PIB:Station:2126","LIGHT - Lungolago - Ticino - Locarno",46.167564,8.802274,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2127","LIGHT - Debarcadero - Ticino - Locarno",46.1701,8.800463,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2128","LIGHT - Via San Jorio - Ticino - Locarno",46.165432,8.78921,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2129","LIGHT - Uffici Sociali - Ticino - Locarno",46.166832,8.798712,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2130","LIGHT - Via Bramantino - Ticino - Locarno",46.16644,8.795442,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2131","LIGHT - UBS - Ticino - Locarno",46.169006,8.797776,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2132","LIGHT - Piazzetta De Capitani - Ticino - Locarno",46.170082,8.795116,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2133","LIGHT - Via Conturbio - Ticino - Locarno",46.168392,8.794741,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2134","LIGHT - Via Corporazioni - Ticino - Locarno",46.169975,8.793002,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2135","LIGHT - Parco giochi San Jorio - Ticino - Locarno",46.166435,8.78305,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2136","Regensdorf - Industrie - Zürich",47.44472,8.462,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2137","Regensdorf - Laubisser - Zürich",47.449337,8.473054,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2138","Rheinfelden (CH) Rathaus - Hochrhein - Basel",47.555176,7.794384,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:2139","Rheinfelden (CH) Bahnhof - Hochrhein - Basel",47.551517,7.792436,25,"",NA
+"2026-08-25T07:15:27","PIB:Station:2142","Militär- / Langstrasse - Zürich",47.379745,8.526806,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2143","Güterbahnhof - Zürich",47.380066,8.519535,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2144","Dolder - Zürich",47.375942,8.577554,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2145","Himmeri - Zürich",47.420425,8.538882,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2146","Hagenholz - Zürich",47.415276,8.562871,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2147","LIGHT - Centro sportivo - Ticino - Balerna",45.840958,9.013044,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2148","LIGHT - Pian Faloppia - Ticino - Balerna",45.836445,9.008309,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2149","LIGHT - Lungolago - Ticino - Muralto",46.17132,8.8018265,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2150","LIGHT - Cimitero  - Ticino - Muralto",46.173462,8.807064,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2151","LIGHT - Migros - Ticino - Minusio",46.17537,8.810836,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2153","LIGHT - Esplanade - Ticino - Minusio",46.18,8.822404,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2154","LIGHT - Scuole Vignascia - Ticino - Minusio",46.177105,8.824473,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2156","Stein Bahnhof - Hochrhein - Basel",47.54215,7.9500484,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2158","Cimitero/Gerra - Ticino - Lugano",46.020515,8.958285,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2159","Laufenburg (CH) Bahnhofplatz - Hochrhein - Basel",47.56007,8.061062,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2160","Eyfeld - Ittigen - Bern",46.971947,7.4744816,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2163","Rheinfelden (CH) Brauerei Feldschlösschen - Hochrhein - Basel",47.54705,7.7863607,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2166","LIGHT - Teatro del Gatto - Ticino - Ascona",46.154198,8.775121,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2167","LIGHT - Collinetta - Ticino - Ascona",46.156982,8.765745,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2168","LIGHT - Lungolago - Ticino - Ascona",46.15483,8.766963,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2169","LIGHT - Posta - Ticino - Ascona",46.156517,8.768971,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2171","LIGHT - Siberia - Ticino - Ascona",46.162228,8.7710495,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2172","LIGHT - La Fabbrica - Ticino - Losone",46.166153,8.766149,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2173","LIGHT - HUB Bus Sottochiesa - Ticino - Losone",46.16966,8.760143,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2174","LIGHT - Scuole - Ticino - Cugnasco-Gerra",46.176327,8.917176,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2175","LIGHT - Chiesa Cugnasco - Ticino - Cugnasco-Gerra",46.174408,8.917742,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2176","LIGHT - Centro Sportivo Cugnasco - Ticino - Locarno",46.168705,8.910288,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2177","LIGHT - Alla Bolla - Ticino - Locarno",46.17488,8.891579,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2178","LIGHT - Via Stazione - Ticino - Tenero",46.179504,8.849292,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2179","LIGHT - Centro Commerciale - Ticino – Tenero",46.17495,8.856026,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2180","Brunaubrücke - Zürich",47.352192,8.523973,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2181","Réseau hospitalier neuchâtelois - La Chaux-de-Fonds",47.11369,6.831227,40,"",NA
+"2026-08-25T07:15:27","PIB:Station:2182","Impasse du Castel - Fribourg/Freiburg",46.816685,7.1747336,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2183","Bonnesfontaines - Fribourg/Freiburg",46.813377,7.143848,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2184","Guintzet - Fribourg/Freiburg",46.805508,7.140564,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2185","Centre horticole, Sion - Agglo Valais central - Sion",46.242657,7.4183836,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2186","Chapelle d'Uvrier, Sion - Agglo Valais central - Sion",46.25064,7.412855,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2187","Piscine de la Blancherie, Sion - Agglo Valais central - Sion",46.224308,7.355424,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2188","Archipel, Sion - Agglo Valais central - Sion",46.22817,7.3681664,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2189","RealFly, Sion - Agglo Valais central - Sion",46.219788,7.352295,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2192","Area di Svago - Ticino - Cadenazzo",46.149487,8.946251,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2193","LIGHT - Vira Piazzale Pitzker - Ticino - Gambarogno",46.144318,8.8424225,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2194","LIGHT - Contone Piazza - Ticino - Gambarogno",46.14835,8.925884,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2195","Auge, Pont de Berne - Fribourg/Freiburg",46.804565,7.169452,15,"",NA
+"2026-08-25T07:15:27","PIB:Station:2196","Strandbad - Bern - Moosseedorf",47.01896,7.4868264,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2197","Kirchlindach Dorfzentrum - Bern - Kirchlindach",47.000202,7.4153414,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2198","Flössergasse - Zürich",47.369118,8.532174,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2199","CPNE-AA Arts Appliqués - La Chaux-de-Fonds",47.101654,6.8238125,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2200","Bolligen Bahnhof - Bern - Bolligen",46.970627,7.4963894,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2201","Reberhaus - Bern - Bolligen",46.97426,7.495913,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2202","Marly - Château d'Eau - Fribourg/Freiburg",46.781498,7.16048,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2203","Villars-sur-Glâne - Villars‑Vert - Fribourg/Freiburg",46.800156,7.129571,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2204","Matran - Champ-Riond - Fribourg/Freiburg",46.788307,7.1033487,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2205","Rathaus - Zürich",47.372498,8.542856,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2206","Hungerbergstrasse - Zürich",47.421146,8.500199,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2208","Test Station update Fitness - Aarau",47.398888,8.0431,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2209","Test Station Regimo Dammweg - Aarau",47.384983,8.030917,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2210","Test Station Regimo Mühlemattweg - Aarau",47.37851,8.08052,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2211","Test Station Regimo Sämisweidstrasse - Aarau",47.370808,8.0440035,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2212","LIGHT - Campo Sportivo - Ticino - Coldrerio",45.853905,8.989057,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2213","LIGHT - Parcheggio Fontanelle - Ticino - Morbio Inferiore",45.846836,9.029096,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2214","LIGHT - Parcheggio Scuole - Ticino - Morbio Inferiore",45.84729,9.021701,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2215","Tilia - Ittigen - Bern",46.978966,7.489434,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2221","LIGHT - Bagno Pubblico - Ticino - Ascona",46.14815,8.779721,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2222","LIGHT - Stazione FFS Sud - Ticino - Gordola",46.178795,8.866597,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2225","UZH Campus Schlieren - Zürich",47.39904,8.457352,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2226","LIGHT - Posteggio - Ticino - Intragna",46.17663,8.699547,10,"",NA
+"2026-08-25T07:15:27","PIB:Station:2227","LIGHT - Centro sportivo Maglio - Ticino - Lugano",46.036377,8.971931,2,"",NA
+"2026-08-25T07:15:27","PIB:Station:2228","UPZ - Bern - Münsingen",46.880177,7.553281,50,"",NA
+"2026-08-25T07:15:27","PIB:Station:2229","Rheinfelden (CH) - Reha - Hochrhein - Basel",47.55875,7.8071,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2230","Rheinfelden (CH) - Aesthea/Salina - Hochrhein - Basel",47.5579,7.7987285,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2231","Rheinfelden (CH) - Spital - Hochrhein - Basel",47.5565,7.807583,30,"",NA
+"2026-08-25T07:15:27","PIB:Station:2232","LIGHT - Casa Comunale - Ticino - S/Antonino",46.153557,8.97873,8,"",NA
+"2026-08-25T07:15:27","PIB:Station:2233","LIGHT - Scuole - Ticino - S/Antonino",46.15347,8.9741,8,"",NA
