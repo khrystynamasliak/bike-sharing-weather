@@ -7,8 +7,9 @@
 # This is NOT the report generator - that is 05_explore.R, which prints the
 # numbers for a methods section and gates the charts that the sample cannot yet
 # support. This file is here to be READ, COPIED AND CHANGED: each block is
-# about fifteen lines, names the file it reads and the sample size behind it,
-# and does one thing.
+# about fifteen lines, names the file it reads and the grain it works at, and
+# does one thing. Actual row counts are printed when it runs - never frozen in
+# a comment, where they go stale within a day.
 #
 # Every plot here is one the current data actually supports. The obvious
 # missing one - mean demand by hour of day - is deliberately absent: with two
@@ -73,7 +74,7 @@ cat("hourly_flow.csv    :", nrow(flow), "station-hours,",
 
 
 # ============================================================================
-# PLOT 1 — the timeline           source: network_hourly.csv     n = 40 hours
+# PLOT 1 — the timeline            reads: network_hourly.csv   grain: one hour
 #
 # One bar per hour actually observed. This is a description of what happened,
 # so it is honest at any sample size - unlike an average over hour-of-day,
@@ -98,7 +99,7 @@ done(p)
 
 
 # ============================================================================
-# PLOT 2 — occupancy             source: hourly_flow.csv   n = 10,880 rows
+# PLOT 2 — occupancy               reads: hourly_flow.csv    grain: station-hour
 #
 # The best-supported thing in the dataset. Occupancy is REPORTED by the feed,
 # not inferred by subtraction, so it escapes the netting-out undercount that
@@ -117,7 +118,7 @@ done(p)
 
 
 # ============================================================================
-# PLOT 3 — the network on a map   source: hourly_flow.csv    n = 272 stations
+# PLOT 3 — the network on a map    reads: hourly_flow.csv    grain: station
 #
 # asp corrects for longitude compression at this latitude, so the shape is not
 # stretched. Circle AREA is proportional to movements - hence sqrt on the radius.
@@ -140,7 +141,7 @@ done(p)
 
 
 # ============================================================================
-# PLOT 4 — busiest stations       source: hourly_flow.csv    n = 272 stations
+# PLOT 4 — busiest stations        reads: hourly_flow.csv    grain: station
 #
 # rev() because barplot(horiz = TRUE) draws bottom-up and the rank should read
 # top-down.
@@ -158,7 +159,7 @@ done(p)
 
 
 # ============================================================================
-# PLOT 5 — e-bike vs mechanical   source: network_hourly.csv   n = 40 hours
+# PLOT 5 — e-bike vs mechanical    reads: network_hourly.csv  grain: one hour
 #
 # GROUPED, not stacked. A swap - one e-bike out, one mechanical in - moves both
 # series while barely moving the total, so the two do NOT sum to total_turnover
@@ -181,8 +182,7 @@ done(p)
 
 
 # ============================================================================
-# PLOT 6 — which stations drain, which fill    source: hourly_flow.csv
-#                                              n = 272 stations
+# PLOT 6 — which stations drain     reads: hourly_flow.csv    grain: station
 # net_flow = arrivals - departures. Summed over the window it shows stations
 # that structurally lose bikes (commuters ride away) against those that gain.
 # This is the rebalancing question, and it needs no weather at all.
