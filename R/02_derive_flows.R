@@ -102,34 +102,47 @@ load_status <- function(data_dir) {
   # The observation time is the feed's own publication clock, not the moment we
   # happened to ask. Poll time carries up to a full publication interval of
   # jitter relative to when the data was actually current.
-  if ("feed_last_updated" %in% names(df)) {
-    df$observed_at <- as_utc(df$feed_last_updated)
-    df$observed_at[is.na(df$observed_at)] <- df$polled_at_utc[is.na(df$observed_at)]
-  } else if (any(!is.na(df$last_reported))) {
-    # RECOVERY PATH for data collected before feed_last_updated was recorded.
-    #
-    # Those files have one row per poll, so a 60-second poll of a feed that
-    # publishes every ~15 minutes stored the same snapshot ~15 times, and the
-    # out-of-step replicas (docs/DATA_QUALITY.md §2) mean the sequence sometimes
-    # returns to a snapshot already recorded. Differencing that in poll order
-    # invents a departure and a matching arrival at every station that moved in
-    # between - measured at 3.9% of polls in the 24-25 Aug data.
-    #
-    # The newest last_reported in a poll identifies the snapshot it came from.
-    # On the 24-25 Aug data that mapping is exactly one-to-one: 619 polls, 39
-    # distinct network states, 39 distinct max(last_reported). Using it as the
-    # observation key collapses the repeats and restores the true series.
-    key <- as.numeric(df$polled_at_utc)
+  #
+  # This has to be decided PER ROW, not per file-set. bind_status() pads the
+  # older files with feed_last_updated = NA, so the column exists as soon as one
+  # new-format file is present - and a `if (column %in% names(df))` test then
+  # sends the old rows down the wrong branch, onto the 60-second poll clock.
+  # That is exactly what happened: it preserved the replica flip-flop the
+  # recovery exists to remove, and inflated old-era movement counts about
+  # twofold.
+  df$observed_at <- if ("feed_last_updated" %in% names(df)) {
+    as_utc(df$feed_last_updated)
+  } else {
+    as.POSIXct(rep(NA_real_, nrow(df)), origin = "1970-01-01", tz = "UTC")
+  }
+
+  # RECOVERY for rows collected before feed_last_updated was recorded.
+  #
+  # Those files hold one row per POLL, so a 60-second poll of a feed that
+  # publishes every ~15 minutes stored the same snapshot about fifteen times -
+  # and because the endpoint's replicas are not cache-coherent, consecutive
+  # polls could return DIFFERENT snapshots, bouncing back and forth. Differencing
+  # that in poll order invents a departure and a matching arrival every time it
+  # bounces.
+  #
+  # The newest last_reported across all stations identifies the snapshot a poll
+  # came from: on this data 936 polls carry only 58 distinct values, one per
+  # network state, exactly one-to-one. Using it as the observation key collapses
+  # the repeats and restores the true series.
+  gap <- is.na(df$observed_at)
+  if (any(gap) && any(!is.na(df$last_reported))) {
+    key  <- as.numeric(df$polled_at_utc)
     snap <- ave(as.numeric(df$last_reported), key,
                 FUN = function(v) if (all(is.na(v))) NA_real_ else max(v, na.rm = TRUE))
-    df$observed_at <- as.POSIXct(snap, origin = "1970-01-01", tz = "UTC")
-    df$observed_at[is.na(df$observed_at)] <- df$polled_at_utc[is.na(df$observed_at)]
-    cat(sprintf("No feed_last_updated column: recovered %d distinct snapshots from %d polls\n",
-                length(unique(df$observed_at)), length(unique(df$polled_at_utc))))
-    cat("       (older collector; snapshot identity taken from max(last_reported))\n")
-  } else {
-    df$observed_at <- df$polled_at_utc
+    df$observed_at[gap] <- as.POSIXct(snap[gap], origin = "1970-01-01", tz = "UTC")
+    n_rec <- length(unique(df$observed_at[gap & !is.na(df$observed_at)]))
+    cat(sprintf("Recovered %d snapshots from %d pre-feed_last_updated polls\n",
+                n_rec, length(unique(df$polled_at_utc[gap]))))
   }
+
+  # Anything still without an observation time falls back to the poll clock.
+  gap <- is.na(df$observed_at)
+  if (any(gap)) df$observed_at[gap] <- df$polled_at_utc[gap]
 
   # One row per station per published snapshot. Duplicates arise when two
   # collector runs overlap, when the watchdog fires alongside a live chain, or
