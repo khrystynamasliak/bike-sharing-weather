@@ -3,9 +3,9 @@
 Measuring how weather affects PubliBike demand, using two independently
 published data sources joined on time.
 
-**Status:** collecting from 25 August 2026 · Bern network (272 stations within
-5 km of the centre) · polled every 30 s; the feed publishes irregularly, at
-best every ~15 min
+**Status:** collecting 24 August → 3 September 2026 · Bern network (272 stations
+within 5 km of the centre) · polled every 30 s; the feed publishes irregularly,
+at best every ~15 min · ~313 KB/day
 
 ---
 
