@@ -207,29 +207,109 @@ report_window <- function(net, flow) {
 # ---- B. the daily cycle ----------------------------------------------------
 
 report_daily <- function(net, outdir) {
-  rule("2. the daily demand cycle")
+  rule("2. the daily cycle")
+
+  # THE TIMELINE IS ALWAYS HONEST. It is a description of what happened, one
+  # bar per hour actually observed, asserting nothing about a typical day.
+  p <- open_png(outdir, "01_demand_timeline.png", 1300, 620)
+  op <- par(mar = c(4.6, 4.8, 3.4, 1.2), bg = "white", las = 1,
+            col.axis = "#54584a", col.lab = "#16180f", cex.axis = .78)
+  wet <- if ("wet" %in% names(net)) net$wet else rep(FALSE, nrow(net))
+  bp <- barplot(net$total_turnover, col = ifelse(wet, "#0f6b5c", "#2a78d6"),
+                border = NA, ylab = "movements per hour",
+                names.arg = format(net$hour, "%H", tz = TZ),
+                main = sprintf("Every hour collected, %s to %s (local)",
+                               format(min(net$hour), "%d %b %H:%M", tz = TZ),
+                               format(max(net$hour), "%d %b %H:%M", tz = TZ)))
+  grid(nx = NA, ny = NULL, col = "#dcdcd2")
+  barplot(net$total_turnover, col = ifelse(wet, "#0f6b5c", "#2a78d6"), border = NA,
+          add = TRUE, axes = FALSE, names.arg = NA)
+  # day boundaries, so the reader can see how many days this is
+  dchg <- which(diff(as.integer(format(net$hour, "%d", tz = TZ))) != 0)
+  if (length(dchg)) abline(v = (bp[dchg] + bp[dchg + 1]) / 2, col = "#8a8e7e", lty = 2)
+  if (any(wet)) legend("topleft", c("dry hour", "wet hour"), fill = c("#2a78d6", "#0f6b5c"),
+                       border = NA, bty = "n", cex = .8)
+  par(op); dev.off()
+  cat("  figure ->", p, "  (the timeline - always safe to show)\n")
+
+  # THE HOUR-OF-DAY AVERAGE IS NOT, until there are enough days behind it.
+  #
+  # With two days collected, each bar of a "typical day" chart is the mean of
+  # one or two numbers. Measured on the current window the two observations at
+  # the same hour differ by a median factor of 2.7, and at 09:00 by 1710 vs 383.
+  # A bar chart of those means looks like a finding and is an accident, so it is
+  # only drawn once every hour has MIN_PER_HOUR observations - and even then it
+  # is drawn with the full range, not the mean alone.
+  MIN_PER_HOUR <- 3
   by_h <- aggregate(total_turnover ~ local_hour, data = net, FUN = mean)
-  n_h  <- aggregate(total_turnover ~ local_hour, data = net, FUN = length)
-  names(n_h)[2] <- "n"
+  n_h  <- aggregate(total_turnover ~ local_hour, data = net, FUN = length); names(n_h)[2] <- "n"
+  rg   <- aggregate(total_turnover ~ local_hour, data = net,
+                    FUN = function(v) c(lo = min(v), hi = max(v)))
   by_h <- merge(by_h, n_h, by = "local_hour")
+  by_h$lo <- rg$total_turnover[, "lo"]; by_h$hi <- rg$total_turnover[, "hi"]
   by_h <- by_h[order(by_h$local_hour), ]
 
-  cat("Mean movements by hour of day (LOCAL time, ", TZ, "):\n", sep = "")
-  peak <- max(by_h$total_turnover)
-  for (i in seq_len(nrow(by_h))) {
-    bar <- strrep("#", round(34 * by_h$total_turnover[i] / peak))
-    cat(sprintf("  %02d:00  %7.1f  (n=%d)  %s\n",
-                by_h$local_hour[i], by_h$total_turnover[i], by_h$n[i], bar))
-  }
-  cat("\nHours of the day never observed: ",
-      paste(setdiff(0:23, by_h$local_hour), collapse = ", "), "\n", sep = "")
+  cat(sprintf("\nObservations per hour of day: min %d, median %d, max %d\n",
+              min(by_h$n), median(by_h$n), max(by_h$n)))
+  missing <- setdiff(0:23, by_h$local_hour)
+  if (length(missing)) cat("Hours of day never observed: ", paste(missing, collapse = ", "), "\n", sep = "")
 
-  p <- open_png(outdir, "01_demand_by_hour.png")
-  barchart(by_h$local_hour, by_h$total_turnover, "hour of day (local)",
-           "mean movements", "Bike movements by hour of day",
-           labels = sprintf("%02d", by_h$local_hour))
-  dev.off(); cat("  figure ->", p, "\n")
+  if (min(by_h$n) < MIN_PER_HOUR) {
+    cat(sprintf("\nNO 'typical day' CHART. Some hours rest on %d observation(s);\n", min(by_h$n)))
+    cat(sprintf("  %d needed. At this sample the two readings for the same hour\n", MIN_PER_HOUR))
+    sp <- by_h$hi / pmax(by_h$lo, 1)
+    cat(sprintf("  differ by a median factor of %.1f (worst %.1f, at %02d:00) - a mean\n",
+                median(sp), max(sp), by_h$local_hour[which.max(sp)]))
+    cat("  of those would be an accident dressed as a pattern.\n")
+    cat("  Use 01_demand_timeline.png instead. This unlocks with more days.\n")
+  } else {
+    p2 <- open_png(outdir, "01b_typical_day.png", 1100, 620)
+    op <- par(mar = c(4.6, 4.8, 3.4, 1.2), bg = "white", las = 1,
+              col.axis = "#54584a", cex.axis = .82)
+    bp <- barplot(by_h$total_turnover, names.arg = sprintf("%02d", by_h$local_hour),
+                  col = "#2a78d6", border = NA, ylim = c(0, max(by_h$hi) * 1.1),
+                  xlab = "hour of day (local)", ylab = "movements per hour",
+                  main = sprintf("Typical day (mean and range, n=%d-%d days)",
+                                 min(by_h$n), max(by_h$n)))
+    grid(nx = NA, ny = NULL, col = "#dcdcd2")
+    barplot(by_h$total_turnover, col = "#2a78d6", border = NA, add = TRUE,
+            axes = FALSE, names.arg = NA)
+    arrows(bp, by_h$lo, bp, by_h$hi, angle = 90, code = 3, length = .03,
+           col = "#16180f", lwd = 1)
+    par(op); dev.off()
+    cat("  figure ->", p2, "  (mean with observed range)\n")
+  }
   invisible(by_h)
+}
+
+# Occupancy is the densest thing collected: the feed REPORTS it, at every
+# snapshot, for every station - 1.5 million observations rather than 40 hourly
+# aggregates. It also escapes the netting-out undercount that afflicts inferred
+# flows. When the flow series is too thin to plot, this is not.
+report_occupancy <- function(flow, outdir) {
+  if (!("mean_bikes" %in% names(flow))) return(invisible(NULL))
+  rule("2b. occupancy - the measured layer")
+  cat(sprintf("Station-hours with an occupancy reading: %s\n",
+              format(sum(!is.na(flow$mean_bikes)), big.mark = ",")))
+  cat(sprintf("Bikes present per station: mean %.1f, median %.1f, max %.0f\n",
+              mean(flow$mean_bikes, na.rm = TRUE), median(flow$mean_bikes, na.rm = TRUE),
+              max(flow$mean_bikes, na.rm = TRUE)))
+  empt <- mean(flow$mean_bikes < 0.5, na.rm = TRUE)
+  cat(sprintf("Station-hours essentially empty (<0.5 bikes): %.0f%%\n", 100 * empt))
+  cat("\nThis is measured, not inferred, and there are thousands of observations\n")
+  cat("behind it. Anything about how full the network is - by station, by hour -\n")
+  cat("is far better supported than anything about flows.\n")
+
+  p <- open_png(outdir, "06_occupancy.png", 1100, 620)
+  op <- par(mar = c(4.6, 4.8, 3.4, 1.2), bg = "white", las = 1,
+            col.axis = "#54584a", cex.axis = .82)
+  hist(flow$mean_bikes, breaks = 40, col = "#2a78d6", border = "white",
+       xlab = "mean bikes present during the hour", ylab = "station-hours",
+       main = sprintf("Occupancy across %s station-hours",
+                      format(nrow(flow), big.mark = ",")))
+  grid(nx = NA, ny = NULL, col = "#dcdcd2")
+  par(op); dev.off(); cat("  figure ->", p, "\n")
+  invisible(NULL)
 }
 
 # ---- C. Q3, vehicle types --------------------------------------------------
@@ -479,6 +559,7 @@ main <- function() {
 
   report_window(net, flow)
   report_daily(net, opts$out)
+  report_occupancy(flow, opts$out)
   report_types(net, opts$out)
   report_weather(net, opts$out, opts$min_hours)
   report_spatial(flow, net, opts$out)
