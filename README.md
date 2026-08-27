@@ -80,6 +80,7 @@ than "there is a gap and we do not know why".
 | `R/03_fetch_meteoswiss.R` | Finds nearest weather station, downloads hourly data |
 | `R/04_join_and_analyse.R` | Merges on the hour, reports the weather–demand relationship |
 | `R/05_explore.R` | Exploratory analysis and the figures for the writeup |
+| `R/06_first_plots.R` | Six starter plots, one short block each — written to be copied |
 
 Dependencies: `jsonlite`, and the `curl` binary (present on macOS, Linux and
 GitHub runners). Everything else is base R.
