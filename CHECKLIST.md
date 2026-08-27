@@ -1,6 +1,6 @@
 # Collection week checklist
 
-**Collecting:** Tue 25 Aug → Mon 31 Aug 2026 (consider extending — see the end)
+**Collecting:** Mon 24 Aug → **Thu 3 Sep 2026** (extended by one week on 27 Aug)
 **City:** Bern, 5 km radius, 272 stations · **Poll:** 30 s · **Data:** ~320 KB/day
 
 ---
@@ -152,10 +152,11 @@ on the morning of the deadline.
 
 ---
 
-## Monday 31 August — stop and analyse
+## Thursday 3 September — stop and analyse
 
 - [ ] **Disable the workflow.** Actions → workflow → "···" → Disable workflow.
-      Don't leave it running past the deadline.
+      Nothing switches collection off by itself — its cron has no end date,
+      unlike the analysis schedule. This is the one manual step that matters.
 
 - [ ] Final pull and full run:
       ```bash
@@ -181,18 +182,24 @@ on the morning of the deadline.
 
 ---
 
-## One thing worth considering
+## Where the extra week gets you
 
-Seven days gives you **one weekend** (Sat 29, Sun 30). Any weekday-vs-weekend
-claim then rests on a sample of one, which is thin — a single rainy Saturday
-would distort it badly.
+Collection was extended on 27 August and now runs to **Thursday 3 September**.
 
-Stretching to **Thursday 4 September (11 days)** gives you two weekends and
-roughly doubles your rain exposure, at no extra cost or effort. At ~320 KB a
-day the storage is irrelevant. If your deadline permits, do that. Decide on
-Thursday when you see how much rain you're getting.
+That buys the weekend of **29–30 August** — which the original window also had,
+but only just, and losing it to a chain failure would have cost the whole
+weekday/weekend comparison. It also roughly doubles the chances of catching rain
+during daylight, which is the one thing Q1 is waiting for: as of 27 August only
+3 of the wet hours collected fall between 07:00 and 21:00.
 
----
+**If you want a second weekend**, run to **Sunday 6 September** instead — add
+`4,5,6` to the September cron in `analyse.yml`. Two weekends turns a
+weekday/weekend claim from a sample of one into a sample of two, which is the
+difference between an observation and a finding. Collection itself needs no
+change either way.
+
+Storage is not a constraint: the Bern network produces about **313 KB a day**,
+so another week adds roughly 2 MB to a 22 MB repository.
 
 ## If something breaks
 
