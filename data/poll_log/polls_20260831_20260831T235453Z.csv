@@ -1,0 +1,12 @@
+"probe_at_utc","http_status","action","n_records","feed_last_updated"
+"2026-08-31T23:54:55",200,"written",272,"2026-08-31T23:45:05"
+"2026-08-31T23:55:25",304,"unchanged",NA,NA
+"2026-08-31T23:55:55",304,"unchanged",NA,NA
+"2026-08-31T23:56:25",304,"unchanged",NA,NA
+"2026-08-31T23:56:55",304,"unchanged",NA,NA
+"2026-08-31T23:57:25",304,"unchanged",NA,NA
+"2026-08-31T23:57:55",304,"unchanged",NA,NA
+"2026-08-31T23:58:25",304,"unchanged",NA,NA
+"2026-08-31T23:58:55",304,"unchanged",NA,NA
+"2026-08-31T23:59:25",304,"unchanged",NA,NA
+"2026-08-31T23:59:55",304,"unchanged",NA,NA
