@@ -1,0 +1,9 @@
+"probe_at_utc","http_status","action","n_records","feed_last_updated"
+"2026-10-01T23:56:16",200,"written",277,"2026-10-01T23:30:05"
+"2026-10-01T23:56:47",304,"unchanged",NA,NA
+"2026-10-01T23:57:17",304,"unchanged",NA,NA
+"2026-10-01T23:57:47",304,"unchanged",NA,NA
+"2026-10-01T23:58:16",304,"unchanged",NA,NA
+"2026-10-01T23:58:47",304,"unchanged",NA,NA
+"2026-10-01T23:59:16",304,"unchanged",NA,NA
+"2026-10-01T23:59:47",200,"written",277,"2026-10-01T23:45:04"
